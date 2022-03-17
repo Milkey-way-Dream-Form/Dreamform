@@ -1,1 +1,4 @@
 .idea
+.gradle/7.4
+.gradle/vcs-1
+.gradle/buildOutputCleanup
