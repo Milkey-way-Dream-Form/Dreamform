@@ -1,5 +1,6 @@
 package com.milkyway.dreamform.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
+@Data
 public class JobLists {
 
     public JobLists(String jobGb, String jobClcd, String jobClcdNM, String jobCd, String jobNm) {
