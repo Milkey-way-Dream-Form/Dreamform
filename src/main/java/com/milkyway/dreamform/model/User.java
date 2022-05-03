@@ -33,6 +33,9 @@ public class User extends Timestamped {
     @Column(name = "user_id")
     private Long id;
 
+    @OneToMany(mappedBy = "user")
+    private List<Community> communities = new ArrayList<>();
+
     @Column(nullable = false)
     private String username;
 
