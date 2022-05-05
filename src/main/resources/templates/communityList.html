@@ -1,38 +1,57 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>community</title>
+    <style>
+        th, tr, td {border: 1px solid black; margin: 10px;}
+    </style>
 </head>
 <body>
 <div>
     <h1>커뮤니티</h1>
 </div>
 <div>
-<!--    <div>-->
-<!--        <table>-->
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>게시판 종류</th>-->
-<!--                <th>제목</th>-->
-<!--                <th>작성자</th>-->
-<!--                <th>작성날짜</th>-->
-<!--                <th>조회수</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr th:each="community : ${communitityList}">-->
-
-<!--                <td th:text="${community.boardType.value}"></td>-->
-<!--                <td><a th:href="'/board/'+${community.id}" th:text="${board.title}"></a></td>-->
-<!--                <td th:text="${community.username}"></td>-->
-<!--                <td th:text="${community.createdDate} ?-->
-<!--                    ${#temporals.format(community.createdDate,'yyyy-MM-dd HH:mm')} : ${community.createdDate}"></td>-->
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성날짜</th>
+                <th>조회수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="community : ${communities}">
+                <td><a th:href="'/community/'+${community.community_id}" th:text="${community.community_title}"></a></td>
+                <td th:text="${community.userName}"></td>
+                <td th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></td>
 <!--                <td th:text="${community.viewCounts}"></td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--    </div>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+<!--    <nav aria-label="Page navigation" ">-->
+<!--        <ul th:with="startNumber=${T(Math).floor(communities.number/10)}*10+1,-->
+<!--    endNumber=(${communities.totalPages} > ${startNumber}+9) ? ${startNumber}+9 : ${communities.totalPages}">-->
+<!--            <li><a aria-label="Previous" href="/communityList?page=1">&laquo;</a></li>-->
+<!--            <li th:style="${communities.first} ? 'display:none'">-->
+<!--                <a th:href="@{/communityList(page=${communities.number})}">&lsaquo;</a>-->
+<!--            </li>-->
+
+<!--            <li th:each="page :${#numbers.sequence(startNumber, endNumber)}" th:class="(${page} == ${communities.number}+1) ? 'active'">-->
+<!--                <a th:href="@{/communityList(page=${page})}" th:text="${page}"><span class="sr-only"></span></a>-->
+<!--            </li>-->
+
+<!--            <li th:style="${communities.last} ? 'display:none'">-->
+<!--                <a th:href="@{/communityList(page=${communities.number}+2)}">&rsaquo;</a>-->
+<!--            </li>-->
+<!--            <li><a aria-label="Next" th:href="@{/communityList(page=${communities.totalPages})}">&raquo;</a></li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+    <br>
     <div>
         <a th:href="@{/create}">글쓰기</a>
     </div>

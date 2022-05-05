@@ -17,11 +17,12 @@ import static javax.persistence.FetchType.LAZY;
 public class Community extends Timestamped {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long community_id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "username")
     private User user;
 
     @Column

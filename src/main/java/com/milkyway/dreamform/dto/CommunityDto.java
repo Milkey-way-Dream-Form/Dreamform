@@ -8,13 +8,14 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
-public class CommunityRequestDto {
+public class CommunityDto {
     private Long community_id;
+    private String userName;
     private String community_title;
     private String community_contents;
-//    private int viewCounts;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
+    private LocalDateTime createdAt;
+    private LocalDateTime modifiedAt;
+    //    private int viewCounts;
 //    private String community_image_path;
 //    private String community_image_original;
 //    private String user_loadmap;
@@ -31,10 +32,13 @@ public class CommunityRequestDto {
     }
 
     @Builder
-    public CommunityRequestDto(Long community_id, String community_title, String community_contents) {
+    public CommunityDto(Long community_id, String userName, String community_title, String community_contents, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.community_id = community_id;
+        this.userName = userName;
         this.community_title = community_title;
         this.community_contents = community_contents;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
 //        this.viewCounts = viewCounts;
     }
 }
