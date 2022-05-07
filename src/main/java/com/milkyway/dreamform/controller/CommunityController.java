@@ -42,6 +42,9 @@ public class CommunityController {
 
     @GetMapping("/community/{id}")
     public String detail(@PathVariable("id") Long id, Model model) {
-        return "redirect:/";
+        communityService.updateViewCounts(id);
+        CommunityDto communityDto = communityService.getCommunity(id);
+        model.addAttribute("community", communityDto);
+        return "communityDetail";
     }
 }

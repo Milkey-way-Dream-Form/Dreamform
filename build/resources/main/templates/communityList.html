@@ -27,30 +27,30 @@
                 <td><a th:href="'/community/'+${community.community_id}" th:text="${community.community_title}"></a></td>
                 <td th:text="${community.userName}"></td>
                 <td th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></td>
-<!--                <td th:text="${community.viewCounts}"></td>-->
+                <td th:text="${community.viewCounts}"></td>
             </tr>
             </tbody>
         </table>
     </div>
     <br>
-    <nav aria-label="Page navigation" style="text-align:center;">
-        <ul class="pagination" th:with="startNumber=${T(Math).floor(communities.number/10)}*10+1,
-    endNumber=(${communities.totalPages} > ${startNumber}+9) ? ${startNumber}+9 : ${communities.totalPages}">
-            <li><a aria-label="Previous" href="/communityList?page=1">&laquo;</a></li>
-            <li th:style="${communities.first} ? 'display:none'">
-                <a th:href="@{/board/list(page=${communities.number})}">&lsaquo;</a>
-            </li>
+<!--    <nav aria-label="Page navigation" ">-->
+<!--        <ul th:with="startNumber=${T(Math).floor(communities.number/10)}*10+1,-->
+<!--    endNumber=(${communities.totalPages} > ${startNumber}+9) ? ${startNumber}+9 : ${communities.totalPages}">-->
+<!--            <li><a aria-label="Previous" href="/communityList?page=1">&laquo;</a></li>-->
+<!--            <li th:style="${communities.first} ? 'display:none'">-->
+<!--                <a th:href="@{/communityList(page=${communities.number})}">&lsaquo;</a>-->
+<!--            </li>-->
 
-            <li th:each="page :${#numbers.sequence(startNumber, endNumber)}" th:class="(${page} == ${communities.number}+1) ? 'active'">
-                <a th:href="@{/communityList(page=${page})}" th:text="${page}"><span class="sr-only"></span></a>
-            </li>
+<!--            <li th:each="page :${#numbers.sequence(startNumber, endNumber)}" th:class="(${page} == ${communities.number}+1) ? 'active'">-->
+<!--                <a th:href="@{/communityList(page=${page})}" th:text="${page}"><span class="sr-only"></span></a>-->
+<!--            </li>-->
 
-            <li th:style="${communities.last} ? 'display:none'">
-                <a th:href="@{/communityList(page=${communities.number}+2)}">&rsaquo;</a>
-            </li>
-            <li><a aria-label="Next" th:href="@{/communityList(page=${communities.totalPages})}">&raquo;</a></li>
-        </ul>
-    </nav>
+<!--            <li th:style="${communities.last} ? 'display:none'">-->
+<!--                <a th:href="@{/communityList(page=${communities.number}+2)}">&rsaquo;</a>-->
+<!--            </li>-->
+<!--            <li><a aria-label="Next" th:href="@{/communityList(page=${communities.totalPages})}">&raquo;</a></li>-->
+<!--        </ul>-->
+<!--    </nav>-->
     <br>
     <div>
         <a th:href="@{/create}">글쓰기</a>

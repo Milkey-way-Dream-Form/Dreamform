@@ -15,7 +15,7 @@ public class CommunityDto {
     private String community_contents;
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-    //    private int viewCounts;
+    private Integer viewCounts;
 //    private String community_image_path;
 //    private String community_image_original;
 //    private String user_loadmap;
@@ -26,19 +26,19 @@ public class CommunityDto {
                 .user(user)
                 .community_title(community_title)
                 .community_contents(community_contents)
-//                .viewCounts(viewCounts)
+                .viewCounts(viewCounts)
                 .build();
         return build;
     }
 
     @Builder
-    public CommunityDto(Long community_id, String userName, String community_title, String community_contents, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public CommunityDto(Long community_id, String userName, String community_title, String community_contents, LocalDateTime createdAt, LocalDateTime modifiedAt, Integer viewCounts) {
         this.community_id = community_id;
         this.userName = userName;
         this.community_title = community_title;
         this.community_contents = community_contents;
+        this.viewCounts = viewCounts;
         this.createdAt = createdAt;
         this.modifiedAt = modifiedAt;
-//        this.viewCounts = viewCounts;
     }
 }
