@@ -20,7 +20,7 @@ public class APIService {
 
     private final JobListsRepository jobListsRepository;
     private String authKey = "WNL0K8OBRYZY5NZNO0OPQ2VR1HK";
-
+//
     public List<Map<String, String>> apiParsing() throws Exception {
         String url = "http://openapi.work.go.kr/opi/opi/opia/jobSrch.do?authKey=" + authKey + "&returnType=XML&target=JOBCD";
 
