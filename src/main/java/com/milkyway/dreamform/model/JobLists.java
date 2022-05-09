@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Entity
 @Data
 public class JobLists {
-
+//
     public JobLists(String jobGb, String jobClcd, String jobClcdNM, String jobCd, String jobNm) {
         this.jobGb = jobGb;
         this.jobClcd = jobClcd;
