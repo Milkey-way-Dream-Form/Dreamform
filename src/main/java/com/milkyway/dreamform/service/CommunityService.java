@@ -22,7 +22,7 @@ import java.io.IOException;
 public class CommunityService {
     private CommunityRepository communityRepository;
     private UserRepository userRepository;
-//
+
     public Page<Community> getCommunityList(Pageable pageable) {
         pageable = PageRequest.of(
                 pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber()-1,
