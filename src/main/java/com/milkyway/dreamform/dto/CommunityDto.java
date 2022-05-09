@@ -4,10 +4,13 @@ import com.milkyway.dreamform.model.Community;
 import com.milkyway.dreamform.model.User;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 
 @Getter
+@NoArgsConstructor
 public class CommunityDto {
     private Long community_id;
     private String userName;
@@ -16,9 +19,6 @@ public class CommunityDto {
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private Integer viewCounts;
-//    private String community_image_path;
-//    private String community_image_original;
-//    private String user_loadmap;
 
     public Community toEntity(User user) {
         Community build = Community.builder()
@@ -29,6 +29,19 @@ public class CommunityDto {
                 .viewCounts(viewCounts)
                 .build();
         return build;
+    }
+
+    public Page<CommunityDto> toDtoList(Page<Community> communityList) {
+        Page<CommunityDto> communityDtoList = communityList.map(community -> CommunityDto.builder()
+                .community_id(community.getCommunity_id())
+                .userName(community.getUser().getUsername())
+                .community_title(community.getCommunity_title())
+                .community_contents(community.getCommunity_contents())
+                .viewCounts(community.getViewCounts())
+                .createdAt(community.getCreatedAt())
+                .modifiedAt(community.getModifiedAt())
+                .build());
+        return communityDtoList;
     }
 
     @Builder

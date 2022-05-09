@@ -1,9 +1,14 @@
 package com.milkyway.dreamform.controller;
 
 import com.milkyway.dreamform.dto.CommunityDto;
+import com.milkyway.dreamform.model.Community;
 import com.milkyway.dreamform.service.CommunityService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,18 +18,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
 
 @Slf4j
+@AllArgsConstructor
 @Controller
 public class CommunityController {
-    @Autowired
     CommunityService communityService;
 
     @GetMapping("/list")
-    public String list(Model model) {
-        List<CommunityDto> communityList = communityService.getCommunityList();
-        model.addAttribute("communities", communityList);
+    public String list(@PageableDefault Pageable pageable, Model model) {
+        Page<Community> communityList = communityService.getCommunityList(pageable);
+        Page<CommunityDto> communityDtoList = new CommunityDto().toDtoList(communityList);
+        model.addAttribute("communities", communityDtoList);
         return "communityList";
     }
 
@@ -35,8 +40,7 @@ public class CommunityController {
 
     @PostMapping("/create")
     public String createPost(Principal principal, @ModelAttribute CommunityDto communityDto) throws IOException {
-        log.info(""+principal.getName());
-        communityService.CreatePost(principal.getName(), communityDto);
+        communityService.createCommunity(principal.getName(), communityDto);
         return "redirect:/list";
     }
 
