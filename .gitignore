@@ -1,3 +1,5 @@
 .idea
 .gradle
-application.properties
+application-jg.properties
+application-cjh.properties
+application-sy.properties
