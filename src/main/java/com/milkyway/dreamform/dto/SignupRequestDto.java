@@ -1,5 +1,6 @@
 package com.milkyway.dreamform.dto;
 
+import com.milkyway.dreamform.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,9 +9,5 @@ import lombok.Setter;
 public class SignupRequestDto {
     private String username;
     private String password;
-    private String nickname;
     private String email;
-    private String interest;
-    private String license;
-
 }
