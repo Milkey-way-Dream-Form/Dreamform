@@ -41,13 +41,17 @@ public class UserService {
         // 패스워드 인코딩
         String password = passwordEncoder.encode(requestDto.getPassword());
         String email = requestDto.getEmail();
-        String nickname = requestDto.getNickname();
-        String interest = requestDto.getInterest();
-        String license = requestDto.getLicense();
 
         User user = new User(username, password, email);
         userRepository.save(user);
         return user;
+    }
+
+    public String findByUsername(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException(email));
+        SignupRequestDto requestDto = new SignupRequestDto();
+        requestDto.setUsername(user.getUsername());
+        return requestDto.getUsername();
     }
 
     public void kakaoLogin(String authorizedCode) {
