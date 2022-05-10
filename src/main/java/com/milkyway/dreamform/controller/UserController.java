@@ -1,7 +1,9 @@
 package com.milkyway.dreamform.controller;
 
+import com.milkyway.dreamform.dto.MailDto;
 import com.milkyway.dreamform.dto.SignupRequestDto;
 import com.milkyway.dreamform.model.User;
+import com.milkyway.dreamform.service.MailService;
 import com.milkyway.dreamform.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -15,11 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class UserController {
 
     private final UserService userService;
-    private JavaMailSender javaMailSender;
+    private final MailService mailService;
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, MailService mailService) {
         this.userService = userService;
+        this.mailService = mailService;
     }
 
     // 회원 로그인 페이지
@@ -63,7 +66,7 @@ public class UserController {
     }
 
     //아이디 찾기
-    @PostMapping("/user/foundid")
+    @PostMapping("/user/findid")
     public String findId(@ModelAttribute("form") SignupRequestDto requestDto, Model model) {
         String username = userService.findByUsername(requestDto.getEmail());
         model.addAttribute("user", username);
@@ -74,5 +77,11 @@ public class UserController {
     @GetMapping("/user/findpw")
     public String findPasswordForm() {
         return "findPwForm";
+    }
+
+    //비밀번호 찾기
+    @PostMapping("/user/findpw")
+    public void findPw(MailDto mailDto) {
+        mailService.mailSend(mailDto);
     }
 }
