@@ -54,9 +54,8 @@ public class User extends Timestamped {
         reply.setUser(this);
     }
 
-    public void updateInfo(SignupRequestDto signupRequestDto) {
-        this.username = signupRequestDto.getUsername();
-        this.password = signupRequestDto.getPassword();
-        this.email = signupRequestDto.getEmail();
+    //비밀번호 변경
+    public void updatePw(String pw) {
+        this.password = pw;
     }
 }
