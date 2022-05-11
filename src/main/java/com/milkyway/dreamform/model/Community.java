@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import static javax.persistence.FetchType.LAZY;
 
 @Getter
@@ -19,6 +22,9 @@ public class Community extends Timestamped {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "userName")
     private User user;
+
+    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
+    private List<Reply>  replies = new ArrayList<>();
 
     @Column
     private String community_title;
@@ -41,6 +47,11 @@ public class Community extends Timestamped {
         this.community_title = community_title;
         this.community_contents = community_contents;
         this.viewCounts = viewCounts;
+    }
+
+    public void addCommunity(Reply reply) {
+        replies.add(reply);
+        reply.setCommunity(this);
     }
 }
 

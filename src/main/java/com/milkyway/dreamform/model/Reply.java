@@ -19,7 +19,13 @@ public class Reply extends Timestamped {
         @JoinColumn(name = "user_id")
         private User user;
 
+        @ManyToOne(fetch = LAZY)
+        @JoinColumn(name = "community_id")
+        private Community community;
+
         private String reply_contents;
         private String reply_image_path;
         private String reply_image_original;
+
+
 }
