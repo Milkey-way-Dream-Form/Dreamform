@@ -17,7 +17,7 @@ public class Community extends Timestamped {
     private Long community_id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userName")
     private User user;
 
     @Column
