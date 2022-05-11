@@ -1,5 +1,6 @@
 package com.milkyway.dreamform.model;
 
+import com.milkyway.dreamform.dto.SignupRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -51,5 +52,10 @@ public class User extends Timestamped {
     public void addReply(Reply reply) {
         replies.add(reply);
         reply.setUser(this);
+    }
+
+    //비밀번호 변경
+    public void updatePw(String pw) {
+        this.password = pw;
     }
 }
