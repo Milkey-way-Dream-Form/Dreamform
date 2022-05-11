@@ -1,6 +1,6 @@
 package com.milkyway.dreamform.model;
 
-import com.milkyway.dreamform.dto.SignupRequestDto;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +11,7 @@ import java.util.List;
 
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @Entity
 public class User extends Timestamped {
@@ -49,13 +50,21 @@ public class User extends Timestamped {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Reply> replies = new ArrayList<>();
 
+    //비밀번호 변경
+    public void updatePw(String pw) {
+        this.password = pw;
+    }
+
+    //댓글 추가
     public void addReply(Reply reply) {
         replies.add(reply);
         reply.setUser(this);
     }
 
-    //비밀번호 변경
-    public void updatePw(String pw) {
-        this.password = pw;
+    //댓글 삭제
+    public void deleteReply(Reply reply) {
+        replies.remove(reply);
+        reply.setUser(null);
     }
+
 }

@@ -49,9 +49,20 @@ public class Community extends Timestamped {
         this.viewCounts = viewCounts;
     }
 
-    public void addCommunity(Reply reply) {
+    //댓글 추가
+    public void addReply(Reply reply) {
         replies.add(reply);
         reply.setCommunity(this);
+    }
+
+    //댓글 삭제
+    public void deleteReply(Reply reply) {
+        replies.remove(reply);
+        reply.setCommunity(null);
+    }
+
+    public void deleteReply(List<Reply> list) {
+        replies.removeAll(list);
     }
 }
 

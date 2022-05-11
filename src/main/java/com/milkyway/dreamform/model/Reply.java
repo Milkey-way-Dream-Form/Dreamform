@@ -1,6 +1,8 @@
 package com.milkyway.dreamform.model;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -8,6 +10,8 @@ import javax.persistence.*;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
+@Builder
+@NoArgsConstructor
 @Getter @Setter
 public class Reply extends Timestamped {
         @Id
@@ -23,9 +27,9 @@ public class Reply extends Timestamped {
         @JoinColumn(name = "community_id")
         private Community community;
 
-        private String reply_contents;
-        private String reply_image_path;
-        private String reply_image_original;
+        private String comment;
 
-
+        public void updateReply(String comment) {
+                this.comment = comment;
+        }
 }
