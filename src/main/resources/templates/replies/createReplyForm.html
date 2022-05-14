@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+    <form th:action="@{/community/{id}/replies/new (id=${communityId})}" th:object="${form}" method="post">
+        <div>
+            <label>댓글</label>
+            <textarea type="text" th:field="*{comment}" class="form-control"
+                      placeholder="이름을 입력하세요" ></textarea>
+        </div>
+        <button type="submit">등록</button>
+    </form>
+</body>
+</html>
