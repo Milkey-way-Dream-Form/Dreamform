@@ -1,9 +1,7 @@
 package com.milkyway.dreamform.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,7 +9,6 @@ import java.util.List;
 
 @Setter
 @Getter
-@Builder
 @NoArgsConstructor
 @Entity
 public class User extends Timestamped {
@@ -47,7 +44,8 @@ public class User extends Timestamped {
     @Column(nullable = true)
     private Long kakaoId;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Reply> replies = new ArrayList<>();
 
     //비밀번호 변경

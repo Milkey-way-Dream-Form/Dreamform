@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>reply</title>
+</head>
+<body>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>내용</th>
+                <th>사용자 이름</th>
+                <th>작성 시간</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="reply : ${replies}">
+                <td th:text="${reply.comment}"></td>
+                <td th:text="${reply.user.username}"></td>
+                <td th:text="${reply.createdAt} ? ${#temporals.format(reply.createdAt,'yyyy-MM-dd HH:mm')} : ${reply.createdAt}"></td>
+                <td>
+                    <a href="#" th:href="@{/community/{communityId}/replies/{replyId} (communityId=${communityId}, replyId=${reply.id})}" role="button">수정</a>
+                </td>
+                <td>
+                    <a href="#" th:href="@{/community/{communityId}/replies/{replyId}/delete (communityId=${communityId}, replyId=${reply.id})}" role="button">삭제</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

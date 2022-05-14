@@ -24,7 +24,7 @@
             </thead>
             <tbody>
             <tr th:each="community : ${communities}">
-                <td><a th:href="'/community/'+${community.community_id}" th:text="${community.community_title}"></a></td>
+                <td><a th:href="'/community/'+${community.id}" th:text="${community.community_title}"></a></td>
                 <td th:text="${community.userName}"></td>
                 <td th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></td>
                 <td th:text="${community.viewCounts}"></td>

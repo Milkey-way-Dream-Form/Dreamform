@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 public class CommunityDto {
-    private Long community_id;
+    private Long id;
     private String userName;
     private String community_title;
     private String community_contents;
@@ -24,7 +24,7 @@ public class CommunityDto {
 //
     public Community toEntity(User user) {
         Community build = Community.builder()
-                .community_id(community_id)
+                .id(id)
                 .user(user)
                 .community_title(community_title)
                 .community_contents(community_contents)
@@ -35,7 +35,7 @@ public class CommunityDto {
 
     public Page<CommunityDto> toDtoList(Page<Community> communityList) {
         Page<CommunityDto> communityDtoList = communityList.map(community -> CommunityDto.builder()
-                .community_id(community.getCommunity_id())
+                .id(community.getId())
                 .userName(community.getUser().getUsername())
                 .community_title(community.getCommunity_title())
                 .community_contents(community.getCommunity_contents())
@@ -47,8 +47,8 @@ public class CommunityDto {
     }
 
     @Builder
-    public CommunityDto(Long community_id, String userName, String community_title, String community_contents, LocalDateTime createdAt, LocalDateTime modifiedAt, Integer viewCounts) {
-        this.community_id = community_id;
+    public CommunityDto(Long id, String userName, String community_title, String community_contents, LocalDateTime createdAt, LocalDateTime modifiedAt, Integer viewCounts) {
+        this.id = id;
         this.userName = userName;
         this.community_title = community_title;
         this.community_contents = community_contents;

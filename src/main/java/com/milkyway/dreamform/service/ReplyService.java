@@ -11,6 +11,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class ReplyService {
@@ -21,10 +24,15 @@ public class ReplyService {
 
     @Transactional
     public void saveReply(Community community, ReplyRequestDto replyRequestDto, User user) {
-        Reply reply = Reply.builder().comment(replyRequestDto.getComment()).build();
-        Reply replyCo = replyRepository.save(reply);
-        community.addReply(replyCo);
-        user.addReply(replyCo);
+        Reply reply = new Reply();
+        reply.setComment(replyRequestDto.getComment());
+        Reply newReply = replyRepository.save(reply);
+        community.addReply(newReply);
+        user.addReply(newReply);
+    }
+
+    public List<Reply> findReplies() {
+        return replyRepository.findAll();
     }
 
     @Transactional
@@ -35,8 +43,8 @@ public class ReplyService {
 
     @Transactional
     public void deleteReply(Long replyId, Long communityId, Long userId) {
-        Reply reply = replyRepository.findById(replyId).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다."));
-        Community community = communityRepository.findById(communityId).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다."));
+        Reply reply = replyRepository.findById(replyId).orElseThrow(() -> new IllegalArgumentException("해당 댓글이 존재하지 않습니다."));
+        Community community = communityRepository.findById(communityId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
         User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다."));
 
         replyRepository.deleteById(reply.getId());

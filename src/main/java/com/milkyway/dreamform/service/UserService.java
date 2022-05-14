@@ -1,6 +1,7 @@
 package com.milkyway.dreamform.service;
 
 import com.milkyway.dreamform.dto.SignupRequestDto;
+import com.milkyway.dreamform.model.Reply;
 import com.milkyway.dreamform.model.User;
 import com.milkyway.dreamform.repository.UserRepository;
 import com.milkyway.dreamform.security.UserDetailsImpl;

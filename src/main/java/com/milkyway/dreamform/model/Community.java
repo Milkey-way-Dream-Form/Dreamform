@@ -1,5 +1,6 @@
 package com.milkyway.dreamform.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.milkyway.dreamform.model.Timestamped;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,12 +18,14 @@ public class Community extends Timestamped {
 //
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long community_id;
+    @Column(name = "community_id")
+    private Long id;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "userName")
     private User user;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
     private List<Reply>  replies = new ArrayList<>();
 
@@ -41,8 +44,8 @@ public class Community extends Timestamped {
     }
 
     @Builder
-    public Community(Long community_id, User user, String community_title, String community_contents, Integer viewCounts) {
-        this.community_id = community_id;
+    public Community(Long id, User user, String community_title, String community_contents, Integer viewCounts) {
+        this.id = id;
         this.user = user;
         this.community_title = community_title;
         this.community_contents = community_contents;
@@ -59,10 +62,6 @@ public class Community extends Timestamped {
     public void deleteReply(Reply reply) {
         replies.remove(reply);
         reply.setCommunity(null);
-    }
-
-    public void deleteReply(List<Reply> list) {
-        replies.removeAll(list);
     }
 }
 
