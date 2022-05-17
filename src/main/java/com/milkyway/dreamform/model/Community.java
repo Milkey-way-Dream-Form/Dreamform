@@ -1,5 +1,7 @@
 package com.milkyway.dreamform.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.milkyway.dreamform.model.Timestamped;
 import lombok.Builder;
@@ -21,12 +23,12 @@ public class Community extends Timestamped {
     @Column(name = "community_id")
     private Long id;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne
     @JoinColumn(name = "userName")
     private User user;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Reply>  replies = new ArrayList<>();
 
     @Column
