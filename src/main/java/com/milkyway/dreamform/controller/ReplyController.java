@@ -4,65 +4,52 @@ import com.milkyway.dreamform.dto.ReplyRequestDto;
 import com.milkyway.dreamform.model.Community;
 import com.milkyway.dreamform.model.Reply;
 import com.milkyway.dreamform.repository.CommunityRepository;
+import com.milkyway.dreamform.repository.ReplyRepository;
 import com.milkyway.dreamform.security.UserDetailsImpl;
 import com.milkyway.dreamform.service.ReplyService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
-
-@Controller
+@Slf4j
+@RestController
 @RequiredArgsConstructor
 public class ReplyController {
 
     private final ReplyService replyService;
     private final CommunityRepository communityRepository;
-
-    @GetMapping("/community/{communityId}/replies/new")
-    public String createForm(@PathVariable Long communityId, Model model) {
-        model.addAttribute("form", new ReplyRequestDto());
-        return "replies/createReplyForm";
-    }
-
-    @PostMapping("/community/{communityId}/replies/new")
-    public String create(@PathVariable Long communityId, @AuthenticationPrincipal UserDetailsImpl userDetails, ReplyRequestDto replyRequestDto) {
-        Community community = communityRepository.findById(communityId).orElse(null);
-        replyService.saveReply(community, replyRequestDto, userDetails.getUser());
-        return "redirect:/community/{communityId}/replies";
-    }
+    private final ReplyRepository replyRepository;
 
     @GetMapping("/community/{communityId}/replies")
-    public String list(@PathVariable Long communityId, Model model) {
-        List<Reply> replies = replyService.findReplies();
-        model.addAttribute("replies", replies);
-        return "replies/replyList";
+    public List<Reply> getReplyNo(@PathVariable Long communityId) {
+        return replyRepository.findByCommunityId(communityId);
     }
 
-    @GetMapping("/community/{communityId}/replies/{replyId}")
-    public String updateReplyForm(@PathVariable Long communityId, @PathVariable Long replyId, Model model) {
-        ReplyRequestDto replyRequestDto = new ReplyRequestDto();
-        Reply reply = new Reply();
-        replyRequestDto.setComment(reply.getComment());
-
-        model.addAttribute("form", reply);
-        return "replies/updateReplyForm";
+    @PostMapping("/community/{communityId}/replies")
+    public ResponseEntity saveComment(@PathVariable Long communityId, @AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody ReplyRequestDto replyRequestDto) {
+        Community community = communityRepository.findById(communityId).orElse(null);
+        if(community == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        replyService.saveReply(community, replyRequestDto, userDetails.getUser());
+        return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/community/{communityId}/replies/{replyId}")
-    public String updateReply(@PathVariable Long communityId, @PathVariable Long replyId, @ModelAttribute("form") ReplyRequestDto replyRequestDto) {
-        String comment = replyRequestDto.getComment();
-        replyService.updateReply(replyId, comment);
-        return "redirect:/community/{communityId}/replies";
+    @PutMapping("/community/{communityId}/replies/{replyId}")
+    public void updateReply(@PathVariable Long communityId, @PathVariable Long replyId,
+                            @RequestBody String reply) throws Exception {
+        replyService.updateReply(replyId, reply);
     }
 
-    @GetMapping("/community/{communityId}/replies/{replyId}/delete")
-    public String deleteReplyForm(@PathVariable Long communityId, @PathVariable Long replyId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        replyService.deleteReply(replyId, communityId, userDetails.getUser().getId());
-        return "redirect:/community/{communityId}/replies";
+    @DeleteMapping("/community/{communityId}/replies/{replyId}")
+    public void deleteReply(@PathVariable Long communityId, @PathVariable Long replyId, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        replyService.deleteReply(communityId, replyId, userDetails.getUser().getId());
     }
 }
