@@ -2,7 +2,9 @@ package com.milkyway.dreamform.controller;
 
 import com.milkyway.dreamform.dto.CommunityDto;
 import com.milkyway.dreamform.model.Community;
+import com.milkyway.dreamform.repository.ReplyRepository;
 import com.milkyway.dreamform.service.CommunityService;
+import com.milkyway.dreamform.service.ReplyService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
