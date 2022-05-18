@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Slf4j
@@ -35,7 +37,7 @@ public class CommunityService {
         User user = userRepository.findByUsername(userName).orElseThrow(
                 () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다. " + userName)
         );
-        return communityRepository.save(communityDto.toEntity(user)).getCommunity_id();
+        return communityRepository.save(communityDto.toEntity(user)).getId();
     }
 
     @Transactional
@@ -43,7 +45,7 @@ public class CommunityService {
         Community community = communityRepository.findById(id).get();
 
         CommunityDto communityDto = CommunityDto.builder()
-                .community_id(community.getCommunity_id())
+                .id(community.getId())
                 .userName(community.getUser().getUsername())
                 .community_title(community.getCommunity_title())
                 .community_contents(community.getCommunity_contents())

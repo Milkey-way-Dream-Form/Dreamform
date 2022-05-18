@@ -1,33 +1,65 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <title>로그인 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/loginform.css}">
+    <script th:src="@{/scripts/common.js}"></script>
+    <title>Cody</title>
 </head>
 <body>
-    <div>
-        <h1>로그인</h1>
-        <button id="login-kakao-btn" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=5f366d763b42c71ea2d61c5f717b8520&redirect_uri=http://localhost:8080/user/kakao/callback&response_type=code'">
-            카카오로 로그인하기
-        </button>
-        <button onclick="location.href='/user/signup'">
-            회원가입
-        </button>
-        <form action="/user/login" method="post">
-            <div>아이디</div>
-            <input type="text" name="username">
-
-            <div>비밀번호</div>
-            <input type="password" name="password">
-
-            <button>로그인</button>
-        </form>
-    </div>
-    <button onclick="location.href='/user/findid'">
-        아이디 찾기
-    </button>
-    <button onclick="location.href='/user/findpw'">
-        비밀번호 찾기
-    </button>
+    <nav>
+        <h2 class="unselectable clickable" ><a href="/">코디</a></h2>
+        <div>
+            <button class="unselectable clickable">로그인</button>
+            <button class="unselectable clickable">회원가입</button>
+        </div>
+    </nav>
+    <menu>
+        <div>
+            <button class="unselectable clickable">내 프로필</button>
+            <button class="unselectable clickable"onclick="location.href='/list'">커뮤니티</button>
+            <button class="unselectable clickable">로드맵</button>
+            <button class="unselectable clickable">가이드</button>
+        </div>
+    </menu>
+    <main>
+        <div id="loginForm">
+            <form action="/user/login" method="post">
+                <div class="inputField">
+                <label>아이디</label>
+                <input type="text" name="username">
+                </div>
+                <div class="inputField">
+                <label>비밀번호</label>
+                </div>
+                <div class="inputField">
+                <input type="password" name="password">
+                <button>로그인</button>
+                </div>
+            </form>
+            <div class="inputField">
+                <button class="kakaoLogin_wide" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=5f366d763b42c71ea2d61c5f717b8520&redirect_uri=http://localhost:8080/user/kakao/callback&response_type=code'"></button>
+            </div>
+            <div class="inputField">
+            <button class="inputField" onclick="location.href='/user/signup'">
+                회원가입
+            </button>
+            </div>
+            <div class="inputField">
+            <button class="inputField" onclick="location.href='/user/findid'">
+                아이디 찾기
+            </button>
+            </div>
+            <div class="inputField">
+            <button class="inputField" onclick="location.href='/user/findpw'" >
+                비밀번호 찾기
+            </button>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
