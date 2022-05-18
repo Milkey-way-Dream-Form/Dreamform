@@ -1,18 +1,36 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>메인 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/maincontent.css}">
+    <script src="../static/scripts/common.js"></script>
+    <script src="../static/scripts/main.js"></script>
+    <title>Cody</title>
 </head>
 <body>
-<div>
-    <h1>메인</h1>
-    <span th:text="${username}"></span> 님
-    <a id="logout-text" href="/user/logout">
-        로그아웃
-    </a>
-    <br><br>
-    <a href="/list">게시판</a>
+<nav>
+    <h2 class="unselectable clickable"><a href="/">코디</a></h2>
+    <div>
+        <span th:text="${username}"></span> 님
+        <button>
+            <a id="logout-text" href="/user/logout">
+                로그아웃
+            </a>
+        </button>
+        <button class="unselectable clickable" >로그인</button>
+        <button class="unselectable clickable">회원가입</button>
+    </div>
+</nav>
+<menu>
+    <div>
+        <button class="unselectable clickable">내 프로필</button>
+        <button class="unselectable clickable"onclick="location.href='/list'">커뮤니티</button>
+        <button class="unselectable clickable">로드맵</button>
+        <button class="unselectable clickable">가이드</button>
+    </div>
+</menu>
 </div>
 </body>
 </html>

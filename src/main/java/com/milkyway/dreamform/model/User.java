@@ -16,6 +16,13 @@ import java.util.List;
 @Entity
 public class User extends Timestamped {
 
+//    public User(String username, String password, String email,String filed) {
+//        this.username = username;
+//        this.password = password;
+//        this.email = email;
+//        this.kakaoId = null;
+//        this.filed = filed;
+//    }
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
@@ -43,6 +50,9 @@ public class User extends Timestamped {
 
     @Column(nullable = false)
     private String email;
+
+    @Column(nullable = true)
+    private String filed;
 
     @Column(nullable = true)
     private Long kakaoId;
