@@ -1,5 +1,7 @@
 .idea
 .gradle
+
+**/front/
 application-jg.properties
 application-cjh.properties
 application-sy.properties
