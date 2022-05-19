@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>community</title>
     <style>
         th, tr, td {border: 1px solid black; margin: 10px;}
+        ul, li {text-decoration: none; display: inline; margin:10px}
     </style>
 </head>
 <body>
@@ -33,24 +34,40 @@
         </table>
     </div>
     <br>
-<!--    <nav aria-label="Page navigation" ">-->
-<!--        <ul th:with="startNumber=${T(Math).floor(communities.number/10)}*10+1,-->
-<!--    endNumber=(${communities.totalPages} > ${startNumber}+9) ? ${startNumber}+9 : ${communities.totalPages}">-->
-<!--            <li><a aria-label="Previous" href="/communityList?page=1">&laquo;</a></li>-->
-<!--            <li th:style="${communities.first} ? 'display:none'">-->
-<!--                <a th:href="@{/communityList(page=${communities.number})}">&lsaquo;</a>-->
-<!--            </li>-->
 
-<!--            <li th:each="page :${#numbers.sequence(startNumber, endNumber)}" th:class="(${page} == ${communities.number}+1) ? 'active'">-->
-<!--                <a th:href="@{/communityList(page=${page})}" th:text="${page}"><span class="sr-only"></span></a>-->
-<!--            </li>-->
-
-<!--            <li th:style="${communities.last} ? 'display:none'">-->
-<!--                <a th:href="@{/communityList(page=${communities.number}+2)}">&rsaquo;</a>-->
-<!--            </li>-->
-<!--            <li><a aria-label="Next" th:href="@{/communityList(page=${communities.totalPages})}">&raquo;</a></li>-->
-<!--        </ul>-->
-<!--    </nav>-->
+    <div th:if="${!communities.isEmpty()}">
+        <nav>
+            <ul>
+                <li>
+                    <a th:href="@{/list/?page=1}">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li >
+                    <a th:href="@{/list/?page={page} (page = ${pagenation.prevBlock})}" >
+                        <span aria-hidden="true">&lt;</span>
+                    </a>
+                </li>
+                <th:block  th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}">
+                    <li
+                        th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}"
+                        th:each="pageButton : ${#numbers.sequence(start, end)}">
+                        <a th:href="@{/list/?page={page} (page = ${pageButton})}" th:text=${pageButton}></a>
+                    </li>
+                </th:block>
+                <li >
+                    <a th:href="@{/list/?page={page} (page = ${pagenation.nextBlock})}">
+                        <span aria-hidden="true">&gt;</span>
+                    </a>
+                </li>
+                <li >
+                    <a  th:href="@{/list/?page={page} (page = ${pagenation.totalPageCnt})}">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
     <br>
     <div>
         <a th:href="@{/create}">글쓰기</a>

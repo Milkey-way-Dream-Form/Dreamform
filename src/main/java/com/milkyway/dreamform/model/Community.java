@@ -17,7 +17,7 @@ public class Community extends Timestamped {
     private Long community_id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "userName")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column
@@ -25,6 +25,12 @@ public class Community extends Timestamped {
 
     @Column
     private String community_contents;
+
+    @Embedded
+    private UploadFile community_image;
+
+    @Column(columnDefinition = "boolean default false", nullable = false)
+    private boolean imgWhether;
 
     @Column(columnDefinition = "integer default 0", nullable = false)
     private Integer viewCounts;
@@ -35,12 +41,18 @@ public class Community extends Timestamped {
     }
 
     @Builder
-    public Community(Long community_id, User user, String community_title, String community_contents, Integer viewCounts) {
+    public Community(Long community_id, User user, String community_title, String community_contents,UploadFile community_image, boolean imgWhether, Integer viewCounts) {
         this.community_id = community_id;
         this.user = user;
         this.community_title = community_title;
         this.community_contents = community_contents;
+        this.community_image = community_image;
+        this.imgWhether = imgWhether;
         this.viewCounts = viewCounts;
+    }
+
+    public void updateImage(UploadFile community_image) {
+        this.community_image = community_image;
     }
 }
 

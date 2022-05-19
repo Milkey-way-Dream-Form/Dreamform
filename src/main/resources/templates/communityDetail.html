@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>게시글 확인</title>
 </head>
 <body>
-  <div>
+<div>
     <h2 th:text="'제목 : ' + ${community.community_title}"></h2>
-      <p th:text="'조회수 : ' + ${community.viewCounts}"></p>
+    <p th:text="'조회수 : ' + ${community.viewCounts}"></p>
     <p th:text="'작성날짜 : ' + ${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></p>
     <p th:text="'작성자 : ' + ${community.userName}"></p>
+    <div th:if="${community.imgWhether} == true">
+        <img th:src="|/image/${community.getUploadFile().getImagePath()}|">
+    </div>
     <p th:text="'내용 : ' + ${community.community_contents}"></p>
-  </div>
+</div>
+<div>
+    <div th:if="${idCheck}">
+        <button><a th:href="@{'/community/editForm/' + ${community.community_id}}">수정</a></button>
+    </div>
+    <div th:if="${idCheck}">
+        <form id="delete-form" th:action="@{'/community/delete/' + ${community.community_id}}" method="POST">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <button type="submit">삭제</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
