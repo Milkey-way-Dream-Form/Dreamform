@@ -4,7 +4,9 @@ import antlr.collections.List;
 import com.milkyway.dreamform.dto.CommunityDto;
 import com.milkyway.dreamform.model.Community;
 import com.milkyway.dreamform.model.Pagenation;
+import com.milkyway.dreamform.model.UploadFile;
 import com.milkyway.dreamform.service.CommunityService;
+import com.milkyway.dreamform.service.ImageService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -22,7 +24,7 @@ import java.security.Principal;
 @Controller
 public class CommunityController {
     CommunityService communityService;
-
+    ImageService imageService;
     @GetMapping("/list")
     public String list(@PageableDefault Pageable pageable, Model model, @RequestParam(defaultValue = "1") int page) {
         Page<Community> communityList = communityService.getCommunityList(pageable);
@@ -40,7 +42,8 @@ public class CommunityController {
 
     @PostMapping("/create")
     public String saveCommunity(Principal principal, @ModelAttribute CommunityDto communityDto) throws IOException {
-        communityService.createCommunity(principal.getName(), communityDto);
+        UploadFile image = imageService.saveFile(communityDto.getAttachFile());
+        communityService.createCommunity(image ,principal.getName(), communityDto);
         return "redirect:/list";
     }
 
@@ -68,8 +71,7 @@ public class CommunityController {
         communityDto.setCommunity_title(edit.getCommunity_title());
         if(edit.getAttachFile() != null) {
             communityDto.setAttachFile(edit.getAttachFile());
-        }else if(communityDto.getAttachFile() != null) {
-            communityDto.setAttachFile(communityDto.getAttachFile());
+            
         }
         communityDto.setCommunity_contents(edit.getCommunity_contents());
         communityService.createCommunity(communityDto.getUserName(), communityDto);

@@ -33,8 +33,7 @@ public class CommunityService {
     }
 
     @Transactional
-    public Long createCommunity(String userName, CommunityDto communityDto) throws IOException {
-        UploadFile image = imageService.saveFile(communityDto.getAttachFile());
+    public Long createCommunity(UploadFile image,String userName, CommunityDto communityDto) throws IOException {
         User user = userRepository.findByUsername(userName).orElseThrow(
                 () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다. " + userName)
         );

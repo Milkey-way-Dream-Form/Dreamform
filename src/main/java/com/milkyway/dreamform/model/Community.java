@@ -11,7 +11,7 @@ import static javax.persistence.FetchType.LAZY;
 @NoArgsConstructor
 @Entity
 public class Community extends Timestamped {
-//
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long community_id;
