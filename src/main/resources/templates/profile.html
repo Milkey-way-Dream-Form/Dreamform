@@ -6,11 +6,27 @@
 </head>
 <body>
     <div>
-        <h2>아이디:<span th:text="${username}"></span></h2><br>
-        <h2>닉네임:<span th:text="${username}"></span></h2><br>
-        <h2>비밀번호:<button>비밀번호 변경</button></h2><br>
-        <h2>이메일:<span th:text="${email}"></span></h2>
+        <div>아이디:<span th:text="${username}"></span></div><br>
+        <div>닉네임:<span th:text="${username}"></span></div><br>
+        <div>이메일:<span th:text="${email}"></span></div>
+        <div>보유한 자격증</div>
+        <div>
+            관심분야
+            <select>
+                <option>웹 개발</option>
+                <option>앱 개발</option>
+                <option>게임 개발</option>
+                <option>보안</option>
+            </select>
+            세부 분야
+            <select>
+                <option></option>
+            </select>
+        </div>
         <button>저장</button>
     </div>
 </body>
+<script type="text/javascript">
+
+</script>
 </html>
