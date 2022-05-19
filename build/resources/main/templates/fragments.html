@@ -1,0 +1,193 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>코디</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+</head>
+<script type="application/javascript" th:inline="javascript" th:fragment="reply">
+    const communityId = /*[[${community.id}]]*/ null;
+    const username = /*[[${#authentication.name}]]*/ null;
+
+    $(function() {
+        getComments();
+    });
+
+    function getComments() {
+        $.ajax({
+            type: "GET",
+            url: "/community/" + communityId + "/replies",
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                let content = `<div class="comment-option">
+								<h3 id="comment-title">댓글<span class="badge">${result.length}</span></h3>
+							</div>`;
+                $.each(result, function (index, item) {
+
+                    content += `<ul class="list-group" data-comment-writer="${item.user.username}" data-comment-no="${item.id}" data-comment="${item.comment}" data-fulldate="${moment(item.modifiedAt).format("YYYY-MM-DD HH:mm:ss")}">`
+
+                    content += `<li class="list-group-item">
+								<p><strong>작성자: ${item.user.username}</strong></p>
+								<p>${item.comment}</p>`;
+                    content += `<p><span>최종 수정일: ${moment(item.modifiedAt).format("YYYY-MM-DD HH:mm:ss")} </span>`;
+
+                    if(username == item.user.username) {
+                        content += `<button class="btn-update">수정</button><button class="btn-delete">삭제</button>`;
+                    }
+                    content += `</span></p></li></ul>`;
+                })
+                $("#comment-show").empty().append(content);
+                // 댓글 등록 활성화
+                saveComment();
+                // 자신의 댓글 수정버튼 누를시 수정창으로 바뀌는 것 활성화
+                changeCommentDiv();
+                // 자신 댓글 삭제 기능 활성화
+                deleteComment();
+            }
+        })
+    }
+
+    /*
+  * 다른 창 수정버튼 클릭시 예외처리 및, 취소버튼 클릭시 원래의 창으로 되돌아 가는 부분
+  */
+    function changeCommentDiv() {
+        $(".btn-update").off().on('click', function () {
+            if ($("#comment-update").text() != "") {
+                alert("한번에 하나의 수정만 가능합니다.")
+                return false;
+
+            }
+            var commentNo = $(this).closest("ul").data("comment-no");
+            var comment = $(this).closest("ul").data("comment");
+            var writer = $("#user_nickname").val();
+            var selector = $(this).closest("ul")
+            currentHtml = selector;
+
+            var content = `<div id="comment-update" data-commentno="${commentNo}" data-comment="${comment}" data-writer="${writer}">
+							<lable>${username}<button class="update-comment">수정</button><button class="btn-comment-cancle">취소</button></lable>
+							<textarea class="form-control" rows="5" cols="124" placeholder="댓글을 남겨주세요" minlength="10" maxlength="200">${comment}</textarea>
+						</div>`
+            $(selector).empty();
+            $(selector).append(content);
+            // 댓글 업데이트 기능 활성화
+            updateComment();
+            // 댓글 수정취소 기능 활성화
+            cancelComment();
+        })
+    }
+
+    /*
+* 댓글 수정취소 기능
+*/
+    function cancelComment() {
+        $(".btn-comment-cancle").on('click', function () {
+            var selector = $(this).closest("ul");
+            var content = `<li id class="list-group-item">
+							<p><stong>${selector.data("comment-writer")}</strong></p>
+							<p>${selector.data("comment")}</p>
+							<p><span>최종 수정일: ${selector.data("fulldate")}</span>
+							<button class="btn-update">수정</button><button class="btn-delete">삭제</button></p>
+						</li>`
+            $("#comment-update").remove();
+            $(selector).append(content);
+
+            //다른 창 수정버튼 클릭시 예외처리 및, 취소버튼 클릭시 원래의 창으로 되돌아 가는 부분
+            changeCommentDiv();
+            //댓글 삭제 기능 활성화
+            deleteComment();
+        })
+    }
+
+    /*
+   * 댓글 수정 api
+   */
+    function updateComment() {
+        $(".update-comment").on('click', function () {
+            // var recipeNo = $("#recipeNo").data("recipeno");
+            var commentNo = $("#comment-update").data("commentno");
+            var comment = $("#comment-update textarea").val();
+            if (comment.trim().length < 10) {
+                alert("현재 타이핑수: " + comment.trim().length + " 최소 타이핑 수는 10 이상입니다.");
+                return false;
+            }
+
+            $.ajax({
+                type: "PUT",
+                url: "/community/" + communityId + "/replies/" + commentNo,
+                data: comment,
+                contentType: "application/json; charset=utf-8"
+            }).done(function () {
+                getComments();
+                alert("정상적으로 수정되었습니다.")
+            }).fail(function () {
+                alert("예기치 않은 오류가 발생하였습니다.")
+            })
+        })
+    }
+
+    /*
+        * 댓글 삭제
+    */
+    function deleteComment() {
+        $(".btn-delete").off().on('click', function () {
+
+            let commentNo = $(this).closest("ul").data("comment-no")
+
+            $.ajax({
+                method: "DELETE",
+                url: "/community/" + communityId + "/replies/" + commentNo
+            }).done(function () {
+                alert("삭제가 완료되었습니다.");
+                getComments();
+            }).fail(function () {
+                alert("알수 없는 오류가 발생하였습니다.")
+                location.href = "/community/" + communityId;
+            })
+        })
+    }
+
+    function saveComment() {
+        $(".attach-comment").off().on('click', function () {
+
+            if(username == "anonymousUser") {
+                alert("댓글기능은 로그인 후 이용가능 합니다.")
+                window.location.href = "/user/login";
+                return false;
+            }
+
+            let data = {}
+            let content = $(this).closest("#comment-writer").find("textarea").val();
+            if (content == null) {
+
+                content = $(this).closest("#comment-reply").find("textarea").val();
+                data.commentParentNo = $(this).closest("ul").data("comment-no");
+                $(this).closest("#comment-reply").find("textarea").val("");
+
+            } else {
+                $(this).closest("#comment-writer").find("textarea").val("");
+            }
+            if (content.trim().length < 10) {
+                alert("현재 타이핑수: " + content.trim().length + " 최소 타이핑 수는 10 이상입니다.");
+                return false;
+            }
+            data.comment = content;
+            //data.username = username;
+
+            $.ajax({
+                method: "POST",
+                url: "/community/" + communityId + "/replies/",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8"
+            }).done(function () {
+                alert("댓글이 등록되었습니다.");
+                getComments();
+            }).fail(function () {
+                alert("알수 없는 오류가 발생하였습니다.")
+            })
+        })
+    }
+
+</script>
+</html>

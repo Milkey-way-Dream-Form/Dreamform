@@ -1,25 +1,35 @@
 package com.milkyway.dreamform.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
 
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter @Setter
 public class Reply extends Timestamped {
         @Id
-        @GeneratedValue
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "reply_id")
         private Long id;
 
-        @ManyToOne(fetch = LAZY)
+        @ManyToOne
         @JoinColumn(name = "user_id")
         private User user;
 
-        private String reply_contents;
-        private String reply_image_path;
-        private String reply_image_original;
+        @ManyToOne
+        @JoinColumn(name = "community_id")
+        private Community community;
+
+        private String comment;
+
+        public void updateReply(String comment) {
+                this.comment = comment;
+        }
 }

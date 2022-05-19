@@ -1,9 +1,8 @@
 package com.milkyway.dreamform.model;
 
-import com.milkyway.dreamform.dto.SignupRequestDto;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,10 +10,19 @@ import java.util.List;
 
 @Setter
 @Getter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class User extends Timestamped {
 
+//    public User(String username, String password, String email,String filed) {
+//        this.username = username;
+//        this.password = password;
+//        this.email = email;
+//        this.kakaoId = null;
+//        this.filed = filed;
+//    }
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
@@ -44,18 +52,31 @@ public class User extends Timestamped {
     private String email;
 
     @Column(nullable = true)
+    private String filed;
+
+    @Column(nullable = true)
     private Long kakaoId;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Builder.Default
     private List<Reply> replies = new ArrayList<>();
-
-    public void addReply(Reply reply) {
-        replies.add(reply);
-        reply.setUser(this);
-    }
 
     //비밀번호 변경
     public void updatePw(String pw) {
         this.password = pw;
     }
+
+    //댓글 추가
+    public void addReply(Reply reply) {
+        replies.add(reply);
+        reply.setUser(this);
+    }
+
+    //댓글 삭제
+    public void deleteReply(Reply reply) {
+        replies.remove(reply);
+        reply.setUser(null);
+    }
+
 }

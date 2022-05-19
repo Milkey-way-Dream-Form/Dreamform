@@ -13,7 +13,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.io.IOException;
 import java.security.Principal;
 
@@ -38,10 +37,10 @@ public class CommunityService {
                 () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다. " + userName)
         );
         if(image != null) {
-            return communityRepository.save(communityDto.toEntity(image, user, true)).getCommunity_id();
+            return communityRepository.save(communityDto.toEntity(image, user, true)).getId();
         }
         else {
-            return communityRepository.save(communityDto.toEntity(image, user, false)).getCommunity_id();
+            return communityRepository.save(communityDto.toEntity(image, user, false)).getId();
         }
     }
 
@@ -49,7 +48,7 @@ public class CommunityService {
     public CommunityDto getCommunity(Long id){
         Community community = communityRepository.findById(id).get();
         CommunityDto communityDto = CommunityDto.builder()
-                .community_id(community.getCommunity_id())
+                .id(community.getId())
                 .userName(community.getUser().getUsername())
                 .community_title(community.getCommunity_title())
                 .uploadFile(community.getCommunity_image())

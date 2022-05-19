@@ -54,7 +54,7 @@ public class ImageService {
         return new UploadFile(originalFilename, saveFileName); //파일의 원본이름과 변형한 이름 반환해 db에 upload
     }
 
-    public MultipartFile Image
+    //public MultipartFile Image;
 
     private String createSaveFileName(String originalFilename) { // 파일의 원본 이름을 받아
         String uuid = UUID.randomUUID().toString(); // 중복 방지를 위해 랜덤 코드 생성

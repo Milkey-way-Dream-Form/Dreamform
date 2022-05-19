@@ -1,12 +1,14 @@
 package com.milkyway.dreamform.controller;
 
-import antlr.collections.List;
+
 import com.milkyway.dreamform.dto.CommunityDto;
 import com.milkyway.dreamform.model.Community;
+
 import com.milkyway.dreamform.model.Pagenation;
 import com.milkyway.dreamform.model.UploadFile;
 import com.milkyway.dreamform.service.CommunityService;
 import com.milkyway.dreamform.service.ImageService;
+
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -74,8 +76,8 @@ public class CommunityController {
             
         }
         communityDto.setCommunity_contents(edit.getCommunity_contents());
-        communityService.createCommunity(communityDto.getUserName(), communityDto);
-        redirectAttributes.addAttribute("id", communityDto.getCommunity_id());
+//        communityService.createCommunity(communityDto.getUserName(), communityDto);
+        redirectAttributes.addAttribute("id", communityDto.getId());
         return "redirect:/community/{id}";
     }
 

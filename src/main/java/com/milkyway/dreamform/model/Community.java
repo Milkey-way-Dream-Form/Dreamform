@@ -1,10 +1,16 @@
 package com.milkyway.dreamform.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.milkyway.dreamform.model.Timestamped;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import static javax.persistence.FetchType.LAZY;
 
 @Getter
@@ -14,11 +20,17 @@ public class Community extends Timestamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long community_id;
+    @Column(name = "community_id")
+    private Long id;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
+
     private User user;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Reply>  replies = new ArrayList<>();
 
     @Column
     private String community_title;
@@ -41,8 +53,9 @@ public class Community extends Timestamped {
     }
 
     @Builder
-    public Community(Long community_id, User user, String community_title, String community_contents,UploadFile community_image, boolean imgWhether, Integer viewCounts) {
-        this.community_id = community_id;
+
+    public Community(Long id, User user, String community_title, String community_contents,UploadFile community_image, boolean imgWhether, Integer viewCounts) {
+        this.id = id;
         this.user = user;
         this.community_title = community_title;
         this.community_contents = community_contents;
@@ -51,8 +64,21 @@ public class Community extends Timestamped {
         this.viewCounts = viewCounts;
     }
 
+
     public void updateImage(UploadFile community_image) {
         this.community_image = community_image;
+    }
+    //댓글 추가
+    public void addReply(Reply reply) {
+        replies.add(reply);
+        reply.setCommunity(this);
+    }
+
+    //댓글 삭제
+    public void deleteReply(Reply reply) {
+        replies.remove(reply);
+        reply.setCommunity(null);
+
     }
 }
 

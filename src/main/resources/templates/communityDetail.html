@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head>
+<head th:replace="fragments.html :: head">
     <meta charset="UTF-8">
     <title>게시글 확인</title>
 </head>
@@ -17,14 +18,26 @@
 </div>
 <div>
     <div th:if="${idCheck}">
-        <button><a th:href="@{'/community/editForm/' + ${community.community_id}}">수정</a></button>
+        <button><a th:href="@{'/community/editForm/' + ${community.id}}">수정</a></button>
     </div>
     <div th:if="${idCheck}">
-        <form id="delete-form" th:action="@{'/community/delete/' + ${community.community_id}}" method="POST">
+        <form id="delete-form" th:action="@{'/community/delete/' + ${community.id}}" method="POST">
             <input type="hidden" name="_method" value="DELETE"/>
             <button type="submit">삭제</button>
         </form>
     </div>
 </div>
+
+<form id="comment-form" class="col-sm-8">
+    <div id="comment-box" class="form-group">
+        <div id="comment-show"></div>
+        <div id="comment-writer" class="form-group">
+            <button type="button" class="attach-comment btn btn-outline-dark mt-2">댓글등록</button>
+            <textarea class="form-control mt-2" rows="10" cols="124" placeholder="댓글을 남겨주세요" maxlength="200"></textarea>
+        </div>
+    </div>
+</form>
+<script th:replace="fragments.html :: reply">
+</script>
 </body>
 </html>
