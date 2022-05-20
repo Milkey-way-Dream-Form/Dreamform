@@ -72,6 +72,8 @@ public class CommunityService {
 
     @Transactional
     public void deleteCommunity(Long id) {
+        Community community = communityRepository.findById(id).get();
+        imageService.deleteFile(community.getCommunity_image().getImageOriginal());
         communityRepository.deleteById(id);
     }
 

@@ -71,12 +71,16 @@ public class CommunityController {
         log.info("" + edit.getAttachFile().getOriginalFilename());
         CommunityDto communityDto = communityService.getCommunity(id);
         communityDto.setCommunity_title(edit.getCommunity_title());
-        if(edit.getAttachFile() != null) {
-            communityDto.setAttachFile(edit.getAttachFile());
-            
-        }
         communityDto.setCommunity_contents(edit.getCommunity_contents());
-//        communityService.createCommunity(communityDto.getUserName(), communityDto);
+        if(edit.getAttachFile() != null) {
+            if(communityDto.getUploadFile() != null) {
+                imageService.deleteFile(communityDto.getUploadFile().getImageOriginal());
+            }
+            communityDto.setAttachFile(edit.getAttachFile());
+            UploadFile image = imageService.saveFile(communityDto.getAttachFile());
+            communityDto.setUploadFile(image);
+        }
+        communityService.createCommunity(communityDto.getUploadFile() ,communityDto.getUserName(), communityDto);
         redirectAttributes.addAttribute("id", communityDto.getId());
         return "redirect:/community/{id}";
     }

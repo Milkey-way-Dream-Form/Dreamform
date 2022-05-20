@@ -27,7 +27,7 @@ public class ImageService {
     // 전달 받은 파일 이름 존재 시 삭제
     public void deleteFile(String saveFileName) {
         File file = new File(getFullPath(saveFileName));
-        if (file.exists()) file.delete();
+        if (file.exists()) file.delete(); // 파일이 존재하면 로컬에 있는 file을 삭제함
     }
     
     // 받은 파일들을 전부 List에 담아 반환
@@ -53,8 +53,6 @@ public class ImageService {
 
         return new UploadFile(originalFilename, saveFileName); //파일의 원본이름과 변형한 이름 반환해 db에 upload
     }
-
-    //public MultipartFile Image;
 
     private String createSaveFileName(String originalFilename) { // 파일의 원본 이름을 받아
         String uuid = UUID.randomUUID().toString(); // 중복 방지를 위해 랜덤 코드 생성

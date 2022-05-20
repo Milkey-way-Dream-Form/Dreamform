@@ -17,7 +17,7 @@
     <p th:text="'조회수 : ' + ${community.viewCounts}"></p>
     <p th:text="'작성자 : ' + ${community.userName}"></p>
 
-    <form th:action="@{/community/edit/{id}(id = ${community.community_id})}" method="POST" enctype="multipart/form-data">
+    <form th:action="@{/community/edit/{id}(id = ${community.id})}" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="PUT">
         <label for="inputTitle">제목</label>
         <input type="text" name="community_title" id="inputTitle" th:value="${community.community_title}"><br>
