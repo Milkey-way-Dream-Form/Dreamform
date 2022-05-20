@@ -1,13 +1,126 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<<<<<<< HEAD
+<style>
+    /*#img-selector {display: none;}*/
+    div#editor {padding: 16px 24px; border: 1px solid #D6D6D6; border-radius: 4px;}
+    #editor img { max-width: 100%; }
+    button.active { background-color: #999999; color: #FFF; }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>커뮤니티 게시글 작성</title>
+</head>
 <body>
-<form th:action="@{/create}" method="POST">
-    <label for="inputTitle">제목</label>
-    <input type="text" name="community_title" id="inputTitle"><br>
-    <label for="inputContent">내용</label>
-    <textarea type="text" name="community_contents" id="inputContent"></textarea><br>
-    <input type="submit" value="등록">
-    <a href="/list" value="취소">취소</a>
-</form>
+    <form th:action="@{/create}" method="POST" enctype="multipart/form-data">
+        <label for="inputTitle">제목</label>
+        
+        <input type="text" name="community_title" id="inputTitle"><br>
+        <input id="img-selector" type="file" name="attachFile"/>
+        <div class="editor-menu">
+            <button id="btn-bold"><b>B</b></button>
+            <button id="btn-italic"><i>I</i></button>
+            <button id="btn-underline"><u>U</u></button>
+            <button id="btn-image">IMG</button>
+        </div>
+        <div id="editor">
+            <div id="editor_text" contenteditable="true">
+            </div>
+        </div>
+        <input type="hidden" name="community_contents" id="inputContent">
+        <input type="submit" value="등록" onclick="getContents()">
+        <a href="/list" value="취소">취소</a>
+    </form>
 </body>
+<script>
+    const editor = document.getElementById('editor');
+    const btnBold = document.getElementById('btn-bold');
+    const btnItalic = document.getElementById('btn-italic');
+    const btnUnderline = document.getElementById('btn-underline');
+    const btnImage = document.getElementById('btn-image');
+    const imageSelector = document.getElementById('img-selector');
+    const editorText = document.getElementById('editor_text');
+    const inputContent = document.getElementById('inputContent');
+    const boldWhether = false;
+    const italicWhether = false;
+    const underlineWhether = false;
+
+    btnBold.addEventListener('click', function (e) {
+        setStyle('bold');
+        e.preventDefault();
+    });
+
+    btnItalic.addEventListener('click', function (e) {
+        setStyle('italic');
+        e.preventDefault();
+    });
+
+    btnUnderline.addEventListener('click', function (e) {
+        setStyle('underline');
+        e.preventDefault();
+    });
+
+    btnImage.addEventListener('click', function (e) {
+        imageSelector.click();
+        e.preventDefault();
+    });
+    
+    editor.addEventListener('mousedown', function (e) {
+        document.execCommand(style);
+        checkStyle();
+        e.preventDefault();
+    });
+
+    function setStyle(style) {
+        document.execCommand(style);
+        focusEditor();
+    }
+
+    function focusEditor() {
+        editor.focus({preventScroll: true});
+    }
+
+    imageSelector.addEventListener('change', function (e) {
+        const files = e.target.files;
+        if (!!files) {
+            insertImageDate(files[0]);
+        }
+    });
+
+    function insertImageDate(file) { 
+        const reader = new FileReader();
+        reader.addEventListener('load', function (e) {
+            focusEditor();
+            document.execCommand('insertImage', false, `${reader.result}`);
+        });
+        reader.readAsDataURL(file);
+    }
+
+    function checkStyle() {
+        if (isStyle('bold')) {
+            btnBold.classList.add('active');
+        } else {
+            btnBold.classList.remove('active');
+        } if (isStyle('italic')) {
+            btnItalic.classList.add('active');
+        } else{
+            btnItalic.classList.remove('active');
+        } if (isStyle('underline')) {
+            btnUnderline.classList.add('active');
+        } else {
+            btnUnderline.classList.remove('active');
+        }
+    }
+
+    function isStyle(style) {
+        return document.queryCommandState(style);
+    }
+
+    function getContents() {
+        inputContent.value = editorText.innerText;
+        return true;
+    }
+
+</script>
 </html>
