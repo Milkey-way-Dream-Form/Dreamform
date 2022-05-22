@@ -19,13 +19,13 @@
                 로그아웃
             </a>
         </button>
-        <button class="unselectable clickable" >로그인</button>
+        <button th:if="${username} == null" class="unselectable clickable" >로그인</button>
         <button class="unselectable clickable">회원가입</button>
     </div>
 </nav>
 <menu>
     <div>
-        <button class="unselectable clickable"onclick="location.href='/profile'">내 프로필</button>
+        <button class="unselectable clickable">내 프로필</button>
         <button class="unselectable clickable"onclick="location.href='/list'">커뮤니티</button>
         <button class="unselectable clickable">로드맵</button>
         <button class="unselectable clickable">가이드</button>
