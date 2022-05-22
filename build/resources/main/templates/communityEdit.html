@@ -6,7 +6,7 @@
 </head>
 <style>
     /*#img-selector {display: none;}*/
-    div#editor {padding: 16px 24px; border: 1px solid #D6D6D6; border-radius: 4px;}
+    div#editor_text {padding: 16px 24px; border: 1px solid #D6D6D6; border-radius: 4px;}
     #editor img { max-width: 100%; }
     button.active { background-color: #999999; color: #FFF; }
     #editor_text {display: inline;}
@@ -51,9 +51,9 @@
     const editorText = document.getElementById('editor_text');
     const inputContent = document.getElementById('inputContent');
     const existingImg = document.getElementById('existingImg');
-    const boldWhether = false;
-    const italicWhether = false;
-    const underlineWhether = false;
+    // const boldWhether = false;
+    // const italicWhether = false;
+    // const underlineWhether = false;
 
     btnBold.addEventListener('click', function (e) {
         setStyle('bold');
@@ -129,7 +129,6 @@
 
     function getContents() {
         inputContent.value = editorText.innerText;
-        inputContent.value = editor.innerText;
         return true;
     }
 
