@@ -25,7 +25,6 @@ public class Community extends Timestamped {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
-
     private User user;
 
     @JsonIgnore
