@@ -17,14 +17,15 @@ import static javax.persistence.FetchType.LAZY;
 @NoArgsConstructor
 @Entity
 public class Community extends Timestamped {
-//
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "community_id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "userName")
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "user_id")
+
     private User user;
 
     @JsonIgnore
@@ -37,6 +38,12 @@ public class Community extends Timestamped {
     @Column
     private String community_contents;
 
+    @Embedded
+    private UploadFile uploadFile;
+
+    @Column(columnDefinition = "boolean default false", nullable = false)
+    private boolean imgWhether;
+
     @Column(columnDefinition = "integer default 0", nullable = false)
     private Integer viewCounts;
 
@@ -46,14 +53,20 @@ public class Community extends Timestamped {
     }
 
     @Builder
-    public Community(Long id, User user, String community_title, String community_contents, Integer viewCounts) {
+    public Community(Long id, User user, String community_title, String community_contents,UploadFile uploadFile, boolean imgWhether, Integer viewCounts) {
         this.id = id;
         this.user = user;
         this.community_title = community_title;
         this.community_contents = community_contents;
+        this.uploadFile = uploadFile;
+        this.imgWhether = imgWhether;
         this.viewCounts = viewCounts;
     }
 
+
+    public void updateImage(UploadFile uploadFile) {
+        this.uploadFile = uploadFile;
+    }
     //댓글 추가
     public void addReply(Reply reply) {
         replies.add(reply);
@@ -64,6 +77,7 @@ public class Community extends Timestamped {
     public void deleteReply(Reply reply) {
         replies.remove(reply);
         reply.setCommunity(null);
+
     }
 }
 
