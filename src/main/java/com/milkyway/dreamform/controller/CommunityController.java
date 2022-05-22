@@ -50,7 +50,7 @@ public class CommunityController {
     }
 
     @GetMapping("/community/{id}")
-    public String detail(Principal principal, @PathVariable("id") Long id, Model model) {
+    public String detail(Principal principal, @PathVariable("id") Long id, Model model) throws IOException {
         communityService.updateViewCounts(id);
         CommunityDto communityDto = communityService.getCommunity(id);
         boolean idCheck = communityService.idCheck(principal, communityDto.getUserName());
@@ -60,26 +60,31 @@ public class CommunityController {
     }
 
     @GetMapping("/community/editForm/{id}")
-    public String editForm(@PathVariable("id") Long id, Model model) {
+    public String editForm(@PathVariable("id") Long id, Model model) throws IOException {
         CommunityDto communityDto = communityService.getCommunity(id);
         model.addAttribute("community", communityDto);
         return "communityEdit";
     }
 
     @PutMapping("/community/edit/{id}")
-    public String editForm(@PathVariable("id") Long id, CommunityDto edit, RedirectAttributes redirectAttributes) throws IOException  {
-        log.info("" + edit.getAttachFile().getOriginalFilename());
+    public String editForm(@PathVariable("id") Long id, @ModelAttribute CommunityDto edit, RedirectAttributes redirectAttributes) throws IOException  {
         CommunityDto communityDto = communityService.getCommunity(id);
+        if(communityDto.getUploadFile() != null) {
+            if(!edit.getAttachFile().isEmpty()) {
+                imageService.deleteFile(communityDto.getUploadFile().getImageOriginal());
+                UploadFile image = imageService.saveFile(edit.getAttachFile());
+                communityDto.setUploadFile(image);
+                log.info("original is Not Null and edit not Null");
+            }
+        }else {
+            if(!edit.getAttachFile().isEmpty()) {
+                UploadFile image = imageService.saveFile(edit.getAttachFile());
+                communityDto.setUploadFile(image);
+                log.info("original is Null and edit not Null");
+            }
+        }
         communityDto.setCommunity_title(edit.getCommunity_title());
         communityDto.setCommunity_contents(edit.getCommunity_contents());
-        if(edit.getAttachFile() != null) {
-            if(communityDto.getUploadFile() != null) {
-                imageService.deleteFile(communityDto.getUploadFile().getImageOriginal());
-            }
-            communityDto.setAttachFile(edit.getAttachFile());
-            UploadFile image = imageService.saveFile(communityDto.getAttachFile());
-            communityDto.setUploadFile(image);
-        }
         communityService.createCommunity(communityDto.getUploadFile() ,communityDto.getUserName(), communityDto);
         redirectAttributes.addAttribute("id", communityDto.getId());
         return "redirect:/community/{id}";

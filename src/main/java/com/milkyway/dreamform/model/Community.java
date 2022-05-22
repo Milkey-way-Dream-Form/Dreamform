@@ -39,7 +39,7 @@ public class Community extends Timestamped {
     private String community_contents;
 
     @Embedded
-    private UploadFile community_image;
+    private UploadFile uploadFile;
 
     @Column(columnDefinition = "boolean default false", nullable = false)
     private boolean imgWhether;
@@ -53,20 +53,19 @@ public class Community extends Timestamped {
     }
 
     @Builder
-
-    public Community(Long id, User user, String community_title, String community_contents,UploadFile community_image, boolean imgWhether, Integer viewCounts) {
+    public Community(Long id, User user, String community_title, String community_contents,UploadFile uploadFile, boolean imgWhether, Integer viewCounts) {
         this.id = id;
         this.user = user;
         this.community_title = community_title;
         this.community_contents = community_contents;
-        this.community_image = community_image;
+        this.uploadFile = uploadFile;
         this.imgWhether = imgWhether;
         this.viewCounts = viewCounts;
     }
 
 
-    public void updateImage(UploadFile community_image) {
-        this.community_image = community_image;
+    public void updateImage(UploadFile uploadFile) {
+        this.uploadFile = uploadFile;
     }
     //댓글 추가
     public void addReply(Reply reply) {

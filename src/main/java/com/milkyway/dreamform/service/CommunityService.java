@@ -45,13 +45,13 @@ public class CommunityService {
     }
 
     @Transactional
-    public CommunityDto getCommunity(Long id){
+    public CommunityDto getCommunity(Long id) throws IOException{
         Community community = communityRepository.findById(id).get();
         CommunityDto communityDto = CommunityDto.builder()
                 .id(community.getId())
                 .userName(community.getUser().getUsername())
                 .community_title(community.getCommunity_title())
-                .uploadFile(community.getCommunity_image())
+                .uploadFile(community.getUploadFile())
                 .community_contents(community.getCommunity_contents())
                 .imgWhether(community.isImgWhether())
                 .viewCounts(community.getViewCounts())
@@ -73,7 +73,7 @@ public class CommunityService {
     @Transactional
     public void deleteCommunity(Long id) {
         Community community = communityRepository.findById(id).get();
-        imageService.deleteFile(community.getCommunity_image().getImageOriginal());
+        imageService.deleteFile(community.getUploadFile().getImageOriginal());
         communityRepository.deleteById(id);
     }
 
