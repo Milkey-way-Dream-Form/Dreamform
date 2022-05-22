@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title>메인 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/css/common.css}">
     <link rel="stylesheet" th:href="@{/css/main.css}">
@@ -19,7 +20,7 @@
                 로그아웃
             </a>
         </button>
-        <button class="unselectable clickable" >로그인</button>
+        <button th:if="${username} == null" class="unselectable clickable" >로그인</button>
         <button class="unselectable clickable">회원가입</button>
     </div>
 </nav>

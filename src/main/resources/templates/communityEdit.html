@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<<<<<<< HEAD
-<style>
-    /*#img-selector {display: none;}*/
-    div#editor {padding: 16px 24px; border: 1px solid #D6D6D6; border-radius: 4px;}
-    #editor img { max-width: 100%; }
-    button.active { background-color: #999999; color: #FFF; }
-</style>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>커뮤니티 게시글 작성</title>
+    <title>커뮤니티 게시글 수정</title>
 </head>
+<style>
+    /*#img-selector {display: none;}*/
+    div#editor_text {padding: 16px 24px; border: 1px solid #D6D6D6; border-radius: 4px;}
+    #editor img { max-width: 100%; }
+    button.active { background-color: #999999; color: #FFF; }
+    #editor_text {display: inline;}
+</style>
 <body>
-<form th:action="@{/create}" method="POST">
-    <label for="inputTitle">제목</label>
-    <input type="text" name="community_title" id="inputTitle"><br>
-    <label for="inputContent">내용</label>
-    <textarea type="text" name="community_contents" id="inputContent"></textarea><br>
-    <input type="submit" value="등록">
-    <a href="/list" value="취소">취소</a>
-</form>
-    <form th:action="@{/create}" method="POST" enctype="multipart/form-data">
-        <label for="inputTitle">제목</label>
+<div>
+    <p th:text="'작성날짜 : ' + ${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></p>
+    <p th:text="'조회수 : ' + ${community.viewCounts}"></p>
+    <p th:text="'작성자 : ' + ${community.userName}"></p>
 
-        <input type="text" name="community_title" id="inputTitle"><br>
+    <form th:action="@{/community/edit/{id}(id = ${community.id})}" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="PUT">
+        <label for="inputTitle">제목</label>
+        <input type="text" name="community_title" id="inputTitle" th:value="${community.community_title}"><br>
         <input id="img-selector" type="file" name="attachFile"/>
         <div class="editor-menu">
             <button id="btn-bold"><b>B</b></button>
@@ -33,14 +29,18 @@
             <button id="btn-image">IMG</button>
         </div>
         <div id="editor">
-            <div id="editor_text" contenteditable="true">
+            <div id="editor_text" th:text="${community.community_contents}" contenteditable="true">
+            </div>
+            <div id="existingImg" th:if="${community.imgWhether} == true">
+                <img th:src="|/image/${community.getUploadFile().getImagePath()}|">
             </div>
         </div>
         <input type="hidden" name="community_contents" id="inputContent">
         <input type="submit" value="등록" onclick="getContents()">
         <a href="/list" value="취소">취소</a>
     </form>
-</body>
+
+</div>
 <script>
     const editor = document.getElementById('editor');
     const btnBold = document.getElementById('btn-bold');
@@ -50,9 +50,10 @@
     const imageSelector = document.getElementById('img-selector');
     const editorText = document.getElementById('editor_text');
     const inputContent = document.getElementById('inputContent');
-    const boldWhether = false;
-    const italicWhether = false;
-    const underlineWhether = false;
+    const existingImg = document.getElementById('existingImg');
+    // const boldWhether = false;
+    // const italicWhether = false;
+    // const underlineWhether = false;
 
     btnBold.addEventListener('click', function (e) {
         setStyle('bold');
@@ -93,6 +94,7 @@
         const files = e.target.files;
         if (!!files) {
             insertImageDate(files[0]);
+            existingImg.style.display = 'none';
         }
     });
 
@@ -131,4 +133,5 @@
     }
 
 </script>
+</body>
 </html>
