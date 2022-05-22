@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @Slf4j
@@ -77,5 +79,24 @@ public class CommunityService {
         communityRepository.deleteById(id);
     }
 
+    public List<CommunityDto> getBest() {
+        List<Community> communityList = communityRepository.findAll();
+        List<Community> bestCommunityList = new ArrayList<>();
+        CommunityDto communityDto = new CommunityDto();
+        for(int i = 0; i < 5; i++) {
+            Integer max = -1;
+            int item = 0;
+            for(int j = 0; j < communityList.size(); j++) {
+                if(communityList.get(j).getViewCounts() > max) {
+                    max = communityList.get(j).getViewCounts();
+                    item = j;
+                }
+            }
+            bestCommunityList.add(communityList.get(item));
+            communityList.remove(item);
+        }
+        List<CommunityDto> bestCommunityDtoList = communityDto.toBestDtoList(bestCommunityList);
+        return bestCommunityDtoList;
+    }
 }
 
