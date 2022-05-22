@@ -27,12 +27,12 @@ public class CommunityDto {
     private LocalDateTime modifiedAt;
     private Integer viewCounts;
 
-    public Community toEntity(UploadFile image, User user, boolean imgWhether) {
+    public Community toEntity(UploadFile uploadFile, User user, boolean imgWhether) {
         Community build = Community.builder()
                 .id(id)
                 .user(user)
                 .community_title(community_title)
-                .community_image(image)
+                .uploadFile(uploadFile)
                 .imgWhether(imgWhether)
                 .community_contents(community_contents)
                 .viewCounts(viewCounts)
