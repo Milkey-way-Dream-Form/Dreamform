@@ -2,6 +2,7 @@
 .gradle
 **/build/
 **/front/
+**/api/
 
 application-jg.properties
 application-cjh.properties
