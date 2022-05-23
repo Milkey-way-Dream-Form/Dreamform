@@ -1,18 +1,28 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>비밀번호 찾기 페이지</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/findidForm.css}">
+    <title>비밀번호 찾기</title>
 </head>
 <body>
 <form role="form" th:action="@{/user/findpw}" method="post">
-<h3>비밀번호 찾기</h3>
-이메일
-<input type="text" name="email" placeholder="이메일을 입력하세요">
-<button type="submit">확인</button>
+    <div class="findidform">
+        <div class="form">
+            <div class="welcome">
+                비밀번호 찾기
+            </div>
+            <div class="form1">
+                <div class="id">가입하신 이메일을 입력해 주세요.</div>
+                <input type="text" class="idbox" name="email">
+            </div>
+            <div class="form1">
+                <button class="log" type="submit"><a>확인</a></button>
+            </div>
+        </div>
+    </div>
 </form>
-<script>
-
-</script>
 </body>
 </html>
