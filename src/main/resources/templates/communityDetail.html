@@ -1,43 +1,117 @@
 <!DOCTYPE html>
-
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments.html :: head">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
-    <title>게시글 확인</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/communityDetail.css}">
+    <title>CommunityDetail</title>
 </head>
 <body>
-<div>
-    <h2 th:text="'제목 : ' + ${community.community_title}"></h2>
-    <p th:text="'조회수 : ' + ${community.viewCounts}"></p>
-    <p th:text="'작성날짜 : ' + ${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></p>
-    <p th:text="'작성자 : ' + ${community.userName}"></p>
-    <div th:if="${community.imgWhether} == true">
-        <img th:src="|/image/${community.getUploadFile().getImagePath()}|">
+<div class="Desktop---1">
+    <div class="menu">
+        <span class="logo"><a href="/">코디</a></span>
+        <span class="menu1">로드맵</span>
+        <span class="menu2">가이드</span>
+        <span class="menu3" onclick="location.href='/list'">커뮤니티</span>
+        <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
+        <img th:src="@{/imgs/user.svg}" class="premium-icon-user-2530777-1">
+        <span class="user" th:text="${username}"></span> <span class="nim">님</span>
+        <span class="logout"><a href="/user/logout">로그아웃</a></span>
     </div>
-    <p th:text="'내용 : ' + ${community.community_contents}"></p>
-</div>
-<div>
-    <div th:if="${idCheck}">
-        <button><a th:href="@{'/community/editForm/' + ${community.id}}">수정</a></button>
-    </div>
-    <div th:if="${idCheck}">
-        <form id="delete-form" th:action="@{'/community/delete/' + ${community.id}}" method="POST">
-            <input type="hidden" name="_method" value="DELETE"/>
-            <button type="submit">삭제</button>
-        </form>
-    </div>
-</div>
+    <div class="co">
+        <div class="code">
+            <div class="code1">
+                <div class="writer" th:text="${community.userName}">
+                </div>
+                <div class="title" th:text="${community.community_title}">
+                </div>
+                <div class="code2">
+                    <div class="count" th:text="${community.viewCounts}"></div>
+                    <div class="date" th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></div>
+                </div>
+                <div th:if="${community.imgWhether} == true">
+                    <img th:src="|/image/${community.getUploadFile().getImagePath()}|">
+                </div>
+                <div class="content" th:text="${community.community_contents}"></div>
+                <div class="button" th:if="${idCheck}">
+                    <button class="b"><a th:href="@{'/community/editForm/' + ${community.id}}">수정</a></button>
+                </div>
+                <div class="button" th:if="${idCheck}">
+                    <form id="delete-form" th:action="@{'/community/delete/' + ${community.id}}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE"/>
+                        <button class="b"><a>삭제</a></button>
+                    </form>
+                </div>
+                <div class="line"></div>
 
-<form id="comment-form" class="col-sm-8">
-    <div id="comment-box" class="form-group">
-        <div id="comment-show"></div>
-        <div id="comment-writer" class="form-group">
-            <button type="button" class="attach-comment btn btn-outline-dark mt-2">댓글등록</button>
-            <textarea class="form-control mt-2" rows="10" cols="124" placeholder="댓글을 남겨주세요" maxlength="200"></textarea>
+                    <form id="comment-form" class="col-sm-8">
+                        <div id="comment-box" class="form-group">
+                            <div class="code3" id="comment-show"></div>
+                            <div id="comment-writer" class="form-group">
+                                <textarea class="retext" rows="10" cols="124" placeholder="댓글을 남겨주세요" maxlength="200"></textarea>
+                                <button type="button" class="b attach-comment"><a>댓글 등록</a></button>
+                            </div>
+                        </div>
+                    </form>
+<!--                    <input type="text" class="retext">-->
+<!--                    <div class="button">-->
+<!--                        <button class="b"><span>댓글 등록</span></button>-->
+<!--                    </div>-->
+                </div>
         </div>
     </div>
-</form>
+</div>
+</body>
 <script th:replace="fragments.html :: reply">
 </script>
-</body>
 </html>
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">-->
+<!--<head th:replace="fragments.html :: head">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>게시글 확인</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+<!--    <h2 th:text="'제목 : ' + ${community.community_title}"></h2>-->
+<!--    <p th:text="'조회수 : ' + ${community.viewCounts}"></p>-->
+<!--    <p th:text="'작성날짜 : ' + ${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></p>-->
+<!--    <p th:text="'작성자 : ' + ${community.userName}"></p>-->
+<!--    <div th:if="${community.imgWhether} == true">-->
+<!--        <img th:src="|/image/${community.getUploadFile().getImagePath()}|">-->
+<!--    </div>-->
+<!--    <p th:text="'내용 : ' + ${community.community_contents}"></p>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <div th:if="${idCheck}">-->
+<!--        <button><a th:href="@{'/community/editForm/' + ${community.id}}">수정</a></button>-->
+<!--    </div>-->
+<!--    <div th:if="${idCheck}">-->
+<!--        <form id="delete-form" th:action="@{'/community/delete/' + ${community.id}}" method="POST">-->
+<!--            <input type="hidden" name="_method" value="DELETE"/>-->
+<!--            <button type="submit">삭제</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<form id="comment-form" class="col-sm-8">-->
+<!--    <div id="comment-box" class="form-group">-->
+<!--        <div id="comment-show"></div>-->
+<!--        <div id="comment-writer" class="form-group">-->
+<!--            <button type="button" class="attach-comment btn btn-outline-dark mt-2">댓글등록</button>-->
+<!--            <textarea class="form-control mt-2" rows="10" cols="124" placeholder="댓글을 남겨주세요" maxlength="200"></textarea>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</form>-->
+<!--<script th:replace="fragments.html :: reply">-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

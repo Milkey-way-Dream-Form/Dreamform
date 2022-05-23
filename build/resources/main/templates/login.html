@@ -1,65 +1,45 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/common.css}">
-    <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" th:href="@{/css/loginform.css}">
-    <script th:src="@{/scripts/common.js}"></script>
-    <title>Cody</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <title>Cody-login</title>
 </head>
 <body>
-    <nav>
-        <h2 class="unselectable clickable" ><a href="/">코디</a></h2>
-        <div>
-            <button class="unselectable clickable">로그인</button>
-            <button class="unselectable clickable">회원가입</button>
-        </div>
-    </nav>
-    <menu>
-        <div>
-            <button class="unselectable clickable">내 프로필</button>
-            <button class="unselectable clickable"onclick="location.href='/list'">커뮤니티</button>
-            <button class="unselectable clickable">로드맵</button>
-            <button class="unselectable clickable">가이드</button>
-        </div>
-    </menu>
-    <main>
-        <div id="loginForm">
+<div class="login">
+    <div class="loginform">
+        <div class="form">
             <form action="/user/login" method="post">
-                <div class="inputField">
-                <label>아이디</label>
-                <input type="text" name="username">
+                <div class="logo"><a href="/">코디</a></div>
+                <div class="welcome">
+                    코디에 오신 것을 환영합니다!
                 </div>
-                <div class="inputField">
-                <label>비밀번호</label>
+                <div class="form1">
+                    <div class="id">아이디</div>
+                    <input type="text" class="idbox" name="username">
                 </div>
-                <div class="inputField">
-                <input type="password" name="password">
-                <button>로그인</button>
+                <div class="form1">
+                    <div class="id">비밀번호</div>
+                    <input type="password" class="idbox" name="password">
+                </div>
+                <div class="form1">
+                    <button class="log"><span>로그인</span></button>
                 </div>
             </form>
-            <div class="inputField">
-                <button class="kakaoLogin_wide" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=5f366d763b42c71ea2d61c5f717b8520&redirect_uri=http://localhost:8080/user/kakao/callback&response_type=code'"></button>
+            <div class="form2">
+                <button class="find" onclick="location.href='/user/findid'"><span>아이디 찾기</span></button>
+                <button class="find" onclick="location.href='/user/findpw'"><span>비밀번호 찾기</span></button>
             </div>
-            <div class="inputField">
-            <button class="inputField" onclick="location.href='/user/signup'">
-                회원가입
-            </button>
+            <div class="form1">
+                <button class="kakaolog" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=5f366d763b42c71ea2d61c5f717b8520&redirect_uri=http://localhost:8080/user/kakao/callback&response_type=code'"><span>카카오로 로그인하기</span></button>
             </div>
-            <div class="inputField">
-            <button class="inputField" onclick="location.href='/user/findid'">
-                아이디 찾기
-            </button>
-            </div>
-            <div class="inputField">
-            <button class="inputField" onclick="location.href='/user/findpw'" >
-                비밀번호 찾기
-            </button>
+            <div class="form1">
+                <button class="signup" onclick="location.href='/user/signup'"><span>회원가입</span></button>
             </div>
         </div>
-    </main>
+    </div>
+</div>
 </body>
 </html>

@@ -1,50 +1,37 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/common.css}">
-    <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" th:href="@{/css/loginform.css}">
-    <script th:src="@{/scripts/common.js}"></script>
-    <title>Cody</title>
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
+    <title>Signup</title>
 </head>
 <body>
-    <nav>
-        <h2 class="unselectable clickable" ><a href="/">코디</a></h2>
-        <div>
-            <button class="unselectable clickable">로그인</button>
-            <button class="unselectable clickable">회원가입</button>
+<form class="signup" th:action="@{/user/signup}" method="post">
+    <div class="signupform">
+        <div class="form">
+            <div class="logo"><a href="/">코디</a></div>
+            <div class="welcome">
+                회원가입
+            </div>
+            <div class="form1">
+                <div class="id">아이디</div>
+                <input type="text" class="idbox" name="username">
+            </div>
+            <div class="form1">
+                <div class="id">비밀번호</div>
+                <input type="password" class="idbox" name="password">
+            </div>
+            <div class="form1">
+                <div class="id">이메일</div>
+                <input type="text" class="idbox" name="email">
+            </div>
+            <div class="form2">
+                <button class="log" type="submit"><a th:href="@{/user/login}">회원가입</a></button>
+            </div>
         </div>
-    </nav>
-    <menu>
-        <div>
-            <button class="unselectable clickable">내 프로필</button>
-            <button class="unselectable clickable"onclick="location.href='/list'">커뮤니티</button>
-            <button class="unselectable clickable">로드맵</button>
-            <button class="unselectable clickable">가이드</button>
-        </div>
-    </menu>
-    <div id="regForm">
-        <form action="/user/signup" method="post">
-            <div class="inputField">
-                <label>아이디</label>
-                <input type="text" name="username">
-            </div>
-            <div class="inputField">
-                <label>비밀번호</label>
-                <input type="password" name="password">
-            </div>
-            <div class="inputField">
-                <label>이메일</label>
-                <input type="text" name="email">
-            </div>
-            <div class="inputField">
-                <button>회원 가입</button>
-            </div>
-        </form>
     </div>
-    <footer>
-    </footer>
+</form>
 </body>
 </html>

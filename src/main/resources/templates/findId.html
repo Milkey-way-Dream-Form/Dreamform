@@ -1,14 +1,27 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>아이디 찾기 페이지</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/findid.css}">
+    <title>아이디 찾기</title>
 </head>
 <body>
-<form th:action="@{/user/login}"  th:object="${form}" method="post">
-아이디
-    <span th:text="${user}"></span>
-<button type="submit">확인</button>
+<form class="findid" th:action="@{/user/login}"  th:object="${form}" method="post">
+    <div class="findidform">
+        <div class="form">
+            <div class="welcome">
+                아이디 찾기
+            </div>
+            <div class="form1">
+                <div class="id">회원님의 아이디는 <span th:text="${user}"></span> 입니다.</div>
+            </div>
+            <div class="form1">
+                <button class="log"><span>확인</span></button>
+            </div>
+        </div>
+    </div>
 </form>
 </body>
 </html>

@@ -1,76 +1,88 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>community</title>
-    <style>
-        th, tr, td {border: 1px solid black; margin: 10px;}
-        ul, li {text-decoration: none; display: inline; margin:10px}
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/communityList.css}">
+    <title>CommunityList</title>
 </head>
 <body>
-<div>
-    <h1>커뮤니티</h1>
-</div>
-<div>
-    <div>
-        <table>
-            <thead>
-            <tr>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성날짜</th>
-                <th>조회수</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="community : ${communities}">
-                <td><a th:href="'/community/'+${community.id}" th:text="${community.community_title}"></a></td>
-                <td th:text="${community.userName}"></td>
-                <td th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></td>
-                <td th:text="${community.viewCounts}"></td>
-            </tr>
-            </tbody>
-        </table>
+<div class="Desktop---1">
+    <div class="menu">
+        <span class="logo"><a href="/">코디</a></span>
+        <span class="menu1">로드맵</span>
+        <span class="menu2">가이드</span>
+        <span class="menu3" onclick="location.href='/list'">커뮤니티</span>
+        <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
+        <img th:src="@{/imgs/user.svg}" class="premium-icon-user-2530777-1">
+        <span class="user" th:text="${username}"></span> <span class="nim">님</span>
+        <span class="logout"><a href="/user/logout">로그아웃</a></span>
     </div>
-    <br>
+    <div class="communityList">
+        <div class="community">
+            개발자들의 이야기
+        </div>
+        <div class="searchbox">
+            <input type="text" class="search">
+            <img th:src="@{/imgs/search.svg}" class="searchicon">
+        </div>
+        <button class="write"><a th:href="@{/create}">글쓰기</a></button>
+        <div class="list">
+            <div class="line"></div>
+            <div class="communityList1" th:each="community : ${communities}">
+                    <a class="title" th:href="'/community/'+${community.id}" th:text="${community.community_title}">
+                        웹 백엔드 개발자가 되려면 공부 해야하는 필수적인...
+                    </a>
+                <div class="right">
+                    <a class="id" th:text="${community.userName}"></a>
+                    <a class="date" th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></a>
+                    <a class="count" th:text="${community.viewCounts}"></a>
+                </div>
+            </div>
+            <div class="line1"></div>
+        </div>
 
-    <div th:if="${!communities.isEmpty()}">
-        <nav>
-            <ul>
-                <li>
-                    <a th:href="@{/list/?page=1}">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li >
-                    <a th:href="@{/list/?page={page} (page = ${pagenation.prevBlock})}" >
-                        <span aria-hidden="true">&lt;</span>
-                    </a>
-                </li>
-                <th:block  th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}">
-                    <li
-                        th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}"
-                        th:each="pageButton : ${#numbers.sequence(start, end)}">
-                        <a th:href="@{/list/?page={page} (page = ${pageButton})}" th:text=${pageButton}></a>
-                    </li>
-                </th:block>
-                <li >
-                    <a th:href="@{/list/?page={page} (page = ${pagenation.nextBlock})}">
-                        <span aria-hidden="true">&gt;</span>
-                    </a>
-                </li>
-                <li >
-                    <a  th:href="@{/list/?page={page} (page = ${pagenation.totalPageCnt})}">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <br>
-    <div>
-        <a th:href="@{/create}">글쓰기</a>
+        <div class="pagination" th:if="${!communities.isEmpty()}">
+            <nav>
+                    <button class="pagebox">
+                        <a th:href="@{/list/?page=1}">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </button>
+                    <button class="pagebox">
+                        <a class="pagebox" th:href="@{/list/?page={page} (page = ${pagenation.prevBlock})}" >
+                            <span aria-hidden="true">&lt;</span>
+                        </a>
+                    </button>
+                    <th:block  th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}">
+                        <button class="pagebox"
+                                th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}"
+                                th:each="pageButton : ${#numbers.sequence(start, end)}">
+                            <a class="currnum" th:href="@{/list/?page={page} (page = ${pageButton})}" th:text=${pageButton}></a>
+                        </button>
+                    </th:block>
+                    <button class="pagebox">
+                        <a th:href="@{/list/?page={page} (page = ${pagenation.nextBlock})}">
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+                    </button>
+                    <button class="pagebox">
+                        <a th:href="@{/list/?page={page} (page = ${pagenation.totalPageCnt})}">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </button>
+            </nav>
+        </div>
+
+<!--        <div class="pagination">-->
+<!--            <button class="pagebox"><span>«</span></button>-->
+<!--            <button class="pagebox"><span>‹</span></button>-->
+<!--            <button class="pagebox curr"><span class="currnum">1</span></button>-->
+<!--            <button class="pagebox"><span>2</span></button>-->
+<!--            <button class="pagebox"><span>›</span></button>-->
+<!--            <button class="pagebox"><span>»</span></button>-->
+<!--        </div>-->
     </div>
 </div>
 </body>

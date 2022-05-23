@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/findid.css}">
-    <title>아이디 찾기</title>
+    <link rel="stylesheet" th:href="@{/css/findpw.css}">
+    <title>비밀번호 찾기</title>
 </head>
 <body>
-<form class="findid" th:action="@{/user/login}"  th:object="${form}" method="post">
+<div class="findid">
     <div class="findidform">
         <div class="form">
             <div class="welcome">
-                아이디 찾기
+                비밀번호 찾기
             </div>
             <div class="form1">
-                <div class="id">회원님의 아이디는 <span th:text="${user}"></span> 입니다.</div>
+                <div class="id">입력하신 이메일로 임시 비밀번호가 전송 되었습니다.</div>
             </div>
             <div class="form1">
-                <button class="log"><span>확인</span></button>
+                <button class="log"><a th:href="@{/user/login}">확인</a></button>
             </div>
         </div>
     </div>
-</form>
+</div>
 </body>
 </html>

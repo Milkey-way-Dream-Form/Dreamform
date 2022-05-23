@@ -1,0 +1,314 @@
+.Desktop---1 {
+    width: 1440px;
+    height: 1646px;
+    flex-grow: 0;
+    padding: 23px 0 0;
+    background-color: #fff;
+    margin: 0 auto;
+}
+a {
+    text-decoration: none;
+}
+.logo a {
+    text-decoration: none;
+    color: #fff;
+}
+.menu {
+    width: auto;
+    height: 55px;
+}
+
+span.logo{
+    width: 35px;
+    height: 26px;
+    margin: 0 127px 24px 260px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    flex-grow: 0;
+    padding: 27px 22px 28px 24px;
+    background-color: #2f80ed;
+    border-radius: 50%;
+    color: #fff;
+}
+span.logout a {
+    text-decoration: none;
+    color: #000;
+}
+span.menu1{
+    width: 52px;
+    height: 26px;
+    margin: 0 62px 24px 7px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+span.menu2{
+    width: 52px;
+    height: 26px;
+    margin: 0 62px 24px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+span.menu3{
+    width: 70px;
+    height: 26px;
+    margin: 0 168px 24px 62px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+span.user {
+    font-family: AppleSDGothicNeoM00;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+.nim {
+    font-family: AppleSDGothicNeoM00;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+span.logout{
+    width: 70px;
+    height: 26px;
+    margin: 0 168px 24px 5px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+img.free-icon-alarm-bell-1059063-1 {
+    width: 23px;
+    height: 25px;
+    margin: 0 20px 0;
+    object-fit: contain;
+    opacity: 0.8;
+}
+
+img.premium-icon-user-2530777-1 {
+    width: 25px;
+    height: 25px;
+    flex-grow: 0;
+    object-fit: contain;
+}
+  /* 커뮤니티 */
+.communityList {
+    width: 1125px;
+    margin: 0 auto;
+}
+.community {
+    width: 310px;
+    height: 48px;
+    margin: 50px auto;
+    font-family: AppleSDGothicNeoH00;
+    font-size: 40px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 2px;
+    text-align: left;
+    color: #000;
+}
+.searchbox {
+    width: 400px;
+    margin: 0 auto;
+}
+.search {
+    width: 303px;
+    height: 30px;
+    padding-top: 10px;
+    margin-left: 0;
+    border-radius: 10px;
+}
+.searchicon {
+    width: 23px;
+    height: 25px;
+    margin: 0 20px 0;
+    object-fit: contain;
+    opacity: 0.8;
+}
+.write {
+    float: right;
+    margin: 40px 0 23px 343px;
+    padding: 10px 17px 9px;
+    background-color: #a9ceff;
+    border-radius: 10px;
+    border: none;
+}
+.write a {
+    text-decoration: none;
+    font-family: AppleSDGothicNeoEB00;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+.list {
+    margin-top: 100px;
+}
+.line {
+    width: 1124px;
+  height: 1px;
+  margin-bottom: 20px;
+  background-color: #c6c6c6;
+}
+.communityList1 {
+    width: 1124px;
+  height: 24px;
+    display: flex;
+}
+.line1 {
+    width: 1124px;
+    height: 1px;
+    margin: 20px 0;
+    background-color: #c6c6c6; 
+}
+.title {
+    width: 410px;
+  height: 24px;
+  margin: 0 490px 0 0;
+  font-family: AppleSDGothicNeoEB00;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.id {
+    width: 53px;
+  height: 21px;
+  font-family: AppleSDGothicNeoEB00;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.date {
+    width: 79px;
+  height: 19px;
+  font-family: AppleSDGothicNeoSB00;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+}
+.count {
+    width: 64px;
+  height: 19px;
+  font-family: AppleSDGothicNeoSB00;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.pagination {
+    width: 330px;
+    height: 37px;
+    margin: 0 auto;
+}
+.pagebox {
+    width: 37px;
+  height: 37px;
+  margin: 0 12px 0 0;
+  padding: 8px 10px 8px 11px;
+  border-radius: 5px;
+  border: solid 1px #707070;
+  background-color: #fff;
+}
+.pagination span {
+    width: 16px;
+  height: 21px;
+  font-family: AppleSDGothicNeoEB00;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.curr {
+    width: 37px;
+  height: 37px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: solid 1px #f00;
+  background-color: #fff;
+}
+.curr .currnum {
+    width: 7px;
+    height: 21px;
+    font-family: AppleSDGothicNeoEB00;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #f00;
+}
