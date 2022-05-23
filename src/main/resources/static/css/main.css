@@ -6,8 +6,9 @@
     background-color: #fff;
     margin: 0 auto;
   }
-a {
+.logo a {
   text-decoration: none;
+  color: #fff;
 }
   .menu {
     width: auto;
@@ -31,7 +32,7 @@ a {
     border-radius: 50%;
     color: #fff;
   }
-span.logo a {
+span.logout a {
   text-decoration: none;
   color: #000;
 }
