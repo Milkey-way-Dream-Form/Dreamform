@@ -1,115 +1,251 @@
-
-body {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    overflow: hidden;
+.Desktop---1 {
+    width: 1440px;
+    height: 1646px;
+    flex-grow: 0;
+    padding: 23px 0 0;
+    background-color: #fff;
+    margin: 0 auto;
+  }
+a {
+  text-decoration: none;
 }
+  .menu {
+    width: auto;
+    height: 55px;
+  }
 
-.nav {
-    position: relative;
-    width: 100%;
-    height: 64px;
-    text-align: center;
+  span.logo{
+    width: 35px;
+    height: 26px;
+    margin: 0 127px 24px 260px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    flex-grow: 0;
+    padding: 27px 22px 28px 24px;
+    background-color: #2f80ed;
+    border-radius: 50%;
+    color: #fff;
+  }
+span.logo a {
+  text-decoration: none;
+  color: #000;
 }
+  span.menu1{
+    width: 52px;
+    height: 26px;
+    margin: 0 62px 24px 7px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
 
-.nav > div {
+  span.menu2{
+    width: 52px;
+    height: 26px;
+    margin: 0 62px 24px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+
+  span.menu3{
+    width: 70px;
+    height: 26px;
+    margin: 0 168px 24px 62px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+  span.user {
+    font-family: AppleSDGothicNeoM00;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+.nim {
+  font-family: AppleSDGothicNeoM00;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+  span.logout{
+    width: 70px;
+    height: 26px;
+    margin: 0 168px 24px 5px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+
+  img.free-icon-alarm-bell-1059063-1 {
+    width: 23px;
+    height: 25px;
+    margin: 0 20px 0;
+    object-fit: contain;
+    opacity: 0.8;
+  }
+
+  img.premium-icon-user-2530777-1 {
+    width: 25px;
+    height: 25px;
+    flex-grow: 0;
+    object-fit: contain;
+  }
+
+  .Rectangle-1 {
+    width: 100%;
+    height: 398px;
+    margin: 19px 0 38px;
+    background-color: #d9d9d9;
+  }
+
+  div.block1 {
+    width: 920px;
+    margin: 0 auto;
+    padding: 38px 0 86px 0;
+  }
+
+  div.block2 {
+    width: 920px;
+    margin: 0 auto;
+    padding: 0 0 86px 0;
+  }
+
+  div.card {
+    display: flex;
+  }
+  span.roadmap {
+    width: 111.1px;
+    height: 33px;
+    font-family: AppleSDGothicNeoB00;
+    font-size: 24px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+
+  div.plus {
     display: inline-block;
-    position: relative;
-    width: 1280px;
-    top: 45px;
-}
-
-.nav > div > button {
-    font-family: 'nanum_square';
-    border: none;
-    background: none;
-    color: #707070;
     float: right;
-}
+  }
 
-.nav > div > button:hover {
-    color: #75b1ff;
-}
+  span.plus1{
+    width: 47px;
+    height: 23px;
+    flex-grow: 0;
+    margin: 0 8px 0 0;
+    font-family: AppleSDGothicNeoL00;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #4f4f4f;
+  }
 
-.nav > h2 {
-    font-family: 'recipekorea';
-    font-size: 24pt;
-    font-weight: 500;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    margin: 0px;
-    position: absolute;
-    left: 24px;
-    top: 20px;
-    color: #a8dbff;
-}
+  img.free-icon-arrow-right-6423875-1 {
+    width: 21px;
+    height: 21px;
+    flex-grow: 0;
+    margin: 1px 0 1px 8px;
+    object-fit: contain;
+  }
 
-menu {
-    position: relative;
-    width: 100%;
-    height: 30px;
-    background: #a8dbff;
-    text-align: center;
-    padding-inline-start: 0em;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    margin: 0px;
-    padding: 0px;
-}
+  .Rectangle-2 {
+    width: 294px;
+    height: 213px;
+    flex-grow: 0;
+    margin: 0 20px 0 0;
+    border-radius: 3px;
+    background-color: #d9d9d9;
+  }
 
-menu > div {
-    display: inline-block;
-    height: 100%;
-}
+  .title {
+    font-family: AppleSDGothicNeoM00;
+    font-size: 18px;
+    margin: 18px 0 5px 0;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
 
-main {
-    position: relative;
-    width: 100%;
-    height: calc(100% - 94px);
-}
+  .info {
+    font-family: AppleSDGothicNeoL00;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #828282;
+  }
 
-#mainView {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
+  .Line-2 {
+    width: 922px;
+    height: 1px;
+    margin: 15px 0 12px 0;
+    background-color: #e0e0e0;
+  }
 
-menu > div > button {
-    position: relative;
-    height: 100%;
-    border: none;
-    background: none;
-    color: rgb(255, 255, 255);
-    font-family: 'nanum_square';
-    font-size: 11pt;
-    font-weight: 800;
-}
-
-menu > div > button:hover {
-    background: #75b1ff;
-}
-
-.sliderarea {
-    display: inline;
-    overflow: hidden;
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-}
-
-.sliderarea > div {
-    position: relative;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-}
-
-.sliderarea > div > img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-}
+  .text {
+    margin: 26px 0 19px 0;
+    font-family: AppleSDGothicNeoL00;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #4f4f4f;
+  }
