@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/maincontent.css}">
+    <script src="../static/scripts/common.js"></script>
+    <script src="../static/scripts/main.js"></script>
+    <title>Cody</title>
+</head>
+<body>
+<nav>
+    <h2 class="unselectable clickable"><a href="/">코디</a></h2>
+    <div>
+        <span th:text="${username}"></span> 님
+        <button>
+            <a id="logout-text" href="/user/logout">
+                로그아웃
+            </a>
+        </button>
+        <button th:if="${username} == null" class="unselectable clickable">로그인</button>
+        <button class="unselectable clickable">회원가입</button>
+    </div>
+</nav>
+<menu>
+    <div>
+        <button class="unselectable clickable">내 프로필</button>
+        <button class="unselectable clickable" onclick="location.href='/list'">커뮤니티</button>
+        <button class="unselectable clickable">로드맵</button>
+        <button class="unselectable clickable">가이드</button>
+    </div>
+</menu>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성날짜</th>
+            <th>조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bestCommunity : ${bestCommunityList}">
+            <td><a th:href="'/community/'+${bestCommunity.id}" th:text="${bestCommunity.community_title}"></a></td>
+            <td th:text="${bestCommunity.userName}"></td>
+            <td th:text="${bestCommunity.createdAt} ? ${#temporals.format(bestCommunity.createdAt,'yyyy-MM-dd HH:mm')} : ${bestCommunity.createdAt}"></td>
+            <td th:text="${bestCommunity.viewCounts}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

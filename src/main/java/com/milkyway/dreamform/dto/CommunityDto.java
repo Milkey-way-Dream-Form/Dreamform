@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Getter
@@ -51,6 +53,24 @@ public class CommunityDto {
                 .createdAt(community.getCreatedAt())
                 .modifiedAt(community.getModifiedAt())
                 .build());
+        return communityDtoList;
+    }
+
+    public List<CommunityDto> toBestDtoList(List<Community> communityList) {
+        List<CommunityDto> communityDtoList = new ArrayList<>();
+        for(Community community : communityList) {
+            CommunityDto communityDto = CommunityDto.builder()
+                    .id(community.getId())
+                    .userName(community.getUser().getUsername())
+                    .community_title(community.getCommunity_title())
+                    .community_contents(community.getCommunity_contents())
+                    .viewCounts(community.getViewCounts())
+                    .imgWhether(community.isImgWhether())
+                    .createdAt(community.getCreatedAt())
+                    .modifiedAt(community.getModifiedAt())
+                    .build();
+            communityDtoList.add(communityDto);
+        }
         return communityDtoList;
     }
 
