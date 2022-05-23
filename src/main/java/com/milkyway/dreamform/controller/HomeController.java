@@ -21,6 +21,6 @@ public class HomeController {
         List<CommunityDto> bestCommunityListDto = communityService.getBest();
         model.addAttribute("bestCommunityList", bestCommunityListDto);
         model.addAttribute("username", userDetails.getUsername());
-        return "index";
+        return "main";
     }
 }

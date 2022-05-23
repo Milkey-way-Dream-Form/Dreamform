@@ -1,0 +1,73 @@
+.findid {
+    width: 1440px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+.findidform  {
+    width: 300px;
+    height: 150px;
+    margin: 50px auto;
+    padding: 35px 23px 86px 24px;
+    border-radius: 39px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px #707070;
+    background-color: #fff;
+  }
+.form {
+    width: 250px;
+    margin: 0 auto;
+}
+.form1 {
+    margin: 20px;
+}
+.welcome {
+    width: 200px;
+    height: 19px;
+    margin: 20px auto;
+    font-family: AppleSDGothicNeoEB00;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
+}
+.id{
+    font-family: AppleSDGothicNeoB00;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+.log {
+    width: 210px;
+    height: 35px;
+    border-radius: 9px;
+    background-color: #2f80ed;
+    border: none;
+  }
+  .log:hover {
+    background-color: #fff;
+    border: solid 1px #707070;
+  }
+  .log a {
+      text-decoration: none;
+    font-family: AppleSDGothicNeoB00;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
+  }
+  .log:hover a {
+    color: #000;
+  }

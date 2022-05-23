@@ -81,7 +81,8 @@ public class UserController {
 
     //비밀번호 찾기
     @PostMapping("/user/findpw")
-    public void findPw(MailDto mailDto) {
+    public String findPw(MailDto mailDto) {
         mailService.mailSend(mailDto);
+        return "findPw";
     }
 }

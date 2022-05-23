@@ -1,0 +1,290 @@
+.Desktop---1 {
+  width: 1440px;
+  height: 1646px;
+  flex-grow: 0;
+  padding: 23px 0 0;
+  background-color: #fff;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+}
+.logo a {
+  text-decoration: none;
+  color: #fff;
+}
+.menu {
+  width: auto;
+  height: 55px;
+}
+
+span.logo{
+  width: 35px;
+  height: 26px;
+  margin: 0 127px 24px 260px;
+  font-family: AppleSDGothicNeoM00;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  flex-grow: 0;
+  padding: 27px 22px 28px 24px;
+  background-color: #2f80ed;
+  border-radius: 50%;
+  color: #fff;
+}
+span.logout a {
+  text-decoration: none;
+  color: #000;
+}
+span.menu1{
+  width: 52px;
+  height: 26px;
+  margin: 0 62px 24px 7px;
+  font-family: AppleSDGothicNeoM00;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+
+span.menu2{
+  width: 52px;
+  height: 26px;
+  margin: 0 62px 24px;
+  font-family: AppleSDGothicNeoM00;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+
+span.menu3{
+  width: 70px;
+  height: 26px;
+  margin: 0 168px 24px 62px;
+  font-family: AppleSDGothicNeoM00;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+span.user {
+  font-family: AppleSDGothicNeoM00;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.nim {
+  font-family: AppleSDGothicNeoM00;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+span.logout{
+  width: 70px;
+  height: 26px;
+  margin: 0 168px 24px 5px;
+  font-family: AppleSDGothicNeoM00;
+  font-size: 12px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+
+img.free-icon-alarm-bell-1059063-1 {
+  width: 23px;
+  height: 25px;
+  margin: 0 20px 0;
+  object-fit: contain;
+  opacity: 0.8;
+}
+
+img.premium-icon-user-2530777-1 {
+  width: 25px;
+  height: 25px;
+  flex-grow: 0;
+  object-fit: contain;
+}
+/* 상세 페이지 */
+.co {
+    width: 1134px;
+    margin: 0 auto;
+}
+.code {
+    width: inherit;
+    margin: 0 auto;
+}
+.code1 {
+    float: left;
+    margin: 50px;
+}
+.writer {
+  font-family: AppleSDGothicNeoEB00;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2f80ed;
+}
+.title {
+    font-family: AppleSDGothicNeoEB00;
+  font-size: 36px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 2px;
+  text-align: left;
+  color: #000;
+}
+.code2{
+    margin: 20px 0 40px;
+}
+.count {
+    font-family: AppleSDGothicNeoSB00;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+}
+.date {
+    font-family: AppleSDGothicNeoSB00;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+}
+.image {
+    width: 1125px;
+  height: 332px;
+  margin: 0 0 20px;
+  background-color: #c0c0c0;
+}
+.button {
+    margin-top: 40px;
+    float: right;
+}
+.b {
+    margin: 0 6px 0 0;
+  padding: 10px 16px 9px 17px;
+  opacity: 0.5;
+  border-radius: 10px;
+  background-color: #d8d8d8;
+}
+.b:hover {
+    background-color: #2f80ed;
+}
+.b a {
+  text-decoration: none;
+    font-family: AppleSDGothicNeoEB00;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.line {
+  height: 1px;
+  margin: 120px 0 20px;
+  background-color: #c6c6c6;
+}
+.code3 {
+    margin: 20px 0;
+}
+.renum {
+    margin-top: 20px;
+    font-family: AppleSDGothicNeoSB00;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+}
+.rewriter {
+    margin: 0 6px 0 0;
+    font-family: AppleSDGothicNeoEB00;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2f80ed;
+}
+.redate {
+  font-family: AppleSDGothicNeoSB00;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #707070;
+}
+.recontent {
+    margin: 11px 3px 10px 0;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+.retext {
+    width: 1129px;
+  height: 137px;
+  margin: 20px 2px 0 0;
+  border-radius: 14px;
+  border: solid 1px #707070;
+}

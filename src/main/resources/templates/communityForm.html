@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<style>
-    /*#img-selector {display: none;}*/
-    div#editor {padding: 16px 24px; border: 1px solid #D6D6D6; border-radius: 4px;}
-    #editor img { max-width: 100%; }
-    button.active { background-color: #999999; color: #FFF; }
-</style>
-
 <head>
     <meta charset="UTF-8">
-    <title>커뮤니티 게시글 작성</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/communityForm.css}">
+    <title>CommunityForm</title>
 </head>
 <body>
-    <form th:action="@{/create}" method="POST" enctype="multipart/form-data">
-        <label for="inputTitle">제목</label>
-        
-        <input type="text" name="community_title" id="inputTitle"><br>
-        <input id="img-selector" type="file" name="attachFile"/>
-        <div class="editor-menu">
-            <button id="btn-bold"><b>B</b></button>
-            <button id="btn-italic"><i>I</i></button>
-            <button id="btn-underline"><u>U</u></button>
-            <button id="btn-image">IMG</button>
+<div class="Desktop---1">
+    <div class="menu">
+        <span class="logo"><a href="/">코디</a></span>
+        <span class="menu1">로드맵</span>
+        <span class="menu2">가이드</span>
+        <span class="menu3" onclick="location.href='/list'">커뮤니티</span>
+        <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
+        <img th:src="@{/imgs/user.svg}" class="premium-icon-user-2530777-1">
+        <span class="user" th:text="${username}"></span> <span class="nim">님</span>
+        <span class="logout"><a href="/user/logout">로그아웃</a></span>
+    </div>
+    <form class="form" th:action="@{/create}" method="POST" enctype="multipart/form-data">
+        <div class="file">
+            <input id="img-selector" type="file" name="attachFile"/>
+            <div class="editor-menu">
+                <button id="btn-bold"><b>B</b></button>
+                <button id="btn-italic"><i>I</i></button>
+                <button id="btn-underline"><u>U</u></button>
+                <button id="btn-image">IMG</button>
+            </div>
         </div>
         <div id="editor">
             <div id="editor_text" contenteditable="true">
             </div>
         </div>
-        <input type="hidden" name="community_contents" id="inputContent">
-        <input type="submit" value="등록" onclick="getContents()">
-        <a href="/list" value="취소">취소</a>
+        <input type="text" class="title" id="inputTitle" name="community_title" placeholder="제목을 입력하세요">
+        <div class="line"></div>
+        <input type="text" class="content" name="community_contents" id="inputContent" placeholder="내용을 입력하세요">
+        <div class="button">
+            <button class="b" onclick="getContents()"><span>글 등록</span></button>
+            <a href="/list" value="취소">취소</a>
+        </div>
     </form>
+</div>
 </body>
 <script>
     const editor = document.getElementById('editor');
@@ -64,7 +75,7 @@
         imageSelector.click();
         e.preventDefault();
     });
-    
+
     editor.addEventListener('mousedown', function (e) {
         document.execCommand(style);
         checkStyle();
@@ -87,7 +98,7 @@
         }
     });
 
-    function insertImageDate(file) { 
+    function insertImageDate(file) {
         const reader = new FileReader();
         reader.addEventListener('load', function (e) {
             focusEditor();
