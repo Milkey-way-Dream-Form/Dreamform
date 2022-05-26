@@ -1,8 +1,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
-    <meta charset="UTF-8">
+    <meta charSet="UTF-8">
     <title>코디</title>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossOrigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </head>
@@ -10,7 +12,7 @@
     const communityId = /*[[${community.id}]]*/ null;
     const username = /*[[${#authentication.name}]]*/ null;
 
-    $(function() {
+    $(function () {
         getComments();
     });
 
@@ -33,7 +35,7 @@
 								<p>${item.comment}</p>`;
                     content += `<p><span>최종 수정일: ${moment(item.modifiedAt).format("YYYY-MM-DD HH:mm:ss")} </span>`;
 
-                    if(username == item.user.username) {
+                    if (username == item.user.username) {
                         content += `<button class="btn-update">수정</button><button class="btn-delete">삭제</button>`;
                     }
                     content += `</span></p></li></ul>`;
@@ -151,7 +153,7 @@
     function saveComment() {
         $(".attach-comment").off().on('click', function () {
 
-            if(username == "anonymousUser") {
+            if (username == "anonymousUser") {
                 alert("댓글기능은 로그인 후 이용가능 합니다.")
                 window.location.href = "/user/login";
                 return false;
