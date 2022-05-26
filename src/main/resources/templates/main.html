@@ -22,7 +22,7 @@
             <span class="user" th:text="${username}"></span> <span class="nim">님</span>
             <span class="logout"><a href="/user/logout">로그아웃</a></span>
         </div>
-            <img th:src="@{/imgs/banner1.png}">
+            <img th:src="@{/imgs/banner1.png}" class="Rectangle-1">
         <div class="block1">
             <span class="roadmap">진로 로드맵</span>
             <div class="plus">
@@ -68,6 +68,13 @@
           </div>
           <div class="Line-2"></div>
 
+<!--          <div class="block3" th:each="bestCommunity : ${bestCommunityList}">-->
+<!--            <a class="title" th:href="'/community/'+${bestCommunity.id}" th:text="${bestCommunity.community_title}"></a>-->
+<!--            <div class="text" th:text="${bestCommunity.userName}"></div>-->
+<!--            <div class="info" th:text="${bestCommunity.createdAt} ? ${#temporals.format(bestCommunity.createdAt,'yyyy-MM-dd HH:mm')} : ${bestCommunity.createdAt}"></div>-->
+<!--              <div class="info" th:text="${bestCommunity.viewCounts}"></div>-->
+<!--              <div class="Line-2"></div>-->
+<!--          </div>-->
           <div class="block3">
             <div class="title">
               1년 계약 기간 관련
@@ -80,18 +87,18 @@
             </div>
             <div class="Line-2"></div>
           </div>
-          <div class="block3">
-            <div class="title">
-              1년 계약 기간 관련
+            <div class="block3">
+                <div class="title">
+                    1년 계약 기간 관련
+                </div>
+                <div class="info">
+                    호텔조리학과 | 떡볶이맛 칵테일
+                </div>
+                <div class="text">
+                    헤드헌터 외국계 상사 오퍼받고 면접봐서 6/2 출근하기로 했는데 처음 헌터연락 받을 때 이렇게 연락받음 "근무형태: 1년 계약근무 후 정규직 전환 (전사원 일괄 적용이며, 다들 재직기간이 긴 편)" 오늘 계약직 노동계약서 받아서 보고있는데, "계약기간은 22/6/2~23/5/31까지 1년으로 한다" 근데.. 5/31까지면 364일인데.... 물론 정규직 전환이..
+                </div>
+                <div class="Line-2"></div>
             </div>
-            <div class="info">
-              호텔조리학과 | 떡볶이맛 칵테일
-            </div>
-            <div class="text">
-              헤드헌터 외국계 상사 오퍼받고 면접봐서 6/2 출근하기로 했는데 처음 헌터연락 받을 때 이렇게 연락받음 "근무형태: 1년 계약근무 후 정규직 전환 (전사원 일괄 적용이며, 다들 재직기간이 긴 편)" 오늘 계약직 노동계약서 받아서 보고있는데, "계약기간은 22/6/2~23/5/31까지 1년으로 한다" 근데.. 5/31까지면 364일인데.... 물론 정규직 전환이..
-            </div>
-            <div class="Line-2"></div>
-          </div>
           <div class="block3">
             <div class="title">
               1년 계약 기간 관련
