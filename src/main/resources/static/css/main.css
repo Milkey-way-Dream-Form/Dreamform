@@ -104,7 +104,7 @@ span.logout a {
 }
   span.logout{
     height: 26px;
-    margin: 0 168px 24px 5px;
+    margin: 0 5px 5px;
     font-family: AppleSDGothicNeoM00;
     font-size: 12px;
     font-weight: bold;
@@ -206,6 +206,7 @@ span.logout a {
   }
 
   .title {
+    text-decoration: none;
     font-family: AppleSDGothicNeoM00;
     font-size: 18px;
     margin: 18px 0 5px 0;
