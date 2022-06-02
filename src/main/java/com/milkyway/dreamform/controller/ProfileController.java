@@ -16,16 +16,20 @@ public class ProfileController {
     @Autowired UserService userService;
 
     @GetMapping("/profile")
-        public String home(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        public String profile(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         model.addAttribute("username", userDetails.getUsername());
         model.addAttribute("password", userDetails.getPassword());
         model.addAttribute("email", userDetails.getEmial());
         return "profile";
-        }
-    @PostMapping("/profile/pwupdate")
-        public String pwupdate(ProfileDto pw){
+    }
+    @GetMapping("/profile/passwordupdate")
+        public String password(){
+        return "passwordupdate";
+    }
+    @PostMapping("/profile/passwordupdate")
+        public String psupdate(Model model,@AuthenticationPrincipal UserDetailsImpl userDetails){
+        model.addAttribute("password",userDetails.getPassword());
+        return "";
+    }
 
-            userService.pwupdate(pw);
-        return "/user/logout";
-        }
 }

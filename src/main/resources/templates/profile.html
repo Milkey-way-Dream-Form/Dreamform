@@ -9,21 +9,19 @@
         <div>아이디:<span th:text="${username}"></span></div><br>
         <div>닉네임:<span th:text="${username}"></span></div><br>
         <div>이메일:<span th:text="${email}"></span></div>
-        <div>보유한 자격증</div>
+        <div>비밀번호<button>비밀번호 변경</button></div>
+        <form>
         <div>
-            관심분야
+            관심분야:
             <select>
-                <option>웹 개발</option>
-                <option>앱 개발</option>
-                <option>게임 개발</option>
-                <option>보안</option>
-            </select>
-            세부 분야
-            <select>
-                <option></option>
+                <option th:value="1">웹 개발</option>
+                <option th:value="2">앱 개발</option>
+                <option th:value="3">게임 개발</option>
+                <option th:value="4">보안</option>
             </select>
         </div>
-        <button>저장</button>
+        </form>
+        <button >저장</button>
     </div>
 </body>
 <script type="text/javascript">

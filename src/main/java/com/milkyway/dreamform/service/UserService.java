@@ -1,5 +1,6 @@
 package com.milkyway.dreamform.service;
 
+import com.milkyway.dreamform.dto.ProfileDto;
 import com.milkyway.dreamform.dto.SignupRequestDto;
 import com.milkyway.dreamform.model.Reply;
 import com.milkyway.dreamform.model.User;
@@ -15,8 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Optional;
 
 @Service

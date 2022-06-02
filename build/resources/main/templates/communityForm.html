@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<<<<<<< HEAD
 <style>
     /*#img-selector {display: none;}*/
     div#editor {padding: 16px 24px; border: 1px solid #D6D6D6; border-radius: 4px;}
@@ -13,14 +12,6 @@
     <title>커뮤니티 게시글 작성</title>
 </head>
 <body>
-<form th:action="@{/create}" method="POST">
-    <label for="inputTitle">제목</label>
-    <input type="text" name="community_title" id="inputTitle"><br>
-    <label for="inputContent">내용</label>
-    <textarea type="text" name="community_contents" id="inputContent"></textarea><br>
-    <input type="submit" value="등록">
-    <a href="/list" value="취소">취소</a>
-</form>
     <form th:action="@{/create}" method="POST" enctype="multipart/form-data">
         <label for="inputTitle">제목</label>
 
@@ -50,9 +41,9 @@
     const imageSelector = document.getElementById('img-selector');
     const editorText = document.getElementById('editor_text');
     const inputContent = document.getElementById('inputContent');
-    const boldWhether = false;
-    const italicWhether = false;
-    const underlineWhether = false;
+    // const boldWhether = false;
+    // const italicWhether = false;
+    // const underlineWhether = false;
 
     btnBold.addEventListener('click', function (e) {
         setStyle('bold');

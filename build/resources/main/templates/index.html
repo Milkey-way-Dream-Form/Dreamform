@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>메인 페이지</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/css/common.css}">
     <link rel="stylesheet" th:href="@{/css/main.css}">
@@ -26,7 +25,7 @@
 </nav>
 <menu>
     <div>
-        <button class="unselectable clickable">내 프로필</button>
+        <button class="unselectable clickable"onclick="location.href='/profile'">내 프로필</button>
         <button class="unselectable clickable"onclick="location.href='/list'">커뮤니티</button>
         <button class="unselectable clickable">로드맵</button>
         <button class="unselectable clickable">가이드</button>
