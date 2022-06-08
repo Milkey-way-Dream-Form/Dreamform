@@ -55,6 +55,15 @@ public class UserService {
         return requestDto.getUsername();
     }
 
+//    유효성 검사
+    public String checkUsername(String username) {
+        Optional<User> findUser = userRepository.findByUsername(username);
+        if (findUser.isPresent()) {
+            return "fail";
+        }
+        return "success";
+    }
+
     public void kakaoLogin(String authorizedCode) {
         // 카카오 OAuth2 를 통해 카카오 사용자 정보 조회
         KakaoUserInfo userInfo = kakaoOAuth2.getUserInfo(authorizedCode);

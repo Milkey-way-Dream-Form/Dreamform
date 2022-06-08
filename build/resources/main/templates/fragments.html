@@ -8,6 +8,74 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </head>
+<script type="application/javascript" th:fragment="form-validation">
+    (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+            let forms = document.getElementsByClassName('needs-validation');
+
+            Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        }, false)
+    }())
+</script>
+<script type="application/javascript" th:fragment="signup">
+    function pwCheck() {
+        var pwd1 = $("#pwd1").val();
+        var pwd2 = $("#pwd2").val();
+        if(pwd2 != ""){
+            if(pwd1 != pwd2) {
+                $("#pwCheckMessage").html("위에 입력한 비밀번호와 동일한 비밀번호를 다시 입력해주세요.").css("color", "red");
+            } else {
+                $("#pwCheckMessage").html("비밀번호가 일치합니다.").css("color", "blue");
+            }
+        }
+    }
+
+    // 아이디 유효성 검사
+    function userCheck() {
+        var username = $("#username").val();
+        console.log('username:: '+username);
+
+        $.ajax({
+            url: "/idCheck",
+            type: "GET",
+            data: {
+                username: username,
+            },
+            // dataType: "json",
+            // contentType: "application/json; charset=utf-8;",
+            success: function (data) {
+                console.log('data:: '+data);
+
+                if (data == "fail") {
+                    console.log('fail:: '+data);
+                    //아이디 중복 문구
+                    $("#user_check").text("중복된 아이디가 있습니다. 다시 설정해 주세요.")
+                    $("#user_check").css("color", "red");
+                    $("#submit").attr("disabled", true);
+                } else {
+                    // 아이디 사용 가능 문구
+                    console.log('else:: '+data);
+                    $("#user_check").text("사용 가능한 아이디입니다.")
+                    $("#user_check").css("color", "blue");
+                    $("#submit").attr("disabled", false);
+                }
+            }, error: function (data) {
+                console.log('error:: '+data);
+                console.log("실패");
+            }
+        });
+    }
+</script>
 <script type="application/javascript" th:inline="javascript" th:fragment="reply">
     const communityId = /*[[${community.id}]]*/ null;
     const username = /*[[${#authentication.name}]]*/ null;
@@ -68,8 +136,8 @@
             currentHtml = selector;
 
             var content = `<div id="comment-update" data-commentno="${commentNo}" data-comment="${comment}" data-writer="${writer}">
-							<lable>${username}<button class="update-comment">수정</button><button class="btn-comment-cancle">취소</button></lable>
-							<textarea class="form-control" rows="5" cols="124" placeholder="댓글을 남겨주세요" minlength="10" maxlength="200">${comment}</textarea>
+							<lable>${username}<button class="update-comment btn-update">수정</button><button class="btn-comment-cancle btn-delete">취소</button></lable>
+							<textarea class="form-control retext" rows="5" cols="124" placeholder="댓글을 남겨주세요" minlength="10" maxlength="200">${comment}</textarea>
 						</div>`
             $(selector).empty();
             $(selector).append(content);
