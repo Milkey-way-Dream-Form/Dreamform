@@ -11,6 +11,7 @@
 <script type="application/javascript" th:inline="javascript" th:fragment="reply">
     const communityId = /*[[${community.id}]]*/ null;
     const username = /*[[${#authentication.name}]]*/ null;
+    const likeCheck = /*[[${likeCheck}]]*/ false;
 
     $(function () {
         getComments();

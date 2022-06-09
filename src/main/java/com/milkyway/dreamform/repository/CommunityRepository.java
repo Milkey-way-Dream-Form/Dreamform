@@ -8,9 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 //
 public interface CommunityRepository extends JpaRepository<Community, Long> {
     @Modifying
-    @Query("update Community set viewCounts = viewCounts + 1 where community_id = :community_id")
+    @Query(value = "update Community set viewCounts = viewCounts + 1 where id = :community_id")
     Integer updateViewCounts(Long community_id);
-
 
 }
 

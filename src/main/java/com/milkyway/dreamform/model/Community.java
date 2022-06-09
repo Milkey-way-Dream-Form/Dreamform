@@ -1,9 +1,6 @@
 package com.milkyway.dreamform.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.milkyway.dreamform.model.Timestamped;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,13 +43,20 @@ public class Community extends Timestamped {
     @Column(columnDefinition = "integer default 0", nullable = false)
     private Integer viewCounts;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<LikeCheck> likeList = new ArrayList<>();
+
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private Integer likeCounts;
+
     @PrePersist
     public void prePersist() {
         this.viewCounts = this.viewCounts == null ? 0 : this.viewCounts;
+        this.likeCounts = this.likeCounts == null ? 0 : this.likeCounts;
     }
 
     @Builder
-    public Community(Long id, User user, String community_title, String community_contents,UploadFile uploadFile, boolean imgWhether, Integer viewCounts) {
+    public Community(Long id, User user, String community_title, String community_contents,UploadFile uploadFile, boolean imgWhether, Integer viewCounts, Integer likeCounts) {
         this.id = id;
         this.user = user;
         this.community_title = community_title;
@@ -60,6 +64,7 @@ public class Community extends Timestamped {
         this.uploadFile = uploadFile;
         this.imgWhether = imgWhether;
         this.viewCounts = viewCounts;
+        this.likeCounts = likeCounts;
     }
 
 
@@ -77,6 +82,18 @@ public class Community extends Timestamped {
         replies.remove(reply);
         reply.setCommunity(null);
 
+    }
+
+    public void mappingLike(LikeCheck like) {
+        this.likeList.add(like);
+    }
+
+    public void updateLikeCount() {
+        this.likeCounts = this.likeList.size();
+    }
+
+    public void disCountLike(LikeCheck like) {
+        this.likeList.remove(like);
     }
 }
 
