@@ -89,6 +89,7 @@ public class CommunityController {
     @PutMapping("/community/edit/{id}")
     public String editForm(@PathVariable("id") Long id, @ModelAttribute CommunityDto edit, RedirectAttributes redirectAttributes) throws IOException  {
         CommunityDto communityDto = communityService.getCommunity(id);
+        log.info("Like counts!!!!" + communityDto.getLikeCounts());
         if(communityDto.getUploadFile() != null) {
             if(!edit.getAttachFile().isEmpty()) {
                 imageService.deleteFile(communityDto.getUploadFile().getImageOriginal());
