@@ -4,11 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/login.css}">
     <title>Cody-login</title>
 </head>
 <body>
 <div class="login">
+    <div th:if="${param.error}" class="" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <p>닉네임 혹은 패스워드가 정확하지 않습니다.</p>
+        <p>닉네임과 패스워드를 확인해 주세요</p>
+    </div>
     <div class="loginform">
         <div class="form">
             <form action="/user/login" method="post">
@@ -41,5 +50,6 @@
         </div>
     </div>
 </div>
+<script th:replace="fragments.html :: form-validation"></script>
 </body>
 </html>

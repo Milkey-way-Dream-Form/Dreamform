@@ -5,24 +5,26 @@ import com.milkyway.dreamform.dto.SignupRequestDto;
 import com.milkyway.dreamform.model.User;
 import com.milkyway.dreamform.service.MailService;
 import com.milkyway.dreamform.service.UserService;
+import com.milkyway.dreamform.validator.SignUpRequestDtoValidator;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
     private final MailService mailService;
+    private final SignUpRequestDtoValidator signUpRequestDtoValidator;
 
-    @Autowired
-    public UserController(UserService userService, MailService mailService) {
-        this.userService = userService;
-        this.mailService = mailService;
+    @InitBinder("signUpRequestDto")
+    public void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.addValidators(signUpRequestDtoValidator);
     }
 
     // 회원 로그인 페이지
@@ -39,7 +41,8 @@ public class UserController {
 
     // 회원 가입 페이지
     @GetMapping("/user/signup")
-    public String signup() {
+    public String signup(Model model) {
+        model.addAttribute(new SignupRequestDto());
         return "signup";
     }
 
@@ -84,5 +87,12 @@ public class UserController {
     public String findPw(MailDto mailDto) {
         mailService.mailSend(mailDto);
         return "findPw";
+    }
+
+    @GetMapping("/idCheck")
+    @ResponseBody
+    public String idCheck(@ModelAttribute SignupRequestDto signupRequestDto) {
+        String result = userService.checkUsername(signupRequestDto.getUsername());
+        return result;
     }
 }
