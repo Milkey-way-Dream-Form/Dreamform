@@ -62,6 +62,9 @@ public class User extends Timestamped {
     @Builder.Default
     private List<Reply> replies = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    private List<LikeCheck> likeList = new ArrayList<>();
+
     //비밀번호 변경
     public void updatePw(String pw) {
         this.password = pw;
@@ -77,6 +80,10 @@ public class User extends Timestamped {
     public void deleteReply(Reply reply) {
         replies.remove(reply);
         reply.setUser(null);
+    }
+
+    public void mappingLike(LikeCheck like) {
+        this.likeList.add(like);
     }
 
 }

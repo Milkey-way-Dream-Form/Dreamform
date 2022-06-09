@@ -1,0 +1,64 @@
+
+.boardbtn {
+    background: #a8dbff;
+    border: none;
+    float: right;
+    height: 25px;
+    width: 80px;
+    margin-top: 10px;
+    font-family: 'nanum_square';
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.boardbtn:hover {
+    background: #75b1ff;
+}
+
+.boardHeader {
+    position: relative;
+    width: 100%;
+    height: 32px;
+    border-bottom: 1px solid #d2d2d2;
+    border-top: 2px solid #d2d2d2;
+    display: flex;
+}
+
+.boardLine {
+    position: relative;
+    width: 100%;
+    height: 24px;
+    border-bottom: 1px solid #d2d2d2;
+    display: flex;
+}
+
+.boardHeader > button {
+    background: none;
+    border: none;
+    font-family: 'nanum_square';
+    color: #707070;
+    flex: 1;
+}
+
+.boardHeader > button:nth-child(2) {
+    flex: 15;
+}
+
+.boardLine > button {
+    background: none;
+    border: none;
+    font-family: 'nanum_square';
+    color: #707070;
+    flex: 1;
+}
+
+.boardLine > button:nth-child(2) {
+    flex: 15;
+}
+
+.maincontent > h3 {
+    font-family: 'nanum_square';
+    color: #707070;
+    margin-block-start: 0em;
+    margin-block-end: 1em;
+}

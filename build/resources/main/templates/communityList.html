@@ -38,6 +38,7 @@
                     <a class="id" th:text="${community.userName}"></a>
                     <a class="date" th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></a>
                     <a class="count" th:text="${community.viewCounts}"></a>
+                    <a class="like" th:text="${community.likeCounts}"></a>
                 </div>
             </div>
             <div class="line1"></div>

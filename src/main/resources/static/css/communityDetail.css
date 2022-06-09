@@ -300,3 +300,6 @@ li p strong {
 .btn-update:hover, .btn-delete:hover {
   background-color: #2f80ed;
 }
+.communityId {
+  display: none;
+}

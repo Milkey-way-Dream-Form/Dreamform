@@ -18,8 +18,8 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-//        List<CommunityDto> bestCommunityListDto = communityService.getBest();
-//        model.addAttribute("bestCommunityList", bestCommunityListDto);
+        List<CommunityDto> bestCommunityListDto = communityService.getBest();
+        model.addAttribute("bestCommunityList", bestCommunityListDto);
         model.addAttribute("username", userDetails.getUsername());
         return "main";
     }
