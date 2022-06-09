@@ -62,6 +62,7 @@ public class CommunityService {
                 .community_contents(community.getCommunity_contents())
                 .imgWhether(community.isImgWhether())
                 .viewCounts(community.getViewCounts())
+                .likeCounts(community.getLikeCounts())
                 .createdAt(community.getCreatedAt())
                 .modifiedAt(community.getModifiedAt())
                 .build();
