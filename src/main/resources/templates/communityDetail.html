@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/communityDetail.css}">
@@ -31,12 +33,17 @@
                 </div>
                 <div class="code2">
                     <div class="count" th:text="${community.viewCounts}"></div>
-                    <div class="date" th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></div>
+                    <div class="date"
+                         th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></div>
                 </div>
                 <div th:if="${community.imgWhether} == true">
                     <img th:src="|/image/${community.getUploadFile().getImagePath()}|">
                 </div>
                 <div class="content" th:text="${community.community_contents}"></div>
+                <button class="buttonLike" id="likeUpdate">
+                    좋아요
+                    <div th:text="${community.likeCounts}"></div>
+                </button>
                 <div class="button" th:if="${idCheck}">
                     <button class="b"><a th:href="@{'/community/editForm/' + ${community.id}}">수정</a></button>
                 </div>
@@ -48,29 +55,53 @@
                 </div>
                 <div class="line"></div>
 
-                    <form id="comment-form" class="reply">
-                        <div id="comment-box" class="form-group">
-                            <div class="code3" id="comment-show"></div>
-                            <div id="comment-writer" class="form-group">
-                                <textarea class="retext" rows="10" cols="124" placeholder="댓글을 남겨주세요" maxlength="200"></textarea>
-                                <button type="button" class="b attach-comment"><a>댓글 등록</a></button>
-                            </div>
+                <form id="comment-form" class="reply">
+                    <div id="comment-box" class="form-group">
+                        <div class="code3" id="comment-show"></div>
+                        <div id="comment-writer" class="form-group">
+                            <textarea class="retext" rows="10" cols="124" placeholder="댓글을 남겨주세요"
+                                      maxlength="200"></textarea>
+                            <button type="button" class="b attach-comment"><a>댓글 등록</a></button>
                         </div>
-                    </form>
-<!--                    <input type="text" class="retext">-->
-<!--                    <div class="button">-->
-<!--                        <button class="b"><span>댓글 등록</span></button>-->
-<!--                    </div>-->
-                </div>
+                    </div>
+                </form>
+                <!--                    <input type="text" class="retext">-->
+                <!--                    <div class="button">-->
+                <!--                        <button class="b"><span>댓글 등록</span></button>-->
+                <!--                    </div>-->
+            </div>
         </div>
     </div>
+    <div class="communityId" v></div>
 </div>
 </body>
 <script th:replace="fragments.html :: reply">
 </script>
+<script>
+    const btn = document.getElementById('likeUpdate')
+    console.log(likeCheck);
+    btn.addEventListener('click', function() {
+        if(likeCheck) {
+            btn.style.backgroundColor="#d8d8d8";
+        } else {
+            btn.style.backgroundColor="#2f80ed";
+        }
+    });
+    $('#likeUpdate').click(function () {
+        $.ajax({
+            url: '/likeUpdate/'+communityId,
+            type: 'POST',
+            data: `${communityId}`,
+            success: function (data) {
+                console.log("success");
+            },
+            error: function () {
+                console.log("error");
+            }
+        });
+    });
+</script>
 </html>
-
-
 
 
 <!--<!DOCTYPE html>-->

@@ -13,11 +13,14 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
@@ -29,17 +32,19 @@ public class CommunityController {
     CommunityService communityService;
     ImageService imageService;
     @GetMapping("/list")
-    public String list(@PageableDefault Pageable pageable, Model model, @RequestParam(defaultValue = "1") int page) {
+    public String list(Principal principal, @PageableDefault(size=10, sort="id", direction = Sort.Direction.DESC) Pageable pageable, Model model, @RequestParam(defaultValue = "1") int page) {
         Page<Community> communityList = communityService.getCommunityList(pageable);
         Page<CommunityDto> communityDtoList = new CommunityDto().toDtoList(communityList);
         Pagenation pagenation = new Pagenation(communityDtoList, page);
+        model.addAttribute("username", principal.getName());
         model.addAttribute("communities", communityDtoList);
         model.addAttribute("pagenation", pagenation);
         return "communityList";
     }
 
     @GetMapping("/create")
-    public String createCommunityForm() {
+    public String createCommunityForm(Principal principal, Model model) {
+        model.addAttribute("username", principal.getName());
         return "communityForm";
     }
 
@@ -55,8 +60,22 @@ public class CommunityController {
         communityService.updateViewCounts(id);
         CommunityDto communityDto = communityService.getCommunity(id);
         boolean idCheck = communityService.idCheck(principal, communityDto.getUserName());
+        model.addAttribute("username", principal.getName());
         model.addAttribute("community", communityDto);
         model.addAttribute("idCheck", idCheck);
+        model.addAttribute("likeCheck", communityService.likeCheck(id, principal.getName()));
+        return "communityDetail";
+    }
+
+    @PostMapping("/likeUpdate/{communityId}")
+    public String likeUpdate(@PathVariable("communityId") Long communityId, Principal principal, Model model) throws IOException {
+        communityService.updateLikeCounts(communityId, principal.getName());
+        CommunityDto communityDto = communityService.getCommunity(communityId);
+        boolean idCheck = communityService.idCheck(principal, communityDto.getUserName());
+        model.addAttribute("username", principal.getName());
+        model.addAttribute("community", communityDto);
+        model.addAttribute("idCheck", idCheck);
+        model.addAttribute("likeCheck", communityService.likeCheck(communityId, principal.getName()));
         return "communityDetail";
     }
 

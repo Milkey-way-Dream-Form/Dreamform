@@ -28,6 +28,7 @@ public class CommunityDto {
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
     private Integer viewCounts;
+    private Integer likeCounts;
 
     public Community toEntity(UploadFile uploadFile, User user, boolean imgWhether) {
         Community build = Community.builder()
@@ -38,6 +39,7 @@ public class CommunityDto {
                 .imgWhether(imgWhether)
                 .community_contents(community_contents)
                 .viewCounts(viewCounts)
+                .likeCounts(likeCounts)
                 .build();
         return build;
     }
@@ -49,6 +51,7 @@ public class CommunityDto {
                 .community_title(community.getCommunity_title())
                 .community_contents(community.getCommunity_contents())
                 .viewCounts(community.getViewCounts())
+                .likeCounts(community.getLikeCounts())
                 .imgWhether(community.isImgWhether())
                 .createdAt(community.getCreatedAt())
                 .modifiedAt(community.getModifiedAt())
@@ -65,6 +68,7 @@ public class CommunityDto {
                     .community_title(community.getCommunity_title())
                     .community_contents(community.getCommunity_contents())
                     .viewCounts(community.getViewCounts())
+                    .likeCounts(community.getLikeCounts())
                     .imgWhether(community.isImgWhether())
                     .createdAt(community.getCreatedAt())
                     .modifiedAt(community.getModifiedAt())
@@ -75,7 +79,7 @@ public class CommunityDto {
     }
 
     @Builder
-    public CommunityDto(Long id, String userName, String community_title, UploadFile uploadFile, MultipartFile attachFile, String community_contents,Boolean imgWhether, LocalDateTime createdAt, LocalDateTime modifiedAt, Integer viewCounts) {
+    public CommunityDto(Long id, String userName, String community_title, UploadFile uploadFile, MultipartFile attachFile, String community_contents,Boolean imgWhether, LocalDateTime createdAt, LocalDateTime modifiedAt, Integer viewCounts, Integer likeCounts) {
         this.id = id;
         this.userName = userName;
         this.community_title = community_title;
@@ -84,6 +88,7 @@ public class CommunityDto {
         this.imgWhether = imgWhether;
         this.community_contents = community_contents;
         this.viewCounts = viewCounts;
+        this.likeCounts = likeCounts;
         this.createdAt = createdAt;
         this.modifiedAt = modifiedAt;
     }

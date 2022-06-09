@@ -6,113 +6,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="코디">
     <meta property="og:description" content="개발자들이 모여 소통하고, 나만의 진로 로드맵을 만들어보세요!">
-<!--    <meta property="og:image" content="">-->
+    <!--    <meta property="og:image" content="">-->
     <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/fontloader.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/maincontent.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
+    <script type="text/javascript" th:src="@{/scripts/common.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/main.js}"></script>
     <title>Cody</title>
 </head>
 <body>
-    <div class="Desktop---1">
-        <div class="menu">
-            <span class="logo"><a href="/">코디</a></span>
-            <span class="menu1">로드맵</span>
-            <span class="menu2">가이드</span>
-            <span class="menu3" onclick="location.href='/list'">커뮤니티</span>
+<!--<div class="Desktop-&#45;&#45;1">-->
+<header>
+    <div class="header_wrap">
+        <h2 class="unselectable clickable" onclick="location.href = '/'">코디</h2>
+        <div class="menubox">
+            <button class="unselectable clickable showonlylogged">내 프로필</button> <!-- 세션으로 로그인 여부를 확인하고 보여지게하는 showonlylogged 필요 X-->
+            <button class="unselectable clickable" onclick="location.href='/list'">커뮤니티</button>
+            <button class="unselectable clickable">로드맵</button>
+            <button class="unselectable clickable">가이드</button>
             <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
-            <img th:src="@{/imgs/user.svg}" class="premium-icon-user-2530777-1">
+            <!-- 여기부터 아래 주석까지 배치 수정, uesrmenu가 메인화면에서 미 로그인 시 사용자 편의성이 떨어짐, 로그인했을 때는 필요없음 -->
+            <div class="unselectable clickable usermenu" onclick="onUserMenuButton_clicked()">
+                <div>
+                    <button onclick="location.href = '/user/login'">로그인</button>
+                    <button onclick="location.href = '/user/signup'">회원가입</button>
+                </div>
+            </div>
             <span class="user" th:text="${username}"></span> <span class="nim">님</span>
             <span class="logout"><a href="/user/logout">로그아웃</a></span>
-        </div>
-            <img th:src="@{/imgs/banner1.png}" class="Rectangle-1">
-        <div class="block1">
-            <span class="roadmap">진로 로드맵</span>
-            <div class="plus">
-              <span class="plus1">더보기</span>
-              <img th:src="@{/imgs/arrow-right.svg}" class="free-icon-arrow-right-6423875-1">
-            </div>
-            <div class="Line-2"></div>
-          <div class="card">
-            <div class="card1">
-              <div class="Rectangle-2"></div>
-              <div class="title">
-                  해외 호텔 조리사 되기
-              </div>
-              <div class="info">
-                  호텔조리학과 | 떡볶이맛 칵테일
-              </div>
-            </div>
-            <div class="card2">
-              <div class="Rectangle-2"></div>
-              <div class="title">
-                  해외 호텔 조리사 되기
-              </div>
-              <div class="info">
-                  호텔조리학과 | 떡볶이맛 칵테일
-              </div>
-            </div>
-            <div class="card1">
-              <div class="Rectangle-2"></div>
-              <div class="title">
-                  해외 호텔 조리사 되기
-              </div>
-              <div class="info">
-                  호텔조리학과 | 떡볶이맛 칵테일
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="block2">
-          <span class="roadmap">커뮤니티</span>
-          <div class="plus">
-            <span class="plus1" onclick="location.href='/list'">더보기</span>
-            <img th:src="@{/imgs/arrow-right.svg}" class="free-icon-arrow-right-6423875-1">
-          </div>
-          <div class="Line-2"></div>
-
-<!--          <div class="block3" th:each="bestCommunity : ${bestCommunityList}">-->
-<!--            <a class="title" th:href="'/community/'+${bestCommunity.id}" th:text="${bestCommunity.community_title}"></a>-->
-<!--            <div class="text" th:text="${bestCommunity.userName}"></div>-->
-<!--            <div class="info" th:text="${bestCommunity.createdAt} ? ${#temporals.format(bestCommunity.createdAt,'yyyy-MM-dd HH:mm')} : ${bestCommunity.createdAt}"></div>-->
-<!--              <div class="info" th:text="${bestCommunity.viewCounts}"></div>-->
-<!--              <div class="Line-2"></div>-->
-<!--          </div>-->
-          <div class="block3">
-            <div class="title">
-              1년 계약 기간 관련
-            </div>
-            <div class="info">
-              호텔조리학과 | 떡볶이맛 칵테일
-            </div>
-            <div class="text">
-              헤드헌터 외국계 상사 오퍼받고 면접봐서 6/2 출근하기로 했는데 처음 헌터연락 받을 때 이렇게 연락받음 "근무형태: 1년 계약근무 후 정규직 전환 (전사원 일괄 적용이며, 다들 재직기간이 긴 편)" 오늘 계약직 노동계약서 받아서 보고있는데, "계약기간은 22/6/2~23/5/31까지 1년으로 한다" 근데.. 5/31까지면 364일인데.... 물론 정규직 전환이..
-            </div>
-            <div class="Line-2"></div>
-          </div>
-            <div class="block3">
-                <div class="title">
-                    1년 계약 기간 관련
-                </div>
-                <div class="info">
-                    호텔조리학과 | 떡볶이맛 칵테일
-                </div>
-                <div class="text">
-                    헤드헌터 외국계 상사 오퍼받고 면접봐서 6/2 출근하기로 했는데 처음 헌터연락 받을 때 이렇게 연락받음 "근무형태: 1년 계약근무 후 정규직 전환 (전사원 일괄 적용이며, 다들 재직기간이 긴 편)" 오늘 계약직 노동계약서 받아서 보고있는데, "계약기간은 22/6/2~23/5/31까지 1년으로 한다" 근데.. 5/31까지면 364일인데.... 물론 정규직 전환이..
-                </div>
-                <div class="Line-2"></div>
-            </div>
-          <div class="block3">
-            <div class="title">
-              1년 계약 기간 관련
-            </div>
-            <div class="info">
-              호텔조리학과 | 떡볶이맛 칵테일
-            </div>
-            <div class="text">
-              헤드헌터 외국계 상사 오퍼받고 면접봐서 6/2 출근하기로 했는데 처음 헌터연락 받을 때 이렇게 연락받음 "근무형태: 1년 계약근무 후 정규직 전환 (전사원 일괄 적용이며, 다들 재직기간이 긴 편)" 오늘 계약직 노동계약서 받아서 보고있는데, "계약기간은 22/6/2~23/5/31까지 1년으로 한다" 근데.. 5/31까지면 364일인데.... 물론 정규직 전환이..
-            </div>
-            <div class="Line-2"></div>
-          </div>
+            <!---->
         </div>
     </div>
-  </div>
+</header>
+<main>
+    <div class='sliderframe'>
+        <div class='slidercontent'>
+            <div class='sliderarea'>
+                <div class="banneritems"></div>
+            </div>
+            <div class='contentIndexes'></div>
+        </div>
+    </div>
+    <div class="maincontent" style="height: 1024px;">
+        <div class="loadmap_header">
+            <h4>진로 로드맵</h4>
+            <button onclick="location.href='/list'">더보기 ></button>
+        </div>
+
+        <div th:if="${!bestCommunityList.isEmpty() && bestCommunityList != null}">
+            <div class="block3" th:each="bestCommunity : ${bestCommunityList}">
+                <a class="title" th:href="'/community/'+${bestCommunity.id}"
+                   th:text="${bestCommunity.community_title}"></a>
+                <div class="text" th:text="${bestCommunity.userName}"></div>
+                <div class="info"
+                     th:text="${bestCommunity.createdAt} ? ${#temporals.format(bestCommunity.createdAt,'yyyy-MM-dd HH:mm')} : ${bestCommunity.createdAt}"></div>
+                <div class="info" th:text="${bestCommunity.viewCounts}"></div>
+                <div class="Line-2"></div>
+            </div>
+        </div>
+
+        <div class="loadmap_content" th:if="${bestCommunityList.isEmpty() || bestCommunityList == null}">
+            <div class="loadmap_card">
+                <img class="loadmap_preview" src="./imgs/banner1.jpg">
+                <h4>해외 호텔 조리사 되기</h4>
+                <h3>호텔조리학과 | 떡볶이맛 칵테일</h3>
+            </div>
+            <div class="loadmap_card">
+                <img class="loadmap_preview" src="./imgs/banner2.jpg">
+                <h4>해외 호텔 조리사 되기</h4>
+                <h3>호텔조리학과 | 떡볶이맛 칵테일</h3>
+            </div>
+            <div class="loadmap_card">
+                <img class="loadmap_preview" src="./imgs/banner3.jpg">
+                <h4>해외 호텔 조리사 되기</h4>
+                <h3>호텔조리학과 | 떡볶이맛 칵테일</h3>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+</footer>
 </body>
 </html>
