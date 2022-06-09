@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" th:href="@{/css/signup.css}">
     <title>Signup</title>
 </head>
@@ -31,6 +33,7 @@
     </div>
 </header>
 <form class="signup" th:action="@{/user/signup}" method="post">
+<form class="signup" th:action="@{/user/signup}" th:object="${signupRequestDto}" method="post">
     <div class="signupform">
         <div class="form">
             <div class="logo"><a href="/">코디</a></div>
@@ -39,21 +42,33 @@
             </div>
             <div class="form1">
                 <div class="id">아이디</div>
-                <input type="text" class="idbox" name="username">
+                <input type="text" class="idbox" th:field="*{username}" onkeyup="userCheck()" aria-describedby="nicknameHelp" required minlength="3" maxlength="20">
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</small>
+                <div class="id check" id="user_check"></div>
             </div>
             <div class="form1">
                 <div class="id">비밀번호</div>
-                <input type="password" class="idbox" name="password">
+                <input type="password" th:field="*{password}" onkeyup="pwCheck()" class="idbox" id="pwd1" aria-describedby="passwordHelp" required minlength="4" maxlength="50">
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</small>
             </div>
             <div class="form1">
+                <div class="id">비밀번호 확인</div>
+                <input type="password" th:field="*{passwordConfirm}" onkeyup="pwCheck()" class="idbox" id="pwd2" aria-describedby="passwordHelp" required minlength="4" maxlength="50">
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{password}">Password Error</small>
+            </div>
+            <div class="id" id="pwCheckMessage"></div>
+            <div class="form1">
                 <div class="id">이메일</div>
-                <input type="text" class="idbox" name="email">
+                <input type="text" class="idbox" th:field="*{email}" aria-describedby="emailHelp" required>
+                <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</small>
             </div>
             <div class="form2">
-                <button class="log" type="submit"><a th:href="@{/user/login}">회원가입</a></button>
+                <button class="log" type="submit" id="submit"><a th:href="@{/user/login}">회원가입</a></button>
             </div>
         </div>
     </div>
 </form>
+<script th:replace="fragments.html :: form-validation"></script>
+<script th:replace="fragments.html :: signup"></script>
 </body>
 </html>
