@@ -7,6 +7,7 @@ import com.milkyway.dreamform.service.MailService;
 import com.milkyway.dreamform.service.UserService;
 import com.milkyway.dreamform.validator.SignUpRequestDtoValidator;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
