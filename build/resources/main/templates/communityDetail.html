@@ -25,12 +25,14 @@
         <div class="menubox">
             <button class="unselectable clickable">내 프로필</button>
             <button class="unselectable clickable commu" onclick="location.href='/list'">커뮤니티</button>
-            <button class="unselectable clickable">로드맵</button>
+            <button class="unselectable clickable" onclick="location.href='https://milkey-way.github.io/cody_web'">로드맵</button>
             <button class="unselectable clickable">가이드</button>
-            <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
             <div class="unselectable clickable usermenu"></div>
-            <span class="user" th:text="${username}"></span> <span class="nim">님</span>
-            <span class="logout"><a href="/user/logout">로그아웃</a></span>
+            <img th:src="@{/icons/bell.png}" class="bell">
+            <div class="space">
+                <span class="user" th:text="${username}"></span> <span class="nim">님</span>
+                <span class="logout"><a href="/user/logout">로그아웃</a></span>
+            </div>
         </div>
     </div>
 </header>

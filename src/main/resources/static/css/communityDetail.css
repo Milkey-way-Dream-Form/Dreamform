@@ -271,3 +271,7 @@ li p strong {
     position: relative;
     left: 980px;
 }
+
+.menubox > button.commu {
+    color: #337ab7;
+}
