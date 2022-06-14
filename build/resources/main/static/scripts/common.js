@@ -57,20 +57,20 @@ function appendDOM( parent,tag,classname,event ){
 //     }
 // }
 
-function onUserMenuButton_clicked(){
-    this.isClicked = !this.isClicked;
-    var usermenu = document.querySelector('.usermenu');
-    if( usermenu ){
-        if( usermenu.children.length > 0 ){
-            if( this.isClicked ){
-                usermenu.children[0].style.display = 'block';
-            }else{
-                usermenu.children[0].style.display = 'none';
-            }
-        }
-    }
-}
+// function onUserMenuButton_clicked(){
+//     this.isClicked = !this.isClicked;
+//     var usermenu = document.querySelector('.usermenu');
+//     if( usermenu ){
+//         if( usermenu.children.length > 0 ){
+//             if( this.isClicked ){
+//                 usermenu.children[0].style.display = 'block';
+//             }else{
+//                 usermenu.children[0].style.display = 'none';
+//             }
+//         }
+//     }
+// }
 
-addEventListener('load',function(event){
-    toggleOnlyLoggedElement();
-});
+// addEventListener('load',function(event){
+//     toggleOnlyLoggedElement();
+// });

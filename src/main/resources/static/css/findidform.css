@@ -7,7 +7,7 @@
     width: 300px;
     height: 150px;
     margin: 50px auto;
-    padding: 35px 23px 86px 24px;
+    padding: 100px 23px 150px 24px;
     border-radius: 39px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.16);
     border: solid 1px #707070;
@@ -24,7 +24,7 @@
     width: 200px;
     height: 19px;
     margin: 20px auto;
-    font-family: AppleSDGothicNeoEB00;
+    font-family: 'nanum_square';
     font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
@@ -35,7 +35,8 @@
     color: #707070;
 }
 .id{
-    font-family: AppleSDGothicNeoB00;
+    margin-bottom: 10px;
+    font-family: 'nanum_square';
     font-size: 12px;
     font-weight: normal;
     font-stretch: normal;

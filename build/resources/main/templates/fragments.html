@@ -33,7 +33,7 @@
         var pwd2 = $("#pwd2").val();
         if(pwd2 != ""){
             if(pwd1 != pwd2) {
-                $("#pwCheckMessage").html("위에 입력한 비밀번호와 동일한 비밀번호를 다시 입력해주세요.").css("color", "red");
+                $("#pwCheckMessage").html("비밀번호가 일치하지 않습니다.").css("color", "red");
             } else {
                 $("#pwCheckMessage").html("비밀번호가 일치합니다.").css("color", "blue");
             }
@@ -47,7 +47,7 @@
 
         $.ajax({
             url: "/idCheck",
-            type: "GET",
+            type: "POST",
             data: {
                 username: username,
             },

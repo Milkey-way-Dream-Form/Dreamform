@@ -101,7 +101,10 @@
     font-size: 14pt;
     color: #b2b2b2;
 }
-
+.loadmap_header > button:hover {
+    cursor: pointer;
+    color: #000;
+}
 .loadmap_content {
     position: relative;
     width: 100%;
