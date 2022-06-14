@@ -48,15 +48,12 @@
             <button onclick="location.href='/list'">더보기 ></button>
         </div>
 
-        <div th:if="${!bestCommunityList.isEmpty() && bestCommunityList != null}">
-            <div class="block3" th:each="bestCommunity : ${bestCommunityList}">
-                <a class="title" th:href="'/community/'+${bestCommunity.id}"
-                   th:text="${bestCommunity.community_title}"></a>
-                <div class="text" th:text="${bestCommunity.userName}"></div>
-                <div class="info"
-                     th:text="${bestCommunity.createdAt} ? ${#temporals.format(bestCommunity.createdAt,'yyyy-MM-dd HH:mm')} : ${bestCommunity.createdAt}"></div>
-                <div class="info" th:text="${bestCommunity.viewCounts}"></div>
-                <div class="Line-2"></div>
+        <div class="loadmap_content" th:if="${!bestCommunityList.isEmpty() && bestCommunityList != null}">
+            <div class="loadmap_card" th:each="bestCommunity : ${bestCommunityList}">
+                <img class="loadmap_preview" th:if="${bestCommunity.imgWhether} == false" src="./imgs/noneImage.png">
+                <img class="loadmap_preview"  th:if="${bestCommunity.imgWhether} == true" th:src="|/image/${bestCommunity.getUploadFile().getImagePath()}|">
+                <h4 th:onclick="'location.href=\'/community/'+ @{${bestCommunity.id}} + '\''" th:text="${bestCommunity.community_title}"></h4>
+                <h3 th:text="'작성자: ' + ${bestCommunity.userName}+ ' | 좋아요: ' + ${bestCommunity.likeCounts}"></h3>
             </div>
         </div>
 
