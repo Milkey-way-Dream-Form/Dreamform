@@ -117,10 +117,10 @@ public class CommunityService {
 
 
 
-    public List<CommunityDto> getBest() {
+    public List<CommunityDto> getBest() throws IOException {
         List<Community> communityList = communityRepository.findAll();
-        List<Community> bestCommunityList = new ArrayList<>();
-        CommunityDto communityDto = new CommunityDto();
+//        List<Community> bestCommunityList = new ArrayList<>();
+//        CommunityDto communityDto = new CommunityDto();
         List<CommunityDto> bestCommunityDtoList = new ArrayList<>();
         if(!communityList.isEmpty() && communityList != null && communityList.size() >= 3) {
             for(int i = 0; i < 3; i++) {
@@ -132,10 +132,9 @@ public class CommunityService {
                         item = j;
                     }
                 }
-                bestCommunityList.add(communityList.get(item));
+                bestCommunityDtoList.add(getCommunity(communityList.get(item).getId()));
                 communityList.remove(item);
             }
-            bestCommunityDtoList = communityDto.toBestDtoList(bestCommunityList);
         }
         return bestCommunityDtoList;
     }
