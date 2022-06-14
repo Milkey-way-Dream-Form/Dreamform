@@ -92,7 +92,7 @@ header {
 
 .usermenu {
     border: none;
-    background: url('../icons/usericon.svg') !important;
+    background: url('../imgs/user.svg') !important;
     background-size: 100% 100% !important;
     height: 100%;
     width: 24px;

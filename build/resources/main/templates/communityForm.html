@@ -4,44 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/fontloader.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/maincontent.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
     <link rel="stylesheet" th:href="@{/css/communityForm.css}">
     <title>CommunityForm</title>
 </head>
 <body>
-<div class="Desktop---1">
-    <div class="menu">
-        <span class="logo"><a href="/">코디</a></span>
-        <span class="menu1">로드맵</span>
-        <span class="menu2">가이드</span>
-        <span class="menu3" onclick="location.href='/list'">커뮤니티</span>
-        <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
-        <img th:src="@{/imgs/user.svg}" class="premium-icon-user-2530777-1">
-        <span class="user" th:text="${username}"></span> <span class="nim">님</span>
-        <span class="logout"><a href="/user/logout">로그아웃</a></span>
+
+<header>
+    <div class="header_wrap">
+        <h2 class="unselectable clickable" onclick="location.href = '/'">코디</h2>
+        <div class="menubox">
+            <button class="unselectable clickable">내 프로필</button>
+            <button class="unselectable clickable commu" onclick="location.href='/list'">커뮤니티</button>
+            <button class="unselectable clickable">로드맵</button>
+            <button class="unselectable clickable">가이드</button>
+            <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
+            <div class="unselectable clickable usermenu"></div>
+            <span class="user" th:text="${username}"></span> <span class="nim">님</span>
+            <span class="logout"><a href="/user/logout">로그아웃</a></span>
+        </div>
     </div>
+</header>
     <form class="form" th:action="@{/create}" method="POST" enctype="multipart/form-data">
+        <input type="text" class="title" id="inputTitle" name="community_title" placeholder="제목을 입력하세요">
+        <div class="line"></div>
         <div class="file">
             <input id="img-selector" type="file" name="attachFile"/>
             <div class="editor-menu">
                 <button id="btn-bold"><b>B</b></button>
                 <button id="btn-italic"><i>I</i></button>
                 <button id="btn-underline"><u>U</u></button>
-                <button id="btn-image">IMG</button>
+                <button id="btn-image"><img class="photo" th:src="@{/icons/photo.png}"></button>
             </div>
         </div>
         <div id="editor">
-            <div id="editor_text" contenteditable="true">
+            <div id="editor_text" class="content" contenteditable="true" placeholder="내용을 입력하세요">
             </div>
         </div>
-        <input type="text" class="title" id="inputTitle" name="community_title" placeholder="제목을 입력하세요">
-        <div class="line"></div>
-        <input type="text" class="content" name="community_contents" id="inputContent" placeholder="내용을 입력하세요">
+        <input type="hidden" class="" name="community_contents" id="inputContent" >
         <div class="button">
-            <button class="b" onclick="getContents()"><span>글 등록</span></button>
-            <a href="/list" value="취소">취소</a>
+            <button type="submit" class="b" id="submit" onclick="getContents()"><span>글 등록</span></button>
+            <a class="cancel" href="/list" value="취소">취소</a>
         </div>
     </form>
-</div>
+
 </body>
 <script>
     const editor = document.getElementById('editor');
@@ -52,10 +63,22 @@
     const imageSelector = document.getElementById('img-selector');
     const editorText = document.getElementById('editor_text');
     const inputContent = document.getElementById('inputContent');
-    // const boldWhether = false;
-    // const italicWhether = false;
-    // const underlineWhether = false;
+    const inputTitle = document.getElementById('inputTitle');
+    const submit = document.getElementById('submit');
 
+    // 콘텐츠 null check
+    // if (inputTitle.value.length > 0 && editorText.innerText.length > 0) {
+    //     submit.disable = true;
+    // }else {
+    //     submit.disable = false;
+    // }
+    // enter마다 br 생성
+    // $('div[contenteditable]').keydown(function(e) {
+    //     if (e.keyCode === 13) {
+    //         document.execCommand('insertHTML', false, '<br/>');
+    //         return false;
+    //     }
+    // });
     btnBold.addEventListener('click', function (e) {
         setStyle('bold');
         e.preventDefault();
@@ -126,10 +149,9 @@
     function isStyle(style) {
         return document.queryCommandState(style);
     }
-
     function getContents() {
+        inputContent.value = editorText.innerText;
         return true;
     }
-
 </script>
 </html>

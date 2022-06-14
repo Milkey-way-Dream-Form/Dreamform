@@ -7,8 +7,8 @@ import com.milkyway.dreamform.service.MailService;
 import com.milkyway.dreamform.service.UserService;
 import com.milkyway.dreamform.validator.SignUpRequestDtoValidator;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -90,7 +90,7 @@ public class UserController {
         return "findPw";
     }
 
-    @GetMapping("/idCheck")
+    @PostMapping("/idCheck")
     @ResponseBody
     public String idCheck(@ModelAttribute SignupRequestDto signupRequestDto) {
         String result = userService.checkUsername(signupRequestDto.getUsername());

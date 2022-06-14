@@ -21,18 +21,12 @@
     <div class="header_wrap">
         <h2 class="unselectable clickable" onclick="location.href = '/'">코디</h2>
         <div class="menubox">
-            <button class="unselectable clickable showonlylogged">내 프로필</button> <!-- 세션으로 로그인 여부를 확인하고 보여지게하는 showonlylogged 필요 X-->
+            <button class="unselectable clickable">내 프로필</button>
             <button class="unselectable clickable" onclick="location.href='/list'">커뮤니티</button>
             <button class="unselectable clickable" onclick="location.href='https://milkey-way.github.io/cody_web'">로드맵</button>
             <button class="unselectable clickable">가이드</button>
             <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
-            <!-- 여기부터 아래 주석까지 배치 수정, uesrmenu가 메인화면에서 미 로그인 시 사용자 편의성이 떨어짐, 로그인했을 때는 필요없음 -->
-            <div class="unselectable clickable usermenu" onclick="onUserMenuButton_clicked()">
-                <div>
-                    <button onclick="location.href = '/user/login'">로그인</button>
-                    <button onclick="location.href = '/user/signup'">회원가입</button>
-                </div>
-            </div>
+            <div class="unselectable clickable usermenu"></div>
             <span class="user" th:text="${username}"></span> <span class="nim">님</span>
             <span class="logout"><a href="/user/logout">로그아웃</a></span>
             <!---->
@@ -68,17 +62,17 @@
 
         <div class="loadmap_content" th:if="${bestCommunityList.isEmpty() || bestCommunityList == null}">
             <div class="loadmap_card">
-                <img class="loadmap_preview" src="./imgs/banner1.jpg">
+                <img class="loadmap_preview" src="./imgs/noneImage.png">
                 <h4>해외 호텔 조리사 되기</h4>
                 <h3>호텔조리학과 | 떡볶이맛 칵테일</h3>
             </div>
             <div class="loadmap_card">
-                <img class="loadmap_preview" src="./imgs/banner2.jpg">
+                <img class="loadmap_preview" src="./imgs/noneImage.png">
                 <h4>해외 호텔 조리사 되기</h4>
                 <h3>호텔조리학과 | 떡볶이맛 칵테일</h3>
             </div>
             <div class="loadmap_card">
-                <img class="loadmap_preview" src="./imgs/banner3.jpg">
+                <img class="loadmap_preview" src="./imgs/noneImage.png">
                 <h4>해외 호텔 조리사 되기</h4>
                 <h3>호텔조리학과 | 떡볶이맛 칵테일</h3>
             </div>

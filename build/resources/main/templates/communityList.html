@@ -4,87 +4,101 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/fontloader.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/maincontent.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
     <link rel="stylesheet" th:href="@{/css/communityList.css}">
+    <script type="text/javascript" th:src="@{/scripts/common.js}"></script>
     <title>CommunityList</title>
 </head>
 <body>
-<div class="Desktop---1">
-    <div class="menu">
-        <span class="logo"><a href="/">코디</a></span>
-        <span class="menu1">로드맵</span>
-        <span class="menu2">가이드</span>
-        <span class="menu3" onclick="location.href='/list'">커뮤니티</span>
-        <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
-        <img th:src="@{/imgs/user.svg}" class="premium-icon-user-2530777-1">
-        <span class="user" th:text="${username}"></span> <span class="nim">님</span>
-        <span class="logout"><a href="/user/logout">로그아웃</a></span>
-    </div>
-    <div class="communityList">
-        <div class="community">
-            개발자들의 이야기
-        </div>
-        <div class="searchbox">
-            <input type="text" class="search">
-            <img th:src="@{/imgs/search.svg}" class="searchicon">
-        </div>
-        <button class="write"><a th:href="@{/create}">글쓰기</a></button>
-        <div class="list">
-            <div class="line"></div>
-            <div class="communityList1" th:each="community : ${communities}">
-                    <a class="title" th:href="'/community/'+${community.id}" th:text="${community.community_title}">
-                        웹 백엔드 개발자가 되려면 공부 해야하는 필수적인...
-                    </a>
-                <div class="right">
-                    <a class="id" th:text="${community.userName}"></a>
-                    <a class="date" th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></a>
-                    <a class="count" th:text="${community.viewCounts}"></a>
-                    <a class="like" th:text="${community.likeCounts}"></a>
-                </div>
-            </div>
-            <div class="line1"></div>
-        </div>
 
-        <div class="pagination" th:if="${!communities.isEmpty()}">
-            <nav>
-                    <button class="pagebox">
-                        <a th:href="@{/list/?page=1}">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </button>
-                    <button class="pagebox">
-                        <a class="pagebox" th:href="@{/list/?page={page} (page = ${pagenation.prevBlock})}" >
-                            <span aria-hidden="true">&lt;</span>
-                        </a>
-                    </button>
-                    <th:block  th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}">
-                        <button class="pagebox"
-                                th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}"
-                                th:each="pageButton : ${#numbers.sequence(start, end)}">
-                            <a class="currnum" th:href="@{/list/?page={page} (page = ${pageButton})}" th:text=${pageButton}></a>
-                        </button>
-                    </th:block>
-                    <button class="pagebox">
-                        <a th:href="@{/list/?page={page} (page = ${pagenation.nextBlock})}">
-                            <span aria-hidden="true">&gt;</span>
-                        </a>
-                    </button>
-                    <button class="pagebox">
-                        <a th:href="@{/list/?page={page} (page = ${pagenation.totalPageCnt})}">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </button>
-            </nav>
+<header>
+    <div class="header_wrap">
+        <h2 class="unselectable clickable" onclick="location.href = '/'">코디</h2>
+        <div class="menubox">
+            <button class="unselectable clickable">내 프로필</button>
+            <button class="unselectable clickable commu" onclick="location.href='/list'">커뮤니티</button>
+            <button class="unselectable clickable">로드맵</button>
+            <button class="unselectable clickable">가이드</button>
+            <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
+            <div class="unselectable clickable usermenu"></div>
+            <span class="user" th:text="${username}"></span> <span class="nim">님</span>
+            <span class="logout"><a href="/user/logout">로그아웃</a></span>
         </div>
-
-<!--        <div class="pagination">-->
-<!--            <button class="pagebox"><span>«</span></button>-->
-<!--            <button class="pagebox"><span>‹</span></button>-->
-<!--            <button class="pagebox curr"><span class="currnum">1</span></button>-->
-<!--            <button class="pagebox"><span>2</span></button>-->
-<!--            <button class="pagebox"><span>›</span></button>-->
-<!--            <button class="pagebox"><span>»</span></button>-->
-<!--        </div>-->
     </div>
+</header>
+<div class="communityList">
+    <div class="community">
+        개발자들의 이야기
+    </div>
+    <div class="searchbox">
+        <input type="text" class="search">
+        <img th:src="@{/imgs/search.svg}" class="searchicon">
+    </div>
+    <button class="write"><a th:href="@{/create}">글쓰기</a></button>
+    <table class="list table">
+        <tr>
+            <th class="col-md-4">제목</th>
+            <th class="col-md-3">작성자</th>
+            <th class="col-md-3">작성날짜</th>
+            <th class="col-md-1">조회수</th>
+            <th class="col-md-1">좋아요</th>
+        </tr>
+        <tbody class="communityList1">
+        <tr th:each="community : ${communities}">
+            <td class="title"><a th:href="'/community/'+${community.id}" th:text="${community.community_title}"></a></td>
+            <td class="id" th:text="${community.userName}"></td>
+            <td class="date" th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></td>
+            <td class="count" th:text="${community.viewCounts}"></td>
+            <td class="like" th:text="${community.likeCounts}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="pagination" th:if="${!communities.isEmpty()}">
+        <nav>
+            <button class="pagebox">
+                <a th:href="@{/list/?page=1}">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </button>
+            <button class="pagebox">
+                <a th:href="@{/list/?page={page} (page = ${pagenation.prevBlock})}">
+                    <span aria-hidden="true">&lt;</span>
+                </a>
+            </button>
+            <th:block th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}">
+                <button class="pagebox"
+                        th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}"
+                        th:each="pageButton : ${#numbers.sequence(start, end)}">
+                    <a class="currnum" th:href="@{/list/?page={page} (page = ${pageButton})}" th:text=${pageButton}></a>
+                </button>
+            </th:block>
+            <button class="pagebox">
+                <a th:href="@{/list/?page={page} (page = ${pagenation.nextBlock})}">
+                    <span aria-hidden="true">&gt;</span>
+                </a>
+            </button>
+            <button class="pagebox">
+                <a th:href="@{/list/?page={page} (page = ${pagenation.totalPageCnt})}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </button>
+        </nav>
+    </div>
+
+    <!--        <div class="pagination">-->
+    <!--            <button class="pagebox"><span>«</span></button>-->
+    <!--            <button class="pagebox"><span>‹</span></button>-->
+    <!--            <button class="pagebox curr"><span class="currnum">1</span></button>-->
+    <!--            <button class="pagebox"><span>2</span></button>-->
+    <!--            <button class="pagebox"><span>›</span></button>-->
+    <!--            <button class="pagebox"><span>»</span></button>-->
+    <!--        </div>-->
 </div>
+
 </body>
 </html>
