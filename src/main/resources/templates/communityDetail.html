@@ -9,50 +9,63 @@
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/fontloader.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/maincontent.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
     <link rel="stylesheet" th:href="@{/css/communityDetail.css}">
     <title>CommunityDetail</title>
 </head>
 <body>
-<div class="Desktop---1">
-    <div class="menu">
-        <span class="logo"><a href="/">코디</a></span>
-        <span class="menu1">로드맵</span>
-        <span class="menu2">가이드</span>
-        <span class="menu3" onclick="location.href='/list'">커뮤니티</span>
-        <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
-        <img th:src="@{/imgs/user.svg}" class="premium-icon-user-2530777-1">
-        <span class="user" th:text="${username}"></span> <span class="nim">님</span>
-        <span class="logout"><a href="/user/logout">로그아웃</a></span>
+
+<header>
+    <div class="header_wrap">
+        <h2 class="unselectable clickable" onclick="location.href = '/'">코디</h2>
+        <div class="menubox">
+            <button class="unselectable clickable">내 프로필</button>
+            <button class="unselectable clickable commu" onclick="location.href='/list'">커뮤니티</button>
+            <button class="unselectable clickable">로드맵</button>
+            <button class="unselectable clickable">가이드</button>
+            <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">
+            <div class="unselectable clickable usermenu"></div>
+            <span class="user" th:text="${username}"></span> <span class="nim">님</span>
+            <span class="logout"><a href="/user/logout">로그아웃</a></span>
+        </div>
     </div>
+</header>
+<div class="Desktop---1">
     <div class="co">
         <div class="code">
             <div class="code1">
-                <div class="writer" th:text="${community.userName}">
-                </div>
                 <div class="title" th:text="${community.community_title}">
                 </div>
+                <div class="writer" th:text="${community.userName}">
+                </div>
                 <div class="code2">
-                    <div class="count" th:text="${community.viewCounts}"></div>
                     <div class="date"
                          th:text="${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></div>
+                    <div class="count" th:text="'조회수 '+ ${community.viewCounts}"></div>
                 </div>
+                <div class="line2"></div>
                 <div th:if="${community.imgWhether} == true">
                     <img th:src="|/image/${community.getUploadFile().getImagePath()}|">
                 </div>
                 <div class="content" th:text="${community.community_contents}"></div>
-                <button class="buttonLike" id="likeUpdate">
-                    좋아요
-                    <div th:text="${community.likeCounts}"></div>
+
+                <div class="editDelete" th:if="${idCheck}">
+                    <div class="button">
+                        <button class="b"><a th:href="@{'/community/editForm/' + ${community.id}}">수정</a></button>
+                    </div>
+                    <div class="button" th:if="${idCheck}">
+                        <form id="delete-form" th:action="@{'/community/delete/' + ${community.id}}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE"/>
+                            <button class="b"><a>삭제</a></button>
+                        </form>
+                    </div>
+                </div>
+                <button class="buttonLike" id="likeUpdate"><img th:src="@{/icons/heart.png}" class="heart">좋아요<div th:text="${community.likeCounts}"></div>
                 </button>
-                <div class="button" th:if="${idCheck}">
-                    <button class="b"><a th:href="@{'/community/editForm/' + ${community.id}}">수정</a></button>
-                </div>
-                <div class="button" th:if="${idCheck}">
-                    <form id="delete-form" th:action="@{'/community/delete/' + ${community.id}}" method="POST">
-                        <input type="hidden" name="_method" value="DELETE"/>
-                        <button class="b"><a>삭제</a></button>
-                    </form>
-                </div>
                 <div class="line"></div>
 
                 <form id="comment-form" class="reply">
@@ -80,16 +93,16 @@
 <script>
     const btn = document.getElementById('likeUpdate')
     console.log(likeCheck);
-    btn.addEventListener('click', function() {
-        if(likeCheck) {
-            btn.style.backgroundColor="#d8d8d8";
+    btn.addEventListener('click', function () {
+        if (likeCheck) {
+            btn.style.backgroundColor = "#d8d8d8";
         } else {
-            btn.style.backgroundColor="#2f80ed";
+            btn.style.backgroundColor = "#2f80ed";
         }
     });
     $('#likeUpdate').click(function () {
         $.ajax({
-            url: '/likeUpdate/'+communityId,
+            url: '/likeUpdate/' + communityId,
             type: 'POST',
             data: `${communityId}`,
             success: function (data) {

@@ -75,8 +75,7 @@ window.onload = function(){
     /* 여기에 사용할 배너 이미지 경로들을 추가하시면 됩니다. */
     window.imgs = [
         "./imgs/banner1.png",
-        "./imgs/banner2.jpg",
-        "./imgs/banner3.jpg"
+        "./imgs/banner2.png",
     ];
     initBannerImgs();
     /* 5초 간격으로 배너를 회전(Spin) 시키는 타이머(Timer) 실행 */
