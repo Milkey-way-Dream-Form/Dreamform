@@ -6,10 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/fontloader.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/css/login.css}">
+    <script type="text/javascript" th:src="@{/scripts/common.js}"></script>
+<!--    <script type="text/javascript" th:src="@{/scripts/popup.js}"></script>-->
+<!--    <script type="text/javascript" th:src="@{/scripts/hooks.js}"></script>-->
     <title>Cody-login</title>
 </head>
 <body>
+<header>
+    <div class="header_wrap">
+        <h2 class="unselectable clickable" onclick="location.href = '/'">코디</h2>
+        <div class="menubox">
+            <button class="unselectable clickable">내 프로필</button>
+            <button class="unselectable clickable" onclick="location.href='/list'">커뮤니티</button>
+            <button class="unselectable clickable">로드맵</button>
+            <button class="unselectable clickable">가이드</button>
+<!--            <img th:src="@{/imgs/alarm.svg}" class="free-icon-alarm-bell-1059063-1">-->
+<!--            <div class="unselectable clickable usermenu"></div>-->
+        </div>
+    </div>
+</header>
 <div class="login">
     <div th:if="${param.error}" class="" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -33,19 +52,20 @@
                     <div class="id">비밀번호</div>
                     <input type="password" class="idbox" name="password">
                 </div>
-                <div class="form1">
+                <div class="form1 buttons">
                     <button class="log"><span>로그인</span></button>
                 </div>
             </form>
-            <div class="form2">
-                <button class="find" onclick="location.href='/user/findid'"><span>아이디 찾기</span></button>
-                <button class="find" onclick="location.href='/user/findpw'"><span>비밀번호 찾기</span></button>
+            <button class="signup" onclick="location.href='/user/signup'"><span>회원가입</span></button>
+            <div class="inputField arrangement">
+                <button class="kakaoLogin_wide"></button>
             </div>
-            <div class="form1">
-                <button class="kakaolog" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=5f366d763b42c71ea2d61c5f717b8520&redirect_uri=http://localhost:8080/user/kakao/callback&response_type=code'"><span>카카오로 로그인하기</span></button>
-            </div>
-            <div class="form1">
-                <button class="signup" onclick="location.href='/user/signup'"><span>회원가입</span></button>
+            <div class="inputField arrangement">
+                <div class="loginOptions">
+                    <button onclick="location.href='/user/findid'">아이디 찾기</button>
+                    <bar></bar>
+                    <button onclick="location.href='/user/findpw'">비밀번호 찾기</button>
+                </div>
             </div>
         </div>
     </div>

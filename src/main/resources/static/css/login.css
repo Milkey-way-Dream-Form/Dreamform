@@ -8,57 +8,50 @@ a {
   color: #fff;
 }
 .loginform  {
-    width: 300px;
-    height: 460px;
+    width: 400px;
+    height: 500px;
     margin: 50px auto;
-    padding: 35px 23px 86px 24px;
+    padding: 60px 23px 0px 24px;
     border-radius: 39px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.16);
     border: solid 1px #707070;
     background-color: #fff;
   }
 .form {
-    width: 250px;
+    width: 340px;
     margin: 0 auto;
 }
 .logo{
-    width: 35px;
-    height: 26px;
-    margin: 0 auto;
-    font-family: AppleSDGothicNeoM00;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    flex-grow: 0;
-    padding: 27px 22px 28px 24px;
-    background-color: #2f80ed;
-    border-radius: 50%;
-    color: #fff;
+    text-align: center;
   }
+.logo a{
+  text-decoration: none;
+  font-family: 'recipekorea';
+  font-size: 30pt;
+  font-weight: 500;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin: 0 auto;
+  color: #a8dbff;
+  z-index: 1;
+}
   .welcome {
-    width: 200px;
+    width: 300px;
     height: 19px;
     margin: 20px auto;
-    font-family: AppleSDGothicNeoEB00;
-    font-size: 16px;
+    font-family: 'nanum_square';
+    font-size: 20px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;
-    text-align: left;
+    text-align: center;
     color: #707070;
   }
   .form1 {
-      margin: 20px;
+      margin: 25px 20px;
   }
-  .form2 {
-    margin: 20px;
-    display: flex;
-    }
   .id{
     font-family: AppleSDGothicNeoB00;
     font-size: 12px;
@@ -71,18 +64,20 @@ a {
     color: #000;
   }
   .idbox {
-    width: 203px;
+    width: 300px;
     height: 30px;
-    border-radius: 9px;
-    border: solid 1px #707070;
+    border-radius: 4px;
+    border: solid 2px #d2d2d2;
     background-color: #fff;
   }
   .log {
-    width: 210px;
-    height: 35px;
-    border-radius: 9px;
+    width: 147px;
+    height: 28px;
+    border-radius: 4px;
     background-color: #2f80ed;
     border: none;
+    margin-right: 6px;
+    float: left;
   }
   .log:hover {
     background-color: #fff;
@@ -102,64 +97,15 @@ a {
   .log:hover span {
     color: #000;
   }
-  .find {
-    width: 95px;
-    height: 30px;
-    margin: 0 13px 0 0;
-    border-radius: 9px;
-    border: solid 1px #707070;
-    background-color: #fff;
-  }
-  .find:hover {
-    background-color: #2f80ed;
-  }
-  .find span {
-    font-family: AppleSDGothicNeoB00;
-    font-size: 10px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000;
-  }
-  .find:hover span {
-    color: #fff;
-  }
-  .kakaolog {
-    width: 210px;
-    height: 35px;
-    border-radius: 9px;
-    background-color: #f9e000;
-    border: none;
-  }
-  .kakaolog:hover {
-    background-color: #624a3d;
-  }
-  .kakaolog span {
-    font-family: AppleSDGothicNeoB00;
-    font-size: 12px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000;
-  }
-  .kakaolog:hover span {
-    color: #fff
-  }
   .signup {
-    width: 210px;
-    height: 35px;
-    border-radius: 9px;
-    background-color: #fff;
+    width: 147px;
+    height: 28px;
+    border-radius: 4px;
+    background-color: #2f80ed;
     border: solid 1px #707070;
   }
   .signup:hover {
-    background-color: #2f80ed;
+    background-color: #fff;
   }
   .signup span {
     font-family: AppleSDGothicNeoB00;
@@ -170,8 +116,86 @@ a {
     line-height: normal;
     letter-spacing: normal;
     text-align: left;
-    color: #000;
+    color: #fff;
 }
 .signup:hover span {
-  color: #fff;
+  color: #000;
+}
+body {
+  margin: 0px;
+}
+
+bar {
+  display: inline;
+  position: absolute;
+  height: 50%;
+  width: 1px;
+  background: #d2d2d2;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+input[type=text],input[type=password] {
+  background: white;
+  height: 32px;
+  border: 2px solid #d2d2d2;
+  box-sizing: border-box;
+}
+
+#loginForm {
+  position: absolute;
+  width: 400px;
+  height: 280px;
+  left: 50%;
+  top: 50%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: inline-block;
+  transform: translate(-50%,-50%) scale(1.2);
+}
+
+.kakaoLogin_wide {
+  position: relative;
+  height: 28px;
+  border: 1px solid #d2d2d2;
+  box-sizing: content-box;
+  background-image: url(../icons/kakao_login_original.png);
+  background-size: 100% 100%;
+  padding: 0px;
+  margin-top: 25px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.loginOptions {
+  display: inline-table;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5px;
+}
+
+.loginOptions > button {
+  position: relative;
+  background: none;
+  border: none;
+  font-family: 'nanum_square';
+  color: #b3b3b3;
+  font-size: 8pt;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  transform: translateY(-25%);
+}
+
+.loginOptions > button:hover {
+  color: #75b1ff;
+}
+.buttons{
+  margin: 25px 20px 0 20px ;
+}
+.arrangement {
+  left: unset;
+  transform: unset;
+  width: 87%;
+  margin: 0 auto;
 }

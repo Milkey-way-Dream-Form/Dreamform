@@ -1,305 +1,273 @@
 .Desktop---1 {
-  width: 1440px;
-  height: 1646px;
-  flex-grow: 0;
-  padding: 23px 0 0;
-  background-color: #fff;
-  margin: 0 auto;
+    width: 1440px;
+    height: 1646px;
+    flex-grow: 0;
+    padding: 23px 0 0;
+    background-color: #fff;
+    margin: 0 auto;
 }
+
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
+
 .logo a {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
+
 .menu {
-  width: auto;
-  height: 55px;
+    width: auto;
+    height: 55px;
 }
 
-span.logo{
-  width: 35px;
-  height: 26px;
-  margin: 0 127px 24px 260px;
-  font-family: AppleSDGothicNeoM00;
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  flex-grow: 0;
-  padding: 27px 22px 28px 24px;
-  background-color: #2f80ed;
-  border-radius: 50%;
-  color: #fff;
-}
-span.logout a {
-  text-decoration: none;
-  color: #000;
-}
-span.menu1{
-  width: 52px;
-  height: 26px;
-  margin: 0 62px 24px 7px;
-  font-family: AppleSDGothicNeoM00;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
-
-span.menu2{
-  width: 52px;
-  height: 26px;
-  margin: 0 62px 24px;
-  font-family: AppleSDGothicNeoM00;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
-
-span.menu3{
-  width: 70px;
-  height: 26px;
-  margin: 0 168px 24px 62px;
-  font-family: AppleSDGothicNeoM00;
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
-span.user {
-  font-family: AppleSDGothicNeoM00;
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
-.nim {
-  font-family: AppleSDGothicNeoM00;
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
-span.logout{
-  width: 70px;
-  height: 26px;
-  margin: 0 168px 24px 5px;
-  font-family: AppleSDGothicNeoM00;
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
 
 img.free-icon-alarm-bell-1059063-1 {
-  width: 23px;
-  height: 25px;
-  margin: 0 20px 0;
-  object-fit: contain;
-  opacity: 0.8;
+    width: 23px;
+    height: 25px;
+    margin: 0 20px 0;
+    object-fit: contain;
+    opacity: 0.8;
 }
 
 img.premium-icon-user-2530777-1 {
-  width: 25px;
-  height: 25px;
-  flex-grow: 0;
-  object-fit: contain;
+    width: 25px;
+    height: 25px;
+    flex-grow: 0;
+    object-fit: contain;
 }
+
 /* 상세 페이지 */
 .co {
-  width: 1134px;
-  margin: 0 auto;
+    width: 1134px;
+    margin: 0 auto;
 }
+
 .code {
-  width: inherit;
-  margin: 0 auto;
+    width: inherit;
+    margin: 0 auto;
 }
+
 .code1 {
-  float: left;
-  margin: 50px;
+    float: left;
+    margin: 50px;
 }
+
 .writer {
-  font-family: AppleSDGothicNeoEB00;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #2f80ed;
+    font-family: AppleSDGothicNeoEB00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #2f80ed;
 }
+
 .title {
-  font-family: AppleSDGothicNeoEB00;
-  font-size: 36px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: 2px;
-  text-align: left;
-  color: #000;
+    font-family: AppleSDGothicNeoEB00;
+    font-size: 36px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 2px;
+    text-align: left;
+    color: #000;
 }
-.code2{
-  margin: 20px 0 40px;
+
+.code2 {
+    margin-bottom: 10px;
+    display: flex;
 }
+
 .count {
-  font-family: AppleSDGothicNeoSB00;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #707070;
+    font-family: AppleSDGothicNeoSB00;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
+    margin-top: 10px;
 }
+
 .date {
-  font-family: AppleSDGothicNeoSB00;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #707070;
+    font-family: AppleSDGothicNeoSB00;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
+    margin-top: 10px;
+    margin-right: 10px;
 }
+
 .image {
-  width: 1125px;
-  height: 332px;
-  margin: 0 0 20px;
-  background-color: #c0c0c0;
+    width: 1125px;
+    height: 332px;
+    margin: 0 0 20px;
+    background-color: #c0c0c0;
 }
-.button {
-  margin-top: 40px;
-  float: right;
-}
+
 .b {
-  margin: 0 6px 0 0;
-  padding: 10px 16px 9px 17px;
-  opacity: 0.5;
-  border-radius: 10px;
-  background-color: #d8d8d8;
+    margin: 0 6px 0 0;
+    padding: 5px 10px;
+    opacity: 0.5;
+    border-radius: 6px;
+    background-color: #a8dbff;
+    border: 2px solid #a8dbff;
 }
+
 .b:hover {
-  background-color: #2f80ed;
+    background-color: #fff;
+}
+.b:hover a {
+    color: #a8dbff;
 }
 .b a {
-  text-decoration: none;
-  font-family: AppleSDGothicNeoEB00;
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
+    text-decoration: none;
+    font-family: 'nanum_square';
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
 }
+
 .line {
-  height: 1px;
-  margin: 120px 0 20px;
-  background-color: #c6c6c6;
+    height: 1px;
+    background-color: #c6c6c6;
 }
+.line2 {
+    height: 1px;
+    margin-bottom: 10px;
+    background-color: #c6c6c6;
+}
+
 /*댓글*/
 .code3 {
-  margin: 20px 0;
+    margin: 20px 0;
 }
+
 .list-group {
-  list-style: none;
+    list-style: none;
 }
+
 .comment-option {
-  font-family: AppleSDGothicNeoSB00;
-  font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #707070;
+    font-family: AppleSDGothicNeoSB00;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
 }
+
 li p {
-  font-family: AppleSDGothicNeoM00;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
 }
-li p span{
-  font-family: AppleSDGothicNeoSB00;
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #707070;
+
+li p span {
+    font-family: AppleSDGothicNeoSB00;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #707070;
 }
+
 li p strong {
-  font-family: AppleSDGothicNeoEB00;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #2f80ed;
+    font-family: AppleSDGothicNeoEB00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #2f80ed;
 }
+
 .retext {
-  width: 1129px;
-  height: 137px;
-  margin: 20px 2px 0 0;
-  border-radius: 14px;
-  border: solid 1px #707070;
+    width: 1109px;
+    height: 117px;
+    padding: 10px;
+    margin: 20px 2px 0 0;
+    border-radius: 14px;
+    border: solid 1px #707070;
+    font-family: AppleSDGothicNeoEB00;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
 }
+
 .btn-update, .btn-delete {
-  margin: 0 6px 0 0;
-  padding: 10px 16px 9px 17px;
-  opacity: 0.5;
-  border-radius: 10px;
-  background-color: #d8d8d8;
-  float: right;
+    margin: 0 6px 0 0;
+    padding: 10px 16px 9px 17px;
+    opacity: 0.5;
+    border-radius: 10px;
+    background-color: #d8d8d8;
+    float: right;
 }
+
 .btn-update:hover, .btn-delete:hover {
-  background-color: #2f80ed;
+    background-color: #2f80ed;
 }
+
 .communityId {
-  display: none;
+    display: none;
+}
+
+.heart {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.buttonLike {
+    width: 100px;
+    padding: 0;
+    border: none;
+    background-color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.buttonLike:hover {
+    cursor: pointer;
+}
+.buttonLike div {
+    margin-left: 5px;
+    display: inline;
+}
+.editDelete {
+    margin: 120px 0 5px;
+    display: flex;
+    position: relative;
+    left: 980px;
 }

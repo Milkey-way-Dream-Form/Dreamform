@@ -1,191 +1,252 @@
-.Desktop---1 {
-  width: 1440px;
-  height: 1646px;
-  flex-grow: 0;
-  padding: 23px 0 0;
-  background-color: #fff;
-  margin: 0 auto;
-}
+/*.Desktop---1 {*/
+/*  width: 1440px;*/
+/*  height: 1646px;*/
+/*  flex-grow: 0;*/
+/*  padding: 23px 0 0;*/
+/*  background-color: #fff;*/
+/*  margin: 0 auto;*/
+/*}*/
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
-.logo a {
-  text-decoration: none;
-  color: #fff;
-}
+
+/*.logo a {*/
+/*  text-decoration: none;*/
+/*  color: #fff;*/
+/*}*/
 .menu {
-  width: auto;
-  height: 55px;
+    width: auto;
+    height: 55px;
 }
 
-span.logo{
-  width: 35px;
-  height: 26px;
-  margin: 0 127px 24px 260px;
-  font-family: AppleSDGothicNeoM00;
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  flex-grow: 0;
-  padding: 27px 22px 28px 24px;
-  background-color: #2f80ed;
-  border-radius: 50%;
-  color: #fff;
-}
-span.logout a {
-  text-decoration: none;
-  color: #000;
-}
-span.menu1{
-  width: 52px;
-  height: 26px;
-  margin: 0 62px 24px 7px;
-  font-family: AppleSDGothicNeoM00;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
+/*span.logo{*/
+/*  width: 35px;*/
+/*  height: 26px;*/
+/*  margin: 0 127px 24px 260px;*/
+/*  font-family: AppleSDGothicNeoM00;*/
+/*  font-size: 20px;*/
+/*  font-weight: bold;*/
+/*  font-stretch: normal;*/
+/*  font-style: normal;*/
+/*  line-height: normal;*/
+/*  letter-spacing: normal;*/
+/*  flex-grow: 0;*/
+/*  padding: 27px 22px 28px 24px;*/
+/*  background-color: #2f80ed;*/
+/*  border-radius: 50%;*/
+/*  color: #fff;*/
+/*}*/
+/*span.logout a {*/
+/*  text-decoration: none;*/
+/*  color: #000;*/
+/*}*/
+/*span.menu1{*/
+/*  width: 52px;*/
+/*  height: 26px;*/
+/*  margin: 0 62px 24px 7px;*/
+/*  font-family: AppleSDGothicNeoM00;*/
+/*  font-size: 20px;*/
+/*  font-weight: normal;*/
+/*  font-stretch: normal;*/
+/*  font-style: normal;*/
+/*  line-height: normal;*/
+/*  letter-spacing: normal;*/
+/*  text-align: left;*/
+/*  color: #000;*/
+/*}*/
 
-span.menu2{
-  width: 52px;
-  height: 26px;
-  margin: 0 62px 24px;
-  font-family: AppleSDGothicNeoM00;
-  font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
+/*span.menu2{*/
+/*  width: 52px;*/
+/*  height: 26px;*/
+/*  margin: 0 62px 24px;*/
+/*  font-family: AppleSDGothicNeoM00;*/
+/*  font-size: 20px;*/
+/*  font-weight: normal;*/
+/*  font-stretch: normal;*/
+/*  font-style: normal;*/
+/*  line-height: normal;*/
+/*  letter-spacing: normal;*/
+/*  text-align: left;*/
+/*  color: #000;*/
+/*}*/
 
-span.menu3{
-  width: 70px;
-  height: 26px;
-  margin: 0 168px 24px 62px;
-  font-family: AppleSDGothicNeoM00;
-  font-size: 20px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
-span.user {
-  font-family: AppleSDGothicNeoM00;
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
-.nim {
-  font-family: AppleSDGothicNeoM00;
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
-span.logout{
-  width: 70px;
-  height: 26px;
-  margin: 0 168px 24px 5px;
-  font-family: AppleSDGothicNeoM00;
-  font-size: 12px;
-  font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
-}
+/*span.menu3{*/
+/*  width: 70px;*/
+/*  height: 26px;*/
+/*  margin: 0 168px 24px 62px;*/
+/*  font-family: AppleSDGothicNeoM00;*/
+/*  font-size: 20px;*/
+/*  font-weight: bold;*/
+/*  font-stretch: normal;*/
+/*  font-style: normal;*/
+/*  line-height: normal;*/
+/*  letter-spacing: normal;*/
+/*  text-align: left;*/
+/*  color: #000;*/
+/*}*/
+/*span.user {*/
+/*  font-family: AppleSDGothicNeoM00;*/
+/*  font-size: 12px;*/
+/*  font-weight: bold;*/
+/*  font-stretch: normal;*/
+/*  font-style: normal;*/
+/*  line-height: normal;*/
+/*  letter-spacing: normal;*/
+/*  text-align: left;*/
+/*  color: #000;*/
+/*}*/
+/*.nim {*/
+/*  font-family: AppleSDGothicNeoM00;*/
+/*  font-size: 12px;*/
+/*  font-weight: bold;*/
+/*  font-stretch: normal;*/
+/*  font-style: normal;*/
+/*  line-height: normal;*/
+/*  letter-spacing: normal;*/
+/*  text-align: left;*/
+/*  color: #000;*/
+/*}*/
+/*span.logout{*/
+/*  width: 70px;*/
+/*  height: 26px;*/
+/*  margin: 0 168px 24px 5px;*/
+/*  font-family: AppleSDGothicNeoM00;*/
+/*  font-size: 12px;*/
+/*  font-weight: bold;*/
+/*  font-stretch: normal;*/
+/*  font-style: normal;*/
+/*  line-height: normal;*/
+/*  letter-spacing: normal;*/
+/*  text-align: left;*/
+/*  color: #000;*/
+/*}*/
 
 img.free-icon-alarm-bell-1059063-1 {
-  width: 23px;
-  height: 25px;
-  margin: 0 20px 0;
-  object-fit: contain;
-  opacity: 0.8;
+    width: 23px;
+    height: 25px;
+    margin: 0 20px 0;
+    object-fit: contain;
+    opacity: 0.8;
+    color: #2f80ed;
 }
 
 img.premium-icon-user-2530777-1 {
-  width: 25px;
-  height: 25px;
-  flex-grow: 0;
-  object-fit: contain;
+    width: 25px;
+    height: 25px;
+    flex-grow: 0;
+    object-fit: contain;
 }
+
 /* 게시글 작성 */
 .form {
     width: 1134px;
     margin: 0 auto;
 }
-.file {
-  margin: 50px 0 0;
-}
+
 .title {
     width: 1124px;
-  height: 50px;
-  margin: 10px 0 20px;
-  border-radius: 14px;
-  border: solid 1px #707070;
+    /*height: 20px;*/
+    margin: 10px 0 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'nanum_square';
+    border: solid 1px #707070;
 }
+
 .line {
     width: 1124px;
-  height: 1px;
-  background-color: #c6c6c6;
+    height: 1px;
+    margin-bottom: 10px;
+    background-color: #c6c6c6;
 }
+
 .content {
+    display: inline-block;
     width: 1124px;
-  height: 600px;
-  margin: 20px 0;
-  border-radius: 14px;
-  border: solid 1px #707070;
+    min-height: 600px;
+    height: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 0 0 6px 6px;
+    border: solid 1px #b2b2b2;
 }
+
 .button {
-    margin-top: 40px;
+    margin-top: 10px;
     float: right;
 }
+
 .b {
     margin: 0 6px 0 0;
-  padding: 10px 16px 9px 17px;
-  opacity: 0.5;
-  border-radius: 10px;
-  background-color: #d8d8d8;
+    padding: 10px 16px 9px 17px;
+    opacity: 0.5;
+    border-radius: 10px;
+    background-color: #a8dbff;
+    border: 1px solid #a8dbff;
 }
+
 .b:hover {
-    background-color: #2f80ed;
+    background-color: #fff;
+    border: 1px solid #a8dbff;
+}
+.b:hover span {
+    color: #a8dbff;
 }
 .b span {
-    font-family: AppleSDGothicNeoEB00;
-  font-size: 18px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #000;
+    font-family: 'nanum_square';
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #fff;
+}
+.cancel {
+    font-family: 'nanum_square';
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #c0c0c0;
+}
+.cancel:hover {
+    color: #000;
 }
 #img-selector {
-  display: none;
+    display: none;
+}
+.file {
+    width: 1124px;
+}
+.photo{
+    width: 16px;
+}
+.editor-menu {
+    border: solid 1px #b2b2b2;
+    border-radius: 6px 6px 0 0;
+    padding: 6px;
+    background-color: #a8dbff;
+    margin: 0 auto;
+}
+.editor-menu button {
+    margin-right: 5px;
+    width: 30px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 2px;
+}
+#btn-bold {
+    margin-left: 30px;
+}
+#editor {
+    width: 1124px;
+}
+#editor img {
+    max-width: 100%;
 }
