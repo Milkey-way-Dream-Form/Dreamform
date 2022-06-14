@@ -247,3 +247,7 @@ th {
 tr:last-child {
     border-bottom: 1px solid #ddd;
 }
+
+.menubox > button.commu {
+    color: #337ab7;
+}
