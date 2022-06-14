@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Setter
 @Getter
 @NoArgsConstructor
@@ -41,6 +43,7 @@ public class CommunityDto {
                 .viewCounts(viewCounts)
                 .likeCounts(likeCounts)
                 .build();
+        log.info("UploadFile Check" + build.getUploadFile());
         return build;
     }
 
@@ -50,6 +53,7 @@ public class CommunityDto {
                 .userName(community.getUser().getUsername())
                 .community_title(community.getCommunity_title())
                 .community_contents(community.getCommunity_contents())
+                .uploadFile(community.getUploadFile())
                 .viewCounts(community.getViewCounts())
                 .likeCounts(community.getLikeCounts())
                 .imgWhether(community.isImgWhether())
@@ -67,6 +71,7 @@ public class CommunityDto {
                     .userName(community.getUser().getUsername())
                     .community_title(community.getCommunity_title())
                     .community_contents(community.getCommunity_contents())
+                    .uploadFile(community.getUploadFile())
                     .viewCounts(community.getViewCounts())
                     .likeCounts(community.getLikeCounts())
                     .imgWhether(community.isImgWhether())
