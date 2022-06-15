@@ -89,19 +89,16 @@ public class CommunityController {
     @PutMapping("/community/edit/{id}")
     public String editForm(@PathVariable("id") Long id, @ModelAttribute CommunityDto edit, RedirectAttributes redirectAttributes) throws IOException  {
         CommunityDto communityDto = communityService.getCommunity(id);
-        log.info("Like counts!!!!" + communityDto.getLikeCounts());
         if(communityDto.getUploadFile() != null) {
             if(!edit.getAttachFile().isEmpty()) {
                 imageService.deleteFile(communityDto.getUploadFile().getImageOriginal());
                 UploadFile image = imageService.saveFile(edit.getAttachFile());
                 communityDto.setUploadFile(image);
-                log.info("original is Not Null and edit not Null");
             }
         }else {
             if(!edit.getAttachFile().isEmpty()) {
                 UploadFile image = imageService.saveFile(edit.getAttachFile());
                 communityDto.setUploadFile(image);
-                log.info("original is Null and edit not Null");
             }
         }
         communityDto.setCommunity_title(edit.getCommunity_title());
