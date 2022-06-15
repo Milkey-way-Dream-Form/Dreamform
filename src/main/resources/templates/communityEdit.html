@@ -2,42 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>커뮤니티 게시글 수정</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/fontloader.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/maincontent.css}">
+    <link rel="stylesheet" th:href="@{/css/board.css}">
+    <link rel="stylesheet" th:href="@{/css/communityForm.css}">
+
 </head>
-<style>
-    #img-selector {display: none;}
-    div#editor_text {padding: 16px 24px; border: 1px solid #D6D6D6; border-radius: 4px;}
-    #editor img { max-width: 100%; }
-    button.active { background-color: #999999; color: #FFF; }
-    #editor_text {display: inline;}
-</style>
 <body>
 <div>
-    <p th:text="'작성날짜 : ' + ${community.createdAt} ? ${#temporals.format(community.createdAt,'yyyy-MM-dd HH:mm')} : ${community.createdAt}"></p>
-    <p th:text="'조회수 : ' + ${community.viewCounts}"></p>
-    <p th:text="'작성자 : ' + ${community.userName}"></p>
+    <header>
+        <div class="header_wrap">
+            <h2 class="unselectable clickable" onclick="location.href = '/'">코디</h2>
+            <div class="menubox">
+                <button class="unselectable clickable" onclick="location.href='/profile'">내 프로필</button>
+                <button class="unselectable clickable commu" onclick="location.href='/list'">커뮤니티</button>
+                <button class="unselectable clickable" onclick="location.href='https://milkey-way.github.io/cody_web'">로드맵</button>
+                <button class="unselectable clickable">가이드</button>
+                <div class="unselectable clickable usermenu"></div>
+                <img th:src="@{/icons/bell.png}" class="bell">
+                <div class="space">
+                    <span class="user" th:text="${community.userName}"></span> <span class="nim">님</span>
+                    <span class="logout"><a href="/user/logout">로그아웃</a></span>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <form th:action="@{/community/edit/{id}(id = ${community.id})}" method="POST" enctype="multipart/form-data">
+    <form class="form" th:action="@{/community/edit/{id}(id = ${community.id})}"  method="POST" enctype="multipart/form-data">
+        <input type="text" class="title" id="inputTitle" name="community_title" placeholder="제목을 입력하세요" th:value="${community.community_title}" >
+        <div class="line"></div>
         <input type="hidden" name="_method" value="PUT">
-        <label for="inputTitle">제목</label>
-        <input type="text" name="community_title" id="inputTitle" th:value="${community.community_title}"><br>
-        <input id="img-selector" type="file" name="attachFile"/>
-        <div class="editor-menu">
-            <button id="btn-bold"><b>B</b></button>
-            <button id="btn-italic"><i>I</i></button>
-            <button id="btn-underline"><u>U</u></button>
-            <button id="btn-image">IMG</button>
+        <div class="file">
+            <input id="img-selector" type="file" name="attachFile"/>
+            <div class="editor-menu">
+                <button id="btn-bold"><b>B</b></button>
+                <button id="btn-italic"><i>I</i></button>
+                <button id="btn-underline"><u>U</u></button>
+                <button id="btn-image"><img class="photo" th:src="@{/icons/photo.png}"></button>
+            </div>
         </div>
         <div id="editor">
-            <div id="editor_text" th:text="${community.community_contents}" contenteditable="true">
-            </div>
-            <div id="existingImg" th:if="${community.imgWhether} == true">
-                <img th:src="|/image/${community.getUploadFile().getImagePath()}|">
+            <div id="editor_text"  class="content" contenteditable="true" placeholder="내용을 입력하세요">
+                <div th:text="${community.community_contents}"></div>
+                <img th:if="${community.imgWhether} == true" th:src="|/image/${community.getUploadFile().getImagePath()}|">
             </div>
         </div>
-        <input type="hidden" name="community_contents" id="inputContent">
-        <input type="submit" value="등록" onclick="getContents()">
-        <a href="/list" value="취소">취소</a>
+        <input type="hidden" class="" name="community_contents" id="inputContent" >
+        <div class="button">
+            <button type="submit" class="b" id="submit" onclick="getContents()"><span>글 등록</span></button>
+            <a class="cancel" href="/list" value="취소">취소</a>
+        </div>
     </form>
 
 </div>
@@ -50,10 +69,8 @@
     const imageSelector = document.getElementById('img-selector');
     const editorText = document.getElementById('editor_text');
     const inputContent = document.getElementById('inputContent');
-    const existingImg = document.getElementById('existingImg');
-    // const boldWhether = false;
-    // const italicWhether = false;
-    // const underlineWhether = false;
+    const inputTitle = document.getElementById('inputTitle');
+    const submit = document.getElementById('submit');
 
     btnBold.addEventListener('click', function (e) {
         setStyle('bold');
@@ -94,7 +111,6 @@
         const files = e.target.files;
         if (!!files) {
             insertImageDate(files[0]);
-            existingImg.style.display = 'none';
         }
     });
 
@@ -126,12 +142,10 @@
     function isStyle(style) {
         return document.queryCommandState(style);
     }
-
     function getContents() {
         inputContent.value = editorText.innerText;
         return true;
     }
-
 </script>
 </body>
 </html>

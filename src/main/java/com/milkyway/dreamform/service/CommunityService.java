@@ -138,5 +138,10 @@ public class CommunityService {
         }
         return bestCommunityDtoList;
     }
+
+    public User getProfile(String userName) {
+        User user = userRepository.findByUsername(userName).get();
+        return user;
+    }
 }
 
