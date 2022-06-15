@@ -34,10 +34,4 @@ public class HomeController {
         model.addAttribute("username", userDetails.getUsername());
         return "main";
     }
-    @GetMapping("/profile")
-    public String testProfile(Model model,@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        User user = communityService.getProfile(userDetails.getUsername());
-        model.addAttribute("user", user);
-        return "profile";
-    }
 }
