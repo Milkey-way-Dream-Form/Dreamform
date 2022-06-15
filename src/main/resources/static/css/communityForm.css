@@ -250,3 +250,7 @@ img.premium-icon-user-2530777-1 {
 #editor img {
     max-width: 100%;
 }
+
+.menubox > button.commu {
+    color: #337ab7;
+}

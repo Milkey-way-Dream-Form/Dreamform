@@ -81,13 +81,23 @@ header {
     height: 24px;
     border: none;
     padding-left: 40px;
-    right: 6px;
+    right: 165px;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .menubox > button:hover{
     color: #a8dbff;
+}
+
+.menubox > div.space {
+    position: absolute;
+    height: 24px;
+    border: none;
+    padding-left: 40px;
+    right: 10px;
+    top: 20%;
+    transform: translateY(-50%);
 }
 
 .usermenu {
@@ -202,4 +212,8 @@ header {
     height: 100%;
     top: 30px;
     left: calc(50% - 512px);
+}
+
+.nim {
+    padding-right: 25px
 }

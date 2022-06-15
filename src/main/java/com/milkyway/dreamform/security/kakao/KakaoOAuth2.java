@@ -29,7 +29,7 @@ public class KakaoOAuth2 {
         // HttpBody 오브젝트 생성
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "authorization_code");
-        params.add("client_id", "5f366d763b42c71ea2d61c5f717b8520");
+        params.add("client_id", "cbfc2bbc8635c99d5ab7fa37efedb619");
         params.add("redirect_uri", "http://localhost:8080/user/kakao/callback");
         params.add("code", authorizedCode);
 
@@ -74,7 +74,7 @@ public class KakaoOAuth2 {
 
         JSONObject body = new JSONObject(response.getBody());
         Long id = body.getLong("id");
-        String email = body.getJSONObject("kakao_user").getString("email");
+        String email = body.getJSONObject("kakao_account").getString("email");
         String nickname = body.getJSONObject("properties").getString("nickname");
 
         return new KakaoUserInfo(id, email, nickname);

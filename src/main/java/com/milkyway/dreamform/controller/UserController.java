@@ -93,9 +93,9 @@ public class UserController {
 
     @PostMapping("/idCheck")
     @ResponseBody
-    public String idCheck(@RequestParam("username") String username) {
-        log.info("username: "+ username);
-        String result = userService.checkUsername(username);
+    public String idCheck(@ModelAttribute SignupRequestDto signupRequestDto) {
+        String result = userService.checkUsername(signupRequestDto.getUsername());
+        log.info("result "+result);
         return result;
     }
 }

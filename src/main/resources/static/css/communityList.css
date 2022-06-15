@@ -183,6 +183,7 @@ img.premium-icon-user-2530777-1 {
     width: 330px;
     height: 37px;
     margin: 0 auto;
+    display: flex;
 }
 .pagebox {
     width: 37px;
@@ -246,4 +247,8 @@ th {
 
 tr:last-child {
     border-bottom: 1px solid #ddd;
+}
+
+.menubox > button.commu {
+    color: #337ab7;
 }
