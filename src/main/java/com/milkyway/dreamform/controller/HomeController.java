@@ -1,6 +1,7 @@
 package com.milkyway.dreamform.controller;
 
 import com.milkyway.dreamform.dto.CommunityDto;
+import com.milkyway.dreamform.model.User;
 import com.milkyway.dreamform.security.UserDetailsImpl;
 import com.milkyway.dreamform.service.CommunityService;
 import lombok.AllArgsConstructor;
@@ -32,5 +33,11 @@ public class HomeController {
         model.addAttribute("bestCommunityList", bestCommunityListDto);
         model.addAttribute("username", userDetails.getUsername());
         return "main";
+    }
+    @GetMapping("/profile")
+    public String testProfile(Model model,@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        User user = communityService.getProfile(userDetails.getUsername());
+        model.addAttribute("user", user);
+        return "profile";
     }
 }

@@ -1,113 +1,13 @@
-.Desktop---1 {
-    width: 1440px;
-    height: 1646px;
-    flex-grow: 0;
-    padding: 23px 0 0;
-    background-color: #fff;
-    margin: 0 auto;
-}
 
-.menu {
-    width: auto;
-    height: 55px;
-}
 
-span.logo{
-    width: 35px;
-    height: 26px;
-    margin: 0 127px 24px 260px;
-    font-family: AppleSDGothicNeoM00;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    flex-grow: 0;
-    padding: 27px 22px 28px 24px;
-    background-color: #2f80ed;
-    border-radius: 50%;
-    color: #fff;
-}
 
-span.menu1{
-    width: 52px;
-    height: 26px;
-    margin: 0 62px 24px 7px;
-    font-family: AppleSDGothicNeoM00;
-    font-size: 20px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000;
-}
 
-span.menu2{
-    width: 52px;
-    height: 26px;
-    margin: 0 62px 24px;
-    font-family: AppleSDGothicNeoM00;
-    font-size: 20px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000;
-}
 
-span.menu3{
-    width: 70px;
-    height: 26px;
-    margin: 0 168px 24px 62px;
-    font-family: AppleSDGothicNeoM00;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000;
-}
 
-span.logout{
-    width: 70px;
-    height: 26px;
-    margin: 0 168px 24px 5px;
-    font-family: AppleSDGothicNeoM00;
-    font-size: 12px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000;
-}
-
-img.free-icon-alarm-bell-1059063-1 {
-    width: 23px;
-    height: 25px;
-    margin: 0 20px 0;
-    object-fit: contain;
-    opacity: 0.8;
-}
-
-img.premium-icon-user-2530777-1 {
-    width: 25px;
-    height: 25px;
-    flex-grow: 0;
-    object-fit: contain;
-}
 
 /* 기본 회원 정보 */
 .co {
-    width: 1134px;
+    width: 1124px;
     margin: 0 auto;
 }
 .code {
@@ -117,10 +17,13 @@ img.premium-icon-user-2530777-1 {
 .code1 {
     float: left;
     margin: 50px;
+    border: 2px solid #b2b2b2;
+    padding: 30px;
+    border-radius: 10px;
 }
 .title {
     margin: 20px 0 35px 0;
-    font-family: AppleSDGothicNeoB00;
+    font-family: 'recipekorea';
     font-size: 26px;
     font-weight: normal;
     font-stretch: normal;
@@ -128,16 +31,16 @@ img.premium-icon-user-2530777-1 {
     line-height: normal;
     letter-spacing: 1.3px;
     text-align: left;
-    color: #000;
+    color: #2f80ed;
 }
 .area {
     width: 818px;
-    margin: 35px 55px 29px 0;
+    margin: 20px 0;
 }
 .subtitle {
     margin: 16px 0 16px 0;
     font-family: AppleSDGothicNeoB00;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -147,10 +50,11 @@ img.premium-icon-user-2530777-1 {
     color: #707070;
 }
 .box {
-    width: 500px;
-    height: 35px;
-    margin-left: 50px;
+    width: 250px;
+    height: 30px;
+    margin-left: 20px;
     border: solid 1px #000;
+    border-radius: 2px;
     background-color: #fff;
 }
 .bt1 {
@@ -175,23 +79,23 @@ img.premium-icon-user-2530777-1 {
 }
 .bt2 {
     float: right;
-    padding: 15px 50px 14px 51px;
-    border-radius: 30px;
-    border: solid 1px #000;
-    background-color: #fff;
-    font-family: AppleSDGothicNeoB00;
-    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 2px #2f80ed;
+    background-color: #2f80ed;
+    font-family: 'nanum_square';
+    font-size: 18px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
     line-height: normal;
     letter-spacing: 1.3px;
     text-align: left;
-    color: #000;
+    color: #fff;
 }
 .bt2:hover {
-    background-color: #2f80ed;
-    color: #fff;
+    background-color: #fff;
+    color: #2f80ed;
 }
 option.subtitle {
     font-size: 16px;
@@ -199,3 +103,29 @@ option.subtitle {
 select.box {
     width: 200px;
 }
+.profileHeader {
+    display: flex;
+}
+.profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: url("../imgs/noneImage.png");
+    border: 1px solid #000;
+}
+.profileImage img {
+    width: 100%;
+    height: 100%;
+}
+
+.userHeader {
+    margin-left: 10px;
+    margin-top: 60px;
+}
+.userHeader div {
+    margin: 0;
+}
+.id, .email {
+    font-size: 14px;
+}
+.nickName
