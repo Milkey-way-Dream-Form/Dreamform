@@ -1,30 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
-    <title>프로필</title>
+    <title>내 정보</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/userinfo.css}">
 </head>
 <body>
-    <div>
-        <div>아이디:<span th:text="${username}"></span></div><br>
-        <div>닉네임:<span th:text="${username}"></span></div><br>
-        <div>이메일:<span th:text="${email}"></span></div>
-        <div>비밀번호<button>비밀번호 변경</button></div>
-        <form>
-        <div>
-            관심분야
-            <select>
-                <option th:value="1">웹 개발</option>
-                <option th:value="2">앱 개발</option>
-                <option th:value="3">게임 개발</option>
-                <option th:value="4">보안</option>
-            </select>
-        </div>
-        </form>
-        <button >저장</button>
+<div class="Desktop---1">
+    <div class="menu">
+        <span class="logo">코디</span>
+        <span class="menu1">로드맵</span>
+        <span class="menu2">가이드</span>
+        <span class="menu3">커뮤니티</span>
+        <img src="../img/free-icon-alarm-bell-1059063 1.svg" class="free-icon-alarm-bell-1059063-1"/>
+        <img src="../img/premium-icon-user-2530777 1.svg" class="premium-icon-user-2530777-1"/>
+        <span class="logout">로그아웃</span>
     </div>
+    <div class="co">
+        <div class="code">
+            <div class="code1">
+                <div class="title">기본 회원 정보</div>
+                <div class="area">
+                    <span class="subtitle" th:text="${username}">아이디</span>
+                    <input type="text" class="box">
+                </div>
+                <div class="area">
+                    <span class="subtitle" th:text="${username}">닉네임</span>
+                    <input type="text" class="box">
+                </div>
+                <div class="area">
+                    <span class="subtitle" th:text="${email}">이메일</span>
+                    <input type="text" class="box">
+                </div>
+                <div class="area">
+                    <span class="subtitle">비밀번호</span>
+                    <button class="pwupdate">비밀번호 변경하기</button>
+                </div>
+                <div class="area">
+                    <span class="subtitle">관심분야</span>
+                    <select id="" class="box">
+                        <option th:value="1" class="subtitle">웹 개발</option>
+                        <option th:value="2" class="subtitle">앱 개발</option>
+                        <option th:value="3" class="subtitle">게임 개발</option>
+                        <option th:value="4" class="subtitle">보안</option>
+                    </select>
+                </div>
+                <div class="button">
+                    <button class="bt2">변경사항 저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script type="text/javascript">
 
+
+    var window = window.open(url, windowName, [windowFeatures]);
+    $('.pwupdate').on("click",function (e){
+        e.preventDefault //기본클릭 기능삭제
+
+    });
 </script>
 </html>
