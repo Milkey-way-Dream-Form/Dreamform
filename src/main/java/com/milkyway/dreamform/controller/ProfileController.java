@@ -23,15 +23,15 @@ public class ProfileController {
         model.addAttribute("email", userDetails.getEmial());
         return "profile";
     }
-    @GetMapping("modify")
-    public void getModify() {}
+//    @GetMapping("modify")
+//    public void getModify() {}
 
-    @PostMapping("modify1")
-    public String postModify(Model model, @RequestParam String subtitle, @RequestParam("subtitle") String subtitle) {
-
-
-        return "profile";
-    }
+//    @PostMapping("modify1")
+//    public String postModify(Model model, @RequestParam String subtitle, @RequestParam("subtitle") String subtitle) {
+//
+//
+//        return "profile";
+//    }
 
 
 }
