@@ -76,7 +76,7 @@
                 <button class="pagebox"
                         th:with="start = ${pagenation.startPage}, end = ${pagenation.endPage}"
                         th:each="pageButton : ${#numbers.sequence(start, end)}">
-                    <a class="currnum" th:href="@{/list/?page={page} (page = ${pageButton})}" th:text=${pageButton}></a>
+                    <a class="currnum" th:href="@{/list/?page={page} (page = ${pageButton})}" th:text="${pageButton}"></a>
                 </button>
             </th:block>
             <button class="pagebox">

@@ -68,19 +68,6 @@
     const inputTitle = document.getElementById('inputTitle');
     const submit = document.getElementById('submit');
 
-    // 콘텐츠 null check
-    // if (inputTitle.value.length > 0 && editorText.innerText.length > 0) {
-    //     submit.disable = true;
-    // }else {
-    //     submit.disable = false;
-    // }
-    // enter마다 br 생성
-    // $('div[contenteditable]').keydown(function(e) {
-    //     if (e.keyCode === 13) {
-    //         document.execCommand('insertHTML', false, '<br/>');
-    //         return false;
-    //     }
-    // });
     btnBold.addEventListener('click', function (e) {
         setStyle('bold');
         e.preventDefault();
