@@ -39,7 +39,7 @@ img.premium-icon-user-2530777-1 {
 
 /* 상세 페이지 */
 .co {
-    width: 1134px;
+    width: 1124px;
     margin: 0 auto;
 }
 
@@ -274,4 +274,7 @@ li p strong {
 
 .menubox > button.commu {
     color: #337ab7;
+}
+.code1 img{
+    max-width: 1124px;
 }
