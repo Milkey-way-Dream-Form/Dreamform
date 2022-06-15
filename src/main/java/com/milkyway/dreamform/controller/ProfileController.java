@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -22,14 +23,15 @@ public class ProfileController {
         model.addAttribute("email", userDetails.getEmial());
         return "profile";
     }
-    @GetMapping("/profile/passwordupdate")
-        public String password(){
-        return "passwordupdate";
+    @GetMapping("modify")
+    public void getModify() {}
+
+    @PostMapping("modify1")
+    public String postModify(Model model, @RequestParam String subtitle, @RequestParam("subtitle") String subtitle) {
+
+
+        return "profile";
     }
-    @PostMapping("/profile/passwordupdate")
-        public String psupdate(Model model,@AuthenticationPrincipal UserDetailsImpl userDetails){
-        model.addAttribute("password",userDetails.getPassword());
-        return "";
-    }
+
 
 }
