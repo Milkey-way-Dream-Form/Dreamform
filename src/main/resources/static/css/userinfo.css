@@ -1,0 +1,201 @@
+.Desktop---1 {
+    width: 1440px;
+    height: 1646px;
+    flex-grow: 0;
+    padding: 23px 0 0;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.menu {
+    width: auto;
+    height: 55px;
+}
+
+span.logo{
+    width: 35px;
+    height: 26px;
+    margin: 0 127px 24px 260px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    flex-grow: 0;
+    padding: 27px 22px 28px 24px;
+    background-color: #2f80ed;
+    border-radius: 50%;
+    color: #fff;
+}
+
+span.menu1{
+    width: 52px;
+    height: 26px;
+    margin: 0 62px 24px 7px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+span.menu2{
+    width: 52px;
+    height: 26px;
+    margin: 0 62px 24px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+span.menu3{
+    width: 70px;
+    height: 26px;
+    margin: 0 168px 24px 62px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+span.logout{
+    width: 70px;
+    height: 26px;
+    margin: 0 168px 24px 5px;
+    font-family: AppleSDGothicNeoM00;
+    font-size: 12px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+
+img.free-icon-alarm-bell-1059063-1 {
+    width: 23px;
+    height: 25px;
+    margin: 0 20px 0;
+    object-fit: contain;
+    opacity: 0.8;
+}
+
+img.premium-icon-user-2530777-1 {
+    width: 25px;
+    height: 25px;
+    flex-grow: 0;
+    object-fit: contain;
+}
+
+/* 기본 회원 정보 */
+.co {
+    width: 1134px;
+    margin: 0 auto;
+}
+.code {
+    width: inherit;
+    margin: 0 auto;
+}
+.code1 {
+    float: left;
+    margin: 50px;
+}
+.title {
+    margin: 20px 0 35px 0;
+    font-family: AppleSDGothicNeoB00;
+    font-size: 26px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1.3px;
+    text-align: left;
+    color: #000;
+}
+.area {
+    width: 818px;
+    margin: 35px 55px 29px 0;
+}
+.subtitle {
+    margin: 16px 0 16px 0;
+    font-family: AppleSDGothicNeoB00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #707070;
+}
+.box {
+    width: 500px;
+    height: 35px;
+    margin-left: 50px;
+    border: solid 1px #000;
+    background-color: #fff;
+}
+.bt1 {
+    margin-left: 50px;
+    padding: 10px 38px 10px 39px;
+    border-radius: 15px;
+    border: solid 1px #000;
+    background-color: #fff;
+    font-family: AppleSDGothicNeoB00;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-align: left;
+    color: #000;
+}
+.bt1:hover {
+    background-color: #2f80ed;
+    color: #fff;
+}
+.bt2 {
+    float: right;
+    padding: 15px 50px 14px 51px;
+    border-radius: 30px;
+    border: solid 1px #000;
+    background-color: #fff;
+    font-family: AppleSDGothicNeoB00;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 1.3px;
+    text-align: left;
+    color: #000;
+}
+.bt2:hover {
+    background-color: #2f80ed;
+    color: #fff;
+}
+option.subtitle {
+    font-size: 16px;
+}
+select.box {
+    width: 200px;
+}
