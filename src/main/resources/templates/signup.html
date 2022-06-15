@@ -50,6 +50,7 @@
             <div class="form1">
                 <div class="id">비밀번호 확인</div>
                 <input type="password" th:field="*{passwordConfirm}" onkeyup="pwCheck()" class="idbox" id="pwd2" aria-describedby="passwordHelp" required minlength="4" maxlength="50">
+                <div class="id" id="pwCheckMessage"></div>
             </div>
             <div class="form1">
                 <div class="id">이메일</div>
