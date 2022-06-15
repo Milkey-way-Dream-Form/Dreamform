@@ -128,4 +128,7 @@ select.box {
 .id, .email {
     font-size: 14px;
 }
-.nickName
+
+.commu {
+    color: #a8dbff;
+}
