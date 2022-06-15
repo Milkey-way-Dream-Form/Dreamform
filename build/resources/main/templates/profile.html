@@ -2,6 +2,66 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
     <title>내 정보</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/fontloader.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/maincontent.css}">
+    <link rel="stylesheet" th:href="@{/css/userinfo.css}">
+</head>
+<body>
+<header>
+    <div class="header_wrap">
+        <h2 class="unselectable clickable" onclick="location.href = '/'">코디</h2>
+        <div class="menubox">
+            <button class="unselectable clickable" onclick="location.href='/profile'">내 프로필</button>
+            <button class="unselectable clickable commu" onclick="location.href='/list'">커뮤니티</button>
+            <button class="unselectable clickable" onclick="location.href='https://milkey-way.github.io/cody_web'">로드맵</button>
+            <button class="unselectable clickable">가이드</button>
+            <div class="unselectable clickable usermenu"></div>
+            <img th:src="@{/icons/bell.png}" class="bell">
+            <div class="space">
+                <span class="user" th:text="${user.getUsername()}"></span> <span class="nim">님</span>
+                <span class="logout"><a href="/user/logout">로그아웃</a></span>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="co">
+    <div class="code">
+        <div class="code1">
+            <div class="title">기본 회원 정보</div>
+            <div class="profileHeader">
+                <div class="profileImage"><img th:src="@{/imgs/noneImage.png}"></div>
+                <div class="userHeader">
+                    <div class="area">
+                        <span class="subtitle id" th:text="'아이디 | '+ ${user.getUsername()}">아이디</span>
+                    </div>
+                    <div class="area">
+                        <span class="subtitle email" th:text="'이메일 | ' + ${user.getEmail()}">cms893811@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="area">
+                <span class="subtitle nickName" th:text="'닉네임 : '+ ${user.getUsername()}">닉네임</span>
+                <input type="text" class="box" th:value="${user.getUsername()}">
+            </div>
+
+            <div class="area">
+                <span class="subtitle">비밀번호</span>
+                <button class="pwupdate">비밀번호 변경하기</button>
+            </div>
+            <div class="area">
+                <span class="subtitle">관심분야</span>
+                <select id="" class="box">
+                    <option th:value="1" class="subtitle">웹 개발</option>
+                    <option th:value="2" class="subtitle">앱 개발</option>
+                    <option th:value="3" class="subtitle">게임 개발</option>
+                    <option th:value="4" class="subtitle">보안</option>
+                </select>
+            </div>
+            <div class="button">
+                <button class="bt2">변경사항 저장</button>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" th:href="@{/css/userinfo.css}">
 </head>
