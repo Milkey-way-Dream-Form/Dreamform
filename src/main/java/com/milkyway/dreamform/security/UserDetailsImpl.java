@@ -28,6 +28,10 @@ public class UserDetailsImpl implements UserDetails {
         return user.getUsername();
     }
 
+    public String getEmial(){
+        return user.getEmail();
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
